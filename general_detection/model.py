@@ -54,8 +54,11 @@ class EntityDetector(FrameModel):
         cache_dir: str,
         embedder_revision: Optional[str] = None,
         device: Optional[str] = None,
+        output_tags: Optional[bool] = None,
     ) -> None:
         self.config = cfg
+        if output_tags is not None:
+            self.config.output_tags = output_tags
         self.cache_dir = cache_dir
         self.device = device
         self._brand = None
@@ -126,7 +129,11 @@ class EntityDetector(FrameModel):
 
     def tag_frame(self, img: np.ndarray) -> List[FrameTag]:
         """img: (H, W, 3) uint8 RGB. One FrameTag per detection: `tag` is the parent term,
-        `vector` the crop embedding, `box` the normalized un-padded detection box."""
+        `vector` the crop embedding, `box` the normalized un-padded detection box.
+
+        With `output_tags` set, each detection emits a SECOND FrameTag right after its vector
+        tag -- same label, same box, no vector -- for visual aid.
+        The optional whole-frame vector does not need a second tag."""
         cfg = self.config
 
         detections: List[Detection] = []
@@ -146,26 +153,36 @@ class EntityDetector(FrameModel):
 
         tags: List[FrameTag] = []
         for i, detection in enumerate(detections):
+            info = {
+                "kind": "crop",
+                "prompt": detection.prompt,
+                "score": detection.score,
+                # crop_padding changes the vector, so it is provenance, not trivia:
+                # vectors built at different padding are not comparable.
+                "crop_padding": cfg.crop_padding,
+                "upscale": upscales[i],
+                # Which backend found it. With two detectors in play this is no longer
+                # constant per run, so it is recorded per tag rather than per config.
+                "detector": detection.detector,
+            }
             tags.append(
                 FrameTag(
                     tag=detection.label,
                     vector=vectors[i].tolist(),
                     box=detection.box,
-                    additional_info={
-                        "kind": "crop",
-                        "prompt": detection.prompt,
-                        "score": detection.score,
-                        # crop_padding changes the vector, so it is provenance, not trivia:
-                        # vectors built at different padding are not comparable.
-                        "crop_padding": cfg.crop_padding,
-                        "upscale": upscales[i],
-                        # Which backend found it. With two detectors in play this is no longer
-                        # constant per run, so it is recorded per tag rather than per config.
-                        "detector": detection.detector,
-                        **self._embedder_info(),
-                    },
+                    additional_info={**info, **self._embedder_info()},
                 )
             )
+            if cfg.output_tags:
+                # Same detection, same box, no vector: a visualization aid, 
+                # so the box shows as a tag track in EVIE.
+                tags.append(
+                    FrameTag(
+                        tag=detection.label,
+                        box=detection.box,
+                        additional_info=info,
+                    )
+                )
 
         if cfg.embed_whole_frame:
             tags.append(

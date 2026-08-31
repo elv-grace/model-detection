@@ -30,6 +30,7 @@ frame (H,W,3 uint8 RGB)
                  └─ crop (+ crop_padding context) and cap at max_detections
                       └─ SigLIP 2 NaFlex vision tower, ONE batch across both detectors
                            └─ L2-normalize → FrameTag(tag, vector, box, additional_info)
+                                          (+ FrameTag(tag, box) if output_tags)
 ```
 
 The two detectors run sequentially and the order does not matter: on one GPU they compete for
@@ -88,6 +89,20 @@ Each detection becomes a `Tag` with:
 
 `common_ml` then attaches `start_time`/`end_time` (ms), `source_media`, and `frame_info.{frame_idx, box}`. Tags stay per-frame with their boxes intact.
 
+### `output_tags` — a plain tag beside each vector tag
+
+`output_tags` (default `false`) emits a **second** `Tag` right after each detection's vector
+tag: same label, same box, **no `vector`**, and no embedder provenance (`embedder`, `dim`,
+`max_num_patches` describe a vector this tag does not carry). Everything else in
+`additional_info` is identical.
+
+It is a visualization aid. EVIE draws the box from `frame_info` either way, but a vector-less
+tag also lands as a tag track.
+
+```bash
+--params '{"output_tags": true}'
+```
+
 ### `additional_info`
 
 | field | why it is there |
@@ -96,18 +111,15 @@ Each detection becomes a `Tag` with:
 | `prompt` | which phrasing actually fired — makes per-phrasing recall measurable |
 | `score` | detector confidence |
 | `detector` | which backend found it (`yoloe-26l-seg`, `grounding-dino-base`, `yolo11l`). **Per tag, not per run** — two detectors are in play |
-| `embedder`, `dim` | so the index can validate what it is storing |
-| `max_num_patches` | resolution budget the vector was produced at |
+| `embedder`, `dim` | so the index can validate what it is storing. Absent on `output_tags` twins, which carry no vector |
+| `max_num_patches` | resolution budget the vector was produced at. Absent on `output_tags` twins |
 | `crop_padding` | **changes the vector** — measurably. Mixing paddings in one index costs retrievals silently. See [below](#crop_padding-changes-the-vector-measured) |
 | `upscale` | the NaFlex scale actually applied to this crop, so the heavily-interpolated tail can be filtered downstream without re-tagging |
 
 ## Seeing the boxes in the video editor
 
-**No extra output format is needed.** `elv-video-editor` already renders these: it queries
-the tagstore with `has_frame_info: true` and reads `frame_info.frame_idx` and
-`frame_info.box` (`VideoStore.js` `LoadOverlayTags`), then draws `{x1,y1,x2,y2}` multiplied
-by the canvas dimensions (`Overlay.jsx`), grouped into tracks and labelled with `tag.tag`.
-Normalized `{x1,y1,x2,y2}` — what `FrameTag.box` already is — is exactly the expected shape.
+Set [`output_tags`](#output_tags--a-plain-tag-beside-each-vector-tag) to true to also get a vector-less
+copy of each detection, which shows up in the editor's tag tracks alongside the overlaid bounding boxes.
 
 ## Prompting modes — text only, and why
 
@@ -245,6 +257,12 @@ objects; it makes the average crop *smaller*.
 | `normalize` | `true` | L2-normalize so cosine == dot product. |
 | `embed_batch_size` | 32 | Crops per forward pass. |
 | `embed_whole_frame` | `false` | Also emit one whole-frame vector per frame. |
+
+### Output
+
+| param | default | meaning |
+|---|---|---|
+| `output_tags` | `false` | Also emit a vector-less tag beside each detection's vector tag, so the detection shows up in EVIE's ordinary tag tracks. Doubles the tag count per frame; no extra inference. [Above](#output_tags--a-plain-tag-beside-each-vector-tag). |
 
 ## Notes on the parameters that matter
 
@@ -596,6 +614,8 @@ For a container smoke test, drop media into `test-files/` and run `./test.sh` (o
 
 ```bash
 make test # default detector and prompts (default path)
+
+IMAGE_NAME=general_detection ./buildscripts/testers/test-model.sh --params '{"output_tags": true}' # each detection also emits a vector-less tag, for the EVIE tag tracks
 
 IMAGE_NAME=general_detection ./buildscripts/testers/test-model.sh --params '{"brand_detector": "coverage", "detect_target": ["brand"]}' 2>&1 | grep -iE "targets:|loading|grounding text|TEST PASSED|TEST FAILED|out.jsonl:|✔|✘|Traceback|Error|error code" | head -30 # alternative detector (higher coverage) and brand only prompt
 ```

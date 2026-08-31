@@ -15,7 +15,8 @@ if __name__ == '__main__':
     params = get_params()
     params = from_dict(RuntimeConfig, data=params)
 
-    # One vector tag per detected entity, per sampled frame.
+    # One vector tag per detected entity, per sampled frame -- plus a vector-less twin of each
+    # when the request sets `output_tags`.
     # Detector weights are not passed here any more. Which detectors run depends on the
     # request's `detect_target` and `brand_detector`, so the model resolves and lazily loads
     # them itself from the measured defaults in general_detection/detector.py.

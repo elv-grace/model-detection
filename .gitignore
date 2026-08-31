@@ -6,7 +6,7 @@
 models/*
 tags/*
 test-output/*
-version/*
+# version/*
 # output of the ungated calibration run (scripts/calibrate_class_conf.py)
 calib-out/
 # frozen evaluation frames (~75 MB) and their UI thumbnails. Regenerate deterministically

@@ -144,3 +144,10 @@ class RuntimeConfig:
     # box. Off by default. Enable if this index needs to answer "find frames that look like
     # this crop" — there is no separate frame embedder feeding this space.
     embed_whole_frame: bool = False
+
+    # ---- output -----------------------------------------------------------------
+
+    # Additionally emit a vector-less FrameTag (to visualize the bounding boxes in EVIE) beside each detection's 
+    # vector tag: same label, same box, no `vector`, and no embedder provenance (because there is no associated vector). 
+    # Off by default, which is the original one-vector-tag-per-detection output.
+    output_tags: bool = False

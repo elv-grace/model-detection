@@ -116,6 +116,81 @@ def test_embed_whole_frame_still_emits_when_nothing_is_detected():
     assert tags[0].additional_info["kind"] == "frame"
 
 
+# ---- output_tags ----------------------------------------------------------------
+
+
+def test_output_tags_is_off_by_default():
+    """The default output is unchanged: one tag per detection, and it carries the vector."""
+    tags = _model().tag_frame(np.zeros((100, 100, 3), dtype=np.uint8))
+    assert len(tags) == 1
+    assert tags[0].vector is not None
+
+
+def test_output_tags_adds_a_vectorless_twin_after_each_vector_tag():
+    tags = _model(RuntimeConfig(output_tags=True)).tag_frame(
+        np.zeros((100, 100, 3), dtype=np.uint8)
+    )
+
+    assert len(tags) == 2
+    vector_tag, plain_tag = tags
+    assert vector_tag.vector is not None
+    assert plain_tag.vector is None
+    # same detection: the twin is the same label on the same box, which is what lets EVIE draw
+    # it as an ordinary tag track
+    assert plain_tag.tag == vector_tag.tag == "brand"
+    assert plain_tag.box == vector_tag.box
+
+
+def test_vectorless_twin_keeps_the_detection_provenance_but_not_the_embedder_provenance():
+    plain_info = _model(RuntimeConfig(output_tags=True)).tag_frame(
+        np.zeros((100, 100, 3), dtype=np.uint8)
+    )[1].additional_info
+
+    assert plain_info["kind"] == "crop"
+    assert plain_info["prompt"] == "letter logo"
+    assert plain_info["score"] == 0.9
+    assert plain_info["detector"] == "fake-yoloe"
+    # embedder/dim/max_num_patches describe a vector this tag does not carry
+    assert "embedder" not in plain_info
+    assert "dim" not in plain_info
+
+
+def test_output_tags_leaves_the_whole_frame_vector_untwinned():
+    """The frame tag's label is empty, so a vector-less copy would carry no information."""
+    cfg = RuntimeConfig(output_tags=True, embed_whole_frame=True)
+    tags = _model(cfg).tag_frame(np.zeros((100, 100, 3), dtype=np.uint8))
+
+    # vector tag + its twin + one frame vector, and no fourth tag
+    assert len(tags) == 3
+    frame_tags = [t for t in tags if t.additional_info["kind"] == "frame"]
+    assert len(frame_tags) == 1
+    assert frame_tags[0].vector is not None
+
+
+def test_output_tags_emits_nothing_extra_when_nothing_is_detected():
+    cfg = RuntimeConfig(output_tags=True)
+    assert _model(cfg, detections=[]).tag_frame(np.zeros((100, 100, 3), dtype=np.uint8)) == []
+
+
+@pytest.mark.parametrize("passed, expected", [(None, False), (True, True), (False, False)])
+def test_constructor_output_tags_sets_the_config_for_this_run(monkeypatch, passed, expected):
+    """The kwarg is a convenience for callers holding the model directly. None leaves the
+    config alone; a bool sets it."""
+    monkeypatch.setattr(EntityDetector, "_apply_targets", lambda self, cfg: None)
+    monkeypatch.setattr(
+        "general_detection.model.Siglip2CropEmbedder",
+        lambda *args, **kwargs: _FakeEmbedder(),
+    )
+
+    model = EntityDetector(
+        cfg=RuntimeConfig(),
+        embedder_model_id="fake/siglip2",
+        cache_dir="/tmp",
+        output_tags=passed,
+    )
+    assert model.config.output_tags is expected
+
+
 # ---- cropping -------------------------------------------------------------------
 
 

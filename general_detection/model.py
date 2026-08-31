@@ -174,8 +174,10 @@ class EntityDetector(FrameModel):
                 )
             )
             if cfg.output_tags:
-                # Same detection, same box, no vector: a visualization aid, 
-                # so the box shows as a tag track in EVIE.
+                # Same detection, same box, no vector: a visualization aid, so the box shows as
+                # a tag track in EVIE.
+                # AVModel._combine_adjacent skips tags that HAVE a vector, so
+                # these get run-length merged into spans on top of the per-frame copies.
                 tags.append(
                     FrameTag(
                         tag=detection.label,

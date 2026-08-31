@@ -91,13 +91,18 @@ Each detection becomes a `Tag` with:
 
 ### `output_tags` — a plain tag beside each vector tag
 
-`output_tags` (default `false`) emits a **second** `Tag` right after each detection's vector
-tag: same label, same box, **no `vector`**, and no embedder provenance (`embedder`, `dim`,
-`max_num_patches` describe a vector this tag does not carry). Everything else in
+`output_tags` parameter (default `false`) will emit a **second** `Tag` right after each detection's vector tag if `true`: same label, same box, **no `vector`**, and no embedder provenance 
+(`embedder`, `dim`, `max_num_patches` describe a vector this tag does not carry). Everything else in
 `additional_info` is identical.
 
 It is a visualization aid. EVIE draws the box from `frame_info` either way, but a vector-less
 tag also lands as a tag track.
+
+The vector-less tag is also **run-length merged**, which the vector tags are not:
+`AVModel._combine_adjacent` skips any tag that has a vector, so on video these twins are
+additionally emitted as merged spans per label (with `additional_info` and `frame_info` dropped
+by the merge) on top of the per-frame copies. That merged span is what reads as a track rather
+than a dotted line of one-frame tags — but it means the tag count grows by more than 2×.
 
 ```bash
 --params '{"output_tags": true}'
@@ -118,7 +123,7 @@ tag also lands as a tag track.
 
 ## Seeing the boxes in the video editor
 
-Set [`output_tags`](#output_tags--a-plain-tag-beside-each-vector-tag) to true to also get a vector-less
+Set [`output_tags`](#output_tags--a-plain-tag-beside-each-vector-tag) to true to get a vector-less
 copy of each detection, which shows up in the editor's tag tracks alongside the overlaid bounding boxes.
 
 ## Prompting modes — text only, and why

@@ -4,7 +4,8 @@ Open-vocabulary "crop and embed" tagger. YOLO detects persons and YOLOE/Groundin
 SigLIP 2 embeds each crop; and every detection becomes one vector `Tag` carrying its normalized bounding box.
 
 Implements `common_ml`'s `FrameModel`, so frame extraction (ffmpeg/PyAV), image-vs-video
-dispatch, and tag serialization are handled by the tagger runtime.
+dispatch, and tag serialization are handled by the tagger runtime.  
+Model defined in `general_detection/`. `eval/` contains experiment results for testing different detection and embedding models.
 
 - [Original YOLOE paper](https://arxiv.org/html/2503.07465v1)
 - [Ultralytics YOLOE docs](https://docs.ultralytics.com/models/yoloe)
@@ -15,7 +16,7 @@ dispatch, and tag serialization are handled by the tagger runtime.
     - **YOLO11** (closed vocabulary)
     - **Grounding DINO** (open vocabulary, text prompting)
     - OWLv2 (open vocabulary, text prompting)
-- SIGlip 2 models: SIGlip2-base-naflex (768-d) vs. SIGlip2-large-384 (1024-d)
+- SIGlip 2 models: **SIGlip2-base-naflex** (768-d) vs. SIGlip2-large-384 (1024-d)
 
 ## Pipeline
 

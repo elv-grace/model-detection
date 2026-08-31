@@ -1,0 +1,36 @@
+# GPU is auto-detected at runtime (torch.cuda.is_available); advisory only, matching the
+# other model-* taggers.
+device: cuda
+
+model:
+  # Detector weights are NOT listed here. Which detectors load depends on the request:
+  # `detect_target` routes terms to a backend, and `brand_detector` picks between the two
+  # open-vocabulary options. The checkpoints and their measured input sizes and thresholds
+  # live in general_detection/detector.py (BRAND_BACKENDS, PERSON_BACKEND) so that a weight,
+  # its resolution and its threshold stay together -- they were measured together and are not
+  # independently valid.
+  #
+  #   brand, "fast" (default)  yoloe-26l-seg.pt      @1280, conf 0.007
+  #   brand, "coverage"        grounding-dino-base   @800,  conf 0.15
+  #   person                   yolo11l.pt            @640,  conf 0.11
+  #
+  # All are downloaded on first load into storage.cache_path (ultralytics) or the HF cache.
+
+  embedder:
+    # SigLIP 2 NaFlex image tower, pulled from the HuggingFace hub on first load into the
+    # container's HF cache (HF_HOME, see the Containerfile).
+    model_id: google/siglip2-base-patch16-naflex
+    # Pin the hub snapshot to a specific commit for reproducibility (threaded into
+    # from_pretrained for both the model and the processor). Set to null to track the
+    # latest commit on the default branch. Ignored when model_id is a local path.
+    revision: null
+
+storage:
+  # Persistent cache for the YOLOE checkpoint and the MobileCLIP text encoder that
+  # get_text_pe() downloads. Must be a mounted volume or both are re-fetched every run.
+  cache_path: /root/.cache/detection
+
+# Runtime tunables (prompts, thresholds, crop and embedding knobs) live in
+# general_detection/config.py's RuntimeConfig and are injected per-request via `--params`; see the
+# README's "Runtime parameters" table. Frame sampling rate (fps) is handled generically by
+# the tagger runtime.

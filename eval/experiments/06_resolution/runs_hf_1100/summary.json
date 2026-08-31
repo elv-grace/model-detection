@@ -1,0 +1,22 @@
+[
+  {
+    "backend": "gdino",
+    "detections": 8517,
+    "throughput_ms_per_frame": 509.5,
+    "throughput_fps": 1.96,
+    "latency_ms_median": 536.7,
+    "latency_ms_p90": 539.0,
+    "prompts": 7,
+    "batch": 2
+  },
+  {
+    "backend": "owlv2",
+    "detections": 3044,
+    "throughput_ms_per_frame": 279.6,
+    "throughput_fps": 3.58,
+    "latency_ms_median": 333.0,
+    "latency_ms_p90": 345.9,
+    "prompts": 7,
+    "batch": 2
+  }
+]

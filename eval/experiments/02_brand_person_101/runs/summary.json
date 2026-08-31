@@ -1,0 +1,82 @@
+[
+  {
+    "backend": "gdino",
+    "detections": 27233,
+    "throughput_ms_per_frame": 332.1,
+    "throughput_fps": 3.01,
+    "latency_ms_median": 306.9,
+    "latency_ms_p90": 313.3,
+    "prompts": 101,
+    "batch": 4
+  },
+  {
+    "backend": "yoloe11-text",
+    "detections": 13519,
+    "throughput_ms_per_frame": 62.8,
+    "throughput_fps": 15.92,
+    "latency_ms_median": 132.2,
+    "latency_ms_p90": 140.4,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe26-text",
+    "detections": 11730,
+    "throughput_ms_per_frame": 59.8,
+    "throughput_fps": 16.73,
+    "latency_ms_median": 131.2,
+    "latency_ms_p90": 138.7,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe11-pf",
+    "detections": 13067,
+    "throughput_ms_per_frame": 61.7,
+    "throughput_fps": 16.22,
+    "latency_ms_median": 132.4,
+    "latency_ms_p90": 141.1,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe26-pf",
+    "detections": 6643,
+    "throughput_ms_per_frame": 58.3,
+    "throughput_fps": 17.15,
+    "latency_ms_median": 130.7,
+    "latency_ms_p90": 138.8,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "world-text",
+    "detections": 15642,
+    "throughput_ms_per_frame": 57.0,
+    "throughput_fps": 17.56,
+    "latency_ms_median": 118.2,
+    "latency_ms_p90": 127.0,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "yolo11",
+    "detections": 9798,
+    "throughput_ms_per_frame": 54.0,
+    "throughput_fps": 18.5,
+    "latency_ms_median": 120.4,
+    "latency_ms_p90": 129.6,
+    "prompts": 101,
+    "batch": 8
+  },
+  {
+    "backend": "owlv2",
+    "detections": 20289,
+    "throughput_ms_per_frame": 230.2,
+    "throughput_fps": 4.34,
+    "latency_ms_median": 267.2,
+    "latency_ms_p90": 272.5,
+    "prompts": 101,
+    "batch": 8
+  }
+]

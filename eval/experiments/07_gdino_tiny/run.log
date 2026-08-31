@@ -1,0 +1,9 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  gdino-tiny (IDEA-Research/grounding-dino-tiny)
+Loading weights:   0%|          | 0/978 [00:00<?, ?it/s]Loading weights:  64%|██████▍   | 625/978 [00:00<00:00, 6246.33it/s]Loading weights: 100%|██████████| 978/978 [00:00<00:00, 8149.99it/s]
+    4/100 frames, 1670 detections    8/100 frames, 2278 detections    12/100 frames, 3368 detections    16/100 frames, 4471 detections    20/100 frames, 6077 detections    24/100 frames, 6916 detections    28/100 frames, 8186 detections    32/100 frames, 8973 detections    36/100 frames, 9338 detections    40/100 frames, 9648 detections    44/100 frames, 10003 detections    48/100 frames, 10369 detections    52/100 frames, 10706 detections    56/100 frames, 11046 detections    60/100 frames, 11336 detections    64/100 frames, 11770 detections    68/100 frames, 12214 detections    72/100 frames, 12600 detections    76/100 frames, 13178 detections    80/100 frames, 13907 detections    84/100 frames, 14310 detections    88/100 frames, 14782 detections    92/100 frames, 15528 detections    96/100 frames, 16545 detections    100/100 frames, 17134 detections    100 frames, 17134 detections | throughput 232 ms/frame (4.3 fps) | latency median 223 ms, p90 227 ms      
+
+wrote /elv/eval/experiments/07_gdino_tiny/runs/<backend>/out.jsonl and summary.json
+DONE

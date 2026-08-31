@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Box ground truth · brand marks / people</title>
+<style>
+:root{
+  --ground:#101316; --panel:#171B20; --panel2:#1E242A; --ink:#E7EAEE; --muted:#9BA4AF;
+  --faint:#78818C; --rule:#262C33; --accent:#46A697;
+  --brand:#46C0A6; --person:#E8A93C; --ignore:#7C8794;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;height:100%;background:var(--ground);color:var(--ink);font-family:var(--sans);}
+#app{display:grid;grid-template-columns:210px 1fr 268px;height:100vh;}
+
+/* ---- frame list ---- */
+#list{border-right:1px solid var(--rule);overflow-y:auto;background:var(--panel);}
+#list h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  margin:0;padding:16px 14px 9px;font-weight:600;}
+.fitem{display:flex;justify-content:space-between;gap:8px;align-items:center;
+  padding:7px 14px;font-family:var(--mono);font-size:11.5px;cursor:pointer;
+  border-left:3px solid transparent;color:var(--muted);}
+.fitem:hover{background:var(--panel2);}
+.fitem.sel{background:var(--panel2);border-left-color:var(--accent);color:var(--ink);}
+.fitem .n{color:var(--faint);font-size:10.5px;}
+.fitem.done .n{color:var(--brand);}
+
+/* ---- stage ---- */
+#stage{display:flex;flex-direction:column;min-width:0;}
+#bar{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--rule);
+  background:var(--panel);flex-wrap:wrap;}
+#bar .id{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-right:auto;}
+button{font-family:var(--sans);font-size:12.5px;background:var(--panel2);color:var(--ink);
+  border:1px solid var(--rule);border-radius:3px;padding:5px 11px;cursor:pointer;}
+button:hover{border-color:var(--accent);}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+button.on{background:var(--accent);color:#06120F;border-color:var(--accent);font-weight:600;}
+button.pill[data-cls="brand"].on{background:var(--brand);}
+button.pill[data-cls="person"].on{background:var(--person);}
+button.pill[data-cls="ignore"].on{background:var(--ignore);color:#fff;}
+#canvasWrap{flex:1;display:flex;align-items:center;justify-content:center;overflow:auto;padding:14px;}
+canvas{max-width:100%;max-height:100%;cursor:crosshair;background:#000;}
+
+/* ---- side ---- */
+#side{border-left:1px solid var(--rule);background:var(--panel);overflow-y:auto;padding:16px 14px;}
+#side h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);
+  margin:0 0 10px;font-weight:600;}
+#side h2:not(:first-child){margin-top:22px;}
+.box-row{display:flex;align-items:center;gap:8px;padding:5px 7px;border-radius:3px;
+  font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;}
+.box-row:hover,.box-row.sel{background:var(--panel2);color:var(--ink);}
+.sw{width:9px;height:9px;border-radius:2px;flex:none;}
+.box-row .src{margin-left:auto;color:var(--faint);font-size:10px;}
+kbd{font-family:var(--mono);font-size:10.5px;background:var(--panel2);border:1px solid var(--rule);
+  border-radius:3px;padding:1px 5px;color:var(--ink);}
+.help{font-size:12px;line-height:2.0;color:var(--muted);}
+#stats{font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.9;}
+#stats b{color:var(--ink);}
+.warn{font-size:11.5px;line-height:1.5;color:var(--person);background:rgba(232,169,60,.08);
+  border:1px solid rgba(232,169,60,.25);border-radius:3px;padding:9px 11px;margin-top:14px;}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="list"><h2>Frames</h2><div id="items"></div></div>
+
+  <div id="stage">
+    <div id="bar">
+      <span class="id" id="frameId">—</span>
+      <button class="pill" data-cls="brand" id="clsBrand">1 · brand</button>
+      <button class="pill" data-cls="person" id="clsPerson">2 · person</button>
+      <button class="pill" data-cls="ignore" id="clsIgnore">3 · ignore</button>
+      <button id="btnDone">Mark done</button>
+      <button id="btnExport">Export JSON</button>
+    </div>
+    <div id="canvasWrap"><canvas id="cv"></canvas></div>
+  </div>
+
+  <div id="side">
+    <h2>Boxes here</h2>
+    <div id="boxes"></div>
+    <h2>Progress</h2>
+    <div id="stats"></div>
+    <h2>Keys</h2>
+    <div class="help">
+      <kbd>drag</kbd> draw · <kbd>click</kbd> select<br>
+      <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> set class of selection<br>
+      <kbd>del</kbd> delete · <kbd>u</kbd> undo<br>
+      <kbd>←</kbd><kbd>→</kbd> prev / next frame<br>
+      <kbd>d</kbd> mark done · <kbd>e</kbd> export
+    </div>
+    <div class="warn"><b>brand</b> = the mark itself. Box the GAP wordmark, not the hoodie;
+    the NFL shield, not the helmet. <b>person</b> = whole body, not the face.</div>
+    <div class="warn">Label <b>every</b> instance in a frame before marking it done, or
+    precision will be wrong — an unlabelled real object counts as a false positive against the
+    detector. Use <b>ignore</b> over crowds too dense to separate; detections inside an ignore
+    region count neither for nor against.</div>
+  </div>
+</div>
+
+<script>
+const TASK = /*__TASK__*/null;
+const COLOUR = {brand:"#46C0A6", person:"#E8A93C", ignore:"#7C8794"};
+// Bumped when the task definition changes. Saved state is keyed by this, so a stale v1
+// session -- seeded when `brand` still meant the brand-BEARING object rather than the mark --
+// would silently override the new proposals and be labelled against the old definition.
+const STORE = "elv_box_gt_v2_marks";
+
+let cur = 0, cls = "person", sel = -1, undo = [];
+const img = new Image();
+const cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+
+// Seed proposals are a starting point, not ground truth: they come from a union of three
+// detectors and inherit whatever all three missed. State is kept per frame and persisted to
+// localStorage after every edit, so a closed tab does not lose an hour of labelling.
+const state = load();
+function load(){
+  try{ const raw = localStorage.getItem(STORE); if(raw) return JSON.parse(raw); }catch(e){}
+  const s = {};
+  TASK.forEach(f => s[f.id] = {done:false, boxes:f.boxes.map(b => ({
+    x1:b.x1, y1:b.y1, x2:b.x2, y2:b.y2, cls:b.cls, seed:b.seed||null}))});
+  return s;
+}
+function save(){ try{ localStorage.setItem(STORE, JSON.stringify(state)); }catch(e){} }
+
+function frame(){ return TASK[cur]; }
+function boxes(){ return state[frame().id].boxes; }
+
+function draw(){
+  if(!img.complete || !img.naturalWidth) return;
+  const maxW = document.getElementById("canvasWrap").clientWidth - 28;
+  const maxH = document.getElementById("canvasWrap").clientHeight - 28;
+  const s = Math.min(maxW/img.naturalWidth, maxH/img.naturalHeight, 1.6);
+  cv.width = Math.round(img.naturalWidth*s);
+  cv.height = Math.round(img.naturalHeight*s);
+  ctx.drawImage(img, 0, 0, cv.width, cv.height);
+  boxes().forEach((b,i) => {
+    const x = b.x1*cv.width, y = b.y1*cv.height;
+    const w = (b.x2-b.x1)*cv.width, h = (b.y2-b.y1)*cv.height;
+    ctx.lineWidth = i===sel ? 3 : 2;
+    ctx.strokeStyle = COLOUR[b.cls] || "#fff";
+    ctx.setLineDash(b.cls==="ignore" ? [7,5] : []);
+    ctx.strokeRect(x, y, w, h);
+    ctx.setLineDash([]);
+    if(b.cls === "ignore"){ ctx.fillStyle = "rgba(124,135,148,.22)"; ctx.fillRect(x,y,w,h); }
+    if(i === sel){
+      ctx.fillStyle = COLOUR[b.cls];
+      [[x,y],[x+w,y],[x,y+h],[x+w,y+h]].forEach(p => ctx.fillRect(p[0]-4,p[1]-4,8,8));
+    }
+  });
+}
+
+function renderList(){
+  document.getElementById("items").innerHTML = TASK.map((f,i) => {
+    const st = state[f.id];
+    return `<div class="fitem ${i===cur?"sel":""} ${st.done?"done":""}" data-i="${i}">
+      <span>${f.id.length>20 ? f.id.slice(0,19)+"…" : f.id}</span>
+      <span class="n">${st.done?"✓ ":""}${st.boxes.length}</span></div>`;
+  }).join("");
+  document.querySelectorAll(".fitem").forEach(el =>
+    el.onclick = () => { go(+el.dataset.i); });
+}
+
+function renderSide(){
+  document.getElementById("boxes").innerHTML = boxes().map((b,i) =>
+    `<div class="box-row ${i===sel?"sel":""}" data-i="${i}">
+       <span class="sw" style="background:${COLOUR[b.cls]}"></span>
+       <span>${b.cls}</span>
+       <span class="src">${b.seed ? b.seed : "hand"}</span></div>`).join("")
+    || `<div class="box-row">no boxes yet</div>`;
+  document.querySelectorAll(".box-row[data-i]").forEach(el =>
+    el.onclick = () => { sel = +el.dataset.i; draw(); renderSide(); });
+
+  let done=0, nb=0, np=0, nh=0;
+  TASK.forEach(f => { const st=state[f.id]; if(st.done) done++;
+    st.boxes.forEach(b => { if(b.cls==="brand")nb++; else if(b.cls==="person")np++;
+      if(!b.seed) nh++; }); });
+  const total = nb+np;
+  document.getElementById("stats").innerHTML =
+    `frames done <b>${done}</b> / ${TASK.length}<br>
+     brand boxes <b>${nb}</b><br>person boxes <b>${np}</b><br>
+     drawn by hand <b>${nh}</b> (${total?Math.round(nh/total*100):0}%)`;
+  document.getElementById("frameId").textContent =
+    `${cur+1}/${TASK.length}  ·  ${frame().id}`;
+  document.getElementById("btnDone").classList.toggle("on", state[frame().id].done);
+  ["brand","person","ignore"].forEach(c =>
+    document.getElementById("cls"+c[0].toUpperCase()+c.slice(1))
+      .classList.toggle("on", cls===c));
+}
+
+function go(i){
+  cur = Math.max(0, Math.min(TASK.length-1, i));
+  sel = -1; undo = [];
+  img.src = frame().data;
+  renderList(); renderSide();
+}
+img.onload = draw;
+window.addEventListener("resize", draw);
+
+// ---- pointer: drag on empty space draws, drag on a corner resizes, drag inside moves ----
+let mode = null, start = null, orig = null;
+function pos(ev){
+  const r = cv.getBoundingClientRect();
+  return {x:(ev.clientX-r.left)/r.width, y:(ev.clientY-r.top)/r.height};
+}
+function hit(p){
+  // Topmost first, so a small box drawn over a large one stays reachable.
+  for(let i=boxes().length-1;i>=0;i--){
+    const b = boxes()[i];
+    const corners = [["x1","y1"],["x2","y1"],["x1","y2"],["x2","y2"]];
+    for(const [cx,cy] of corners)
+      if(Math.abs(p.x-b[cx])<0.012 && Math.abs(p.y-b[cy])<0.012)
+        return {i, kind:"resize", cx, cy};
+    if(p.x>b.x1 && p.x<b.x2 && p.y>b.y1 && p.y<b.y2) return {i, kind:"move"};
+  }
+  return null;
+}
+cv.addEventListener("pointerdown", ev => {
+  cv.setPointerCapture(ev.pointerId);
+  const p = pos(ev), h = hit(p);
+  undo.push(JSON.stringify(boxes()));
+  if(h){ sel = h.i; mode = h; start = p; orig = {...boxes()[h.i]}; }
+  else { sel = boxes().length; boxes().push({x1:p.x,y1:p.y,x2:p.x,y2:p.y,cls,seed:null});
+         mode = {i:sel, kind:"new"}; start = p; }
+  draw(); renderSide();
+});
+cv.addEventListener("pointermove", ev => {
+  if(!mode) return;
+  const p = pos(ev), b = boxes()[mode.i];
+  if(mode.kind === "new"){
+    b.x1 = Math.min(start.x,p.x); b.x2 = Math.max(start.x,p.x);
+    b.y1 = Math.min(start.y,p.y); b.y2 = Math.max(start.y,p.y);
+  } else if(mode.kind === "move"){
+    const dx = p.x-start.x, dy = p.y-start.y;
+    b.x1 = orig.x1+dx; b.x2 = orig.x2+dx; b.y1 = orig.y1+dy; b.y2 = orig.y2+dy;
+  } else {
+    b[mode.cx] = p.x; b[mode.cy] = p.y;
+    if(b.x1>b.x2){ const t=b.x1; b.x1=b.x2; b.x2=t; }
+    if(b.y1>b.y2){ const t=b.y1; b.y1=b.y2; b.y2=t; }
+  }
+  ["x1","x2","y1","y2"].forEach(k => b[k] = Math.max(0, Math.min(1, b[k])));
+  draw();
+});
+cv.addEventListener("pointerup", () => {
+  if(mode){
+    const b = boxes()[mode.i];
+    // A click that never became a drag leaves a zero-area box; drop it rather than
+    // silently contributing an unscoreable annotation.
+    if(mode.kind==="new" && ((b.x2-b.x1)<0.004 || (b.y2-b.y1)<0.004)){
+      boxes().splice(mode.i,1); sel = -1;
+    }
+    // A hand-adjusted seed is no longer that detector's box; re-mark it so the
+    // "drawn by hand" share stays meaningful.
+    else if(mode.kind!=="new" && b.seed) b.seed = b.seed + "*";
+  }
+  mode = null; save(); draw(); renderSide(); renderList();
+});
+
+document.addEventListener("keydown", ev => {
+  if(ev.target.tagName === "INPUT") return;
+  const k = ev.key.toLowerCase();
+  if(k === "arrowright"){ go(cur+1); ev.preventDefault(); }
+  else if(k === "arrowleft"){ go(cur-1); ev.preventDefault(); }
+  else if(k === "1" || k === "2" || k === "3"){
+    cls = {1:"brand",2:"person",3:"ignore"}[k];
+    if(sel >= 0 && boxes()[sel]){ boxes()[sel].cls = cls; save(); }
+    draw(); renderSide();
+  }
+  else if(k === "delete" || k === "backspace"){
+    if(sel >= 0){ undo.push(JSON.stringify(boxes())); boxes().splice(sel,1); sel = -1;
+      save(); draw(); renderSide(); renderList(); }
+    ev.preventDefault();
+  }
+  else if(k === "u"){
+    const prev = undo.pop();
+    if(prev){ state[frame().id].boxes = JSON.parse(prev); sel = -1;
+      save(); draw(); renderSide(); renderList(); }
+  }
+  else if(k === "d"){ toggleDone(); }
+  else if(k === "e"){ exportJson(); }
+});
+
+function toggleDone(){
+  state[frame().id].done = !state[frame().id].done;
+  save(); renderSide(); renderList();
+}
+document.getElementById("btnDone").onclick = toggleDone;
+["brand","person","ignore"].forEach(c =>
+  document.getElementById("cls"+c[0].toUpperCase()+c.slice(1)).onclick = () => {
+    cls = c; if(sel>=0 && boxes()[sel]){ boxes()[sel].cls = c; save(); }
+    draw(); renderSide(); });
+
+function exportJson(){
+  const out = {schema:["brand","person"], iou_note:"boxes normalised to [0,1] as x1,y1,x2,y2",
+    frames:{}};
+  TASK.forEach(f => { out.frames[f.id] = {done:state[f.id].done,
+    boxes:state[f.id].boxes.map(b => ({x1:+b.x1.toFixed(4), y1:+b.y1.toFixed(4),
+      x2:+b.x2.toFixed(4), y2:+b.y2.toFixed(4), cls:b.cls, seed:b.seed}))}; });
+  const blob = new Blob([JSON.stringify(out, null, 1)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = "box_labels.json"; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+document.getElementById("btnExport").onclick = exportJson;
+
+go(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,804 @@
+{
+  "schema": [
+    "logo",
+    "person",
+    "sign_or_text",
+    "screen",
+    "board",
+    "ball",
+    "bottle_or_cup",
+    "car"
+  ],
+  "labelled": 100,
+  "total": 100,
+  "labels": {
+    "NBA33min__000": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "NBA33min__001": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "screen",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "NBA33min__002": {
+      "present": [
+        "person",
+        "logo",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__003": {
+      "present": [
+        "logo",
+        "person",
+        "screen",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "NBA33min__004": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "NBA33min__005": {
+      "present": [
+        "logo",
+        "person",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "NBA33min__006": {
+      "present": [
+        "ball",
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "NBA33min__007": {
+      "present": [
+        "logo",
+        "person"
+      ],
+      "unsure": false
+    },
+    "NBA33min__008": {
+      "present": [
+        "logo",
+        "person",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__009": {
+      "present": [
+        "logo",
+        "person",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__010": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "logo",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "NBA33min__011": {
+      "present": [
+        "logo",
+        "person",
+        "ball",
+        "screen",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBA33min__012": {
+      "present": [
+        "person",
+        "logo",
+        "sign_or_text",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBA33min__013": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__014": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__015": {
+      "present": [
+        "person",
+        "logo",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "NBA33min__016": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__017": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__018": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__019": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "screen",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBA33min__020": {
+      "present": [
+        "sign_or_text",
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "NBA33min__021": {
+      "present": [
+        "sign_or_text",
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "NBA33min__022": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__023": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBA33min__024": {
+      "present": [
+        "logo",
+        "person",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__025": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__026": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "NBA33min__027": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__028": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBA33min__029": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "sn1__000": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__001": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__002": {
+      "present": [
+        "person",
+        "logo",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__003": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__004": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__005": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__006": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__007": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__008": {
+      "present": [
+        "person",
+        "logo",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__009": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__010": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__011": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__012": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__013": {
+      "present": [
+        "person",
+        "logo",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "sn1__014": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__015": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__016": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "sn1__017": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "bd2__000": {
+      "present": [
+        "person",
+        "bottle_or_cup",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd2__001": {
+      "present": [
+        "person",
+        "bottle_or_cup",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "bd2__002": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__003": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__004": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "bd2__005": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__006": {
+      "present": [
+        "person",
+        "bottle_or_cup",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd2__007": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__008": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__009": {
+      "present": [
+        "person",
+        "bottle_or_cup",
+        "logo",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd2__010": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__011": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "bd2__012": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd2__013": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "bd1__000": {
+      "present": [
+        "person",
+        "logo",
+        "sign_or_text",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd1__001": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "logo",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd1__002": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd1__003": {
+      "present": [
+        "person",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "bd1__004": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "logo",
+        "car"
+      ],
+      "unsure": false
+    },
+    "bd1__005": {
+      "present": [
+        "person",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "bd1__006": {
+      "present": [
+        "person",
+        "logo",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "bd1__007": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "bd1__008": {
+      "present": [
+        "person",
+        "board",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "bd1__009": {
+      "present": [
+        "person",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "bd1__010": {
+      "present": [
+        "bottle_or_cup",
+        "person",
+        "screen",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "bd1__011": {
+      "present": [
+        "bottle_or_cup",
+        "person",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "1__000": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "1__001": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "1__002": {
+      "present": [
+        "logo",
+        "person"
+      ],
+      "unsure": false
+    },
+    "1__003": {
+      "present": [
+        "logo",
+        "person",
+        "car"
+      ],
+      "unsure": false
+    },
+    "1__004": {
+      "present": [
+        "person",
+        "car"
+      ],
+      "unsure": false
+    },
+    "1__005": {
+      "present": [
+        "person",
+        "sign_or_text",
+        "car"
+      ],
+      "unsure": false
+    },
+    "1__006": {
+      "present": [
+        "person",
+        "car"
+      ],
+      "unsure": false
+    },
+    "1__007": {
+      "present": [
+        "logo",
+        "car"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__000": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__001": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__002": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__003": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__004": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__005": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__006": {
+      "present": [
+        "person",
+        "logo"
+      ],
+      "unsure": false
+    },
+    "spiderman30s__007": {
+      "present": [
+        "person"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__000": {
+      "present": [
+        "person",
+        "logo",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__001": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "screen",
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__002": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__003": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "ball",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__004": {
+      "present": [
+        "ball",
+        "bottle_or_cup",
+        "sign_or_text",
+        "person",
+        "logo",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "NBAallstar10s__005": {
+      "present": [
+        "logo",
+        "person",
+        "sign_or_text",
+        "bottle_or_cup",
+        "screen"
+      ],
+      "unsure": false
+    },
+    "nfl__000": {
+      "present": [
+        "logo",
+        "person",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "nfl2__000": {
+      "present": [
+        "logo",
+        "person",
+        "ball"
+      ],
+      "unsure": false
+    },
+    "chalkboard__000": {
+      "present": [
+        "board",
+        "sign_or_text"
+      ],
+      "unsure": false
+    },
+    "cupcakes__000": {
+      "present": [
+        "bottle_or_cup"
+      ],
+      "unsure": false
+    }
+  }
+}

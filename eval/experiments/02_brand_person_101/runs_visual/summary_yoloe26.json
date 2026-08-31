@@ -1,0 +1,149 @@
+[
+  {
+    "run": "yoloe26__brand__brand_car_benz1",
+    "cls": "brand",
+    "exemplar": "brand_car_benz1",
+    "detections": 19,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__brand__brand_car_benz2",
+    "cls": "brand",
+    "exemplar": "brand_car_benz2",
+    "detections": 8,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_basketball_player1",
+    "cls": "person",
+    "exemplar": "person_basketball_player1",
+    "detections": 194,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_basketball_player2",
+    "cls": "person",
+    "exemplar": "person_basketball_player2",
+    "detections": 3119,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_basketball_player3",
+    "cls": "person",
+    "exemplar": "person_basketball_player3",
+    "detections": 2948,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_basketball_referee",
+    "cls": "person",
+    "exemplar": "person_basketball_referee",
+    "detections": 4414,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_cafe1",
+    "cls": "person",
+    "exemplar": "person_cafe1",
+    "detections": 1376,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_cafe2",
+    "cls": "person",
+    "exemplar": "person_cafe2",
+    "detections": 2324,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_cafe3",
+    "cls": "person",
+    "exemplar": "person_cafe3",
+    "detections": 1401,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_facebook",
+    "cls": "person",
+    "exemplar": "person_facebook",
+    "detections": 2852,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_hostess",
+    "cls": "person",
+    "exemplar": "person_hostess",
+    "detections": 2606,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_speaker_presenting",
+    "cls": "person",
+    "exemplar": "person_speaker_presenting",
+    "detections": 55,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_spidergwen",
+    "cls": "person",
+    "exemplar": "person_spidergwen",
+    "detections": 13,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_spiderman1",
+    "cls": "person",
+    "exemplar": "person_spiderman1",
+    "detections": 24,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__person__person_spiderman2",
+    "cls": "person",
+    "exemplar": "person_spiderman2",
+    "detections": 712,
+    "tight_crop": false
+  },
+  {
+    "run": "yoloe26__brand__pool_NBA_0",
+    "cls": "brand",
+    "exemplar": "pool_NBA_0",
+    "detections": 22,
+    "tight_crop": true
+  },
+  {
+    "run": "yoloe26__brand__pool_Gap_0",
+    "cls": "brand",
+    "exemplar": "pool_Gap_0",
+    "detections": 16,
+    "tight_crop": true
+  },
+  {
+    "run": "yoloe26__brand__pool_New_Era_Cap_Company_0",
+    "cls": "brand",
+    "exemplar": "pool_New_Era_Cap_Company_0",
+    "detections": 74,
+    "tight_crop": true
+  },
+  {
+    "run": "yoloe26__brand__pool_Nike_0",
+    "cls": "brand",
+    "exemplar": "pool_Nike_0",
+    "detections": 45,
+    "tight_crop": true
+  },
+  {
+    "run": "yoloe26__brand__pool_Adidas_0",
+    "cls": "brand",
+    "exemplar": "pool_Adidas_0",
+    "detections": 5,
+    "tight_crop": true
+  },
+  {
+    "run": "yoloe26__brand__pool_UPS_0",
+    "cls": "brand",
+    "exemplar": "pool_UPS_0",
+    "detections": 1867,
+    "tight_crop": true
+  }
+]

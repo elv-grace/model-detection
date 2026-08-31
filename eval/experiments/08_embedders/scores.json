@@ -1,0 +1,31 @@
+{
+ "pool": "/ml/pools/logo_pool/2960brands",
+ "brands": 1500,
+ "per_brand": 5,
+ "wide_threshold": 2.5,
+ "seed": 0,
+ "results": {
+  "google/siglip2-base-patch16-naflex": {
+   "dim": 768,
+   "recall_at_1": 0.926,
+   "recall_at_5": 0.9473333333333334,
+   "mrr": 0.9369342741100533,
+   "wide_recall_at_1": 0.9426666666666667,
+   "n_wide": 750,
+   "ms_per_image": 30.738188706338406,
+   "queries": 1500,
+   "gallery": 5953
+  },
+  "google/siglip2-large-patch16-384": {
+   "dim": 1024,
+   "recall_at_1": 0.9293333333333333,
+   "recall_at_5": 0.9593333333333334,
+   "mrr": 0.9419035180276047,
+   "wide_recall_at_1": 0.9466666666666667,
+   "n_wide": 750,
+   "ms_per_image": 41.2168071269989,
+   "queries": 1500,
+   "gallery": 5953
+  }
+ }
+}

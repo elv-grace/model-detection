@@ -1,0 +1,20 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] Model config: bos_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 49406. This may result in unexpected behavior.
+[transformers] Model config: eos_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 49407. This may result in unexpected behavior.
+1500 query images, 5953 gallery images, 1500 brands
+
+model                               dim     r@1     r@5     MRR  wide r@1  n wide   ms/img
+------------------------------------------------------------------------------------------
+Loading weights:   0%|          | 0/408 [00:00<?, ?it/s]Loading weights: 100%|██████████| 408/408 [00:00<00:00, 7334.93it/s]
+    640/1500                                1280/1500                                                                   Loading weights:   0%|          | 0/408 [00:00<?, ?it/s]Loading weights: 100%|██████████| 408/408 [00:00<00:00, 6584.57it/s]
+    640/5953                                1280/5953                               1920/5953                               2560/5953                               3200/5953                               3840/5953                               4480/5953                               5120/5953                               5760/5953                                                                   siglip2-base-patch16-naflex         768   0.926   0.947   0.937     0.943     750     30.7
+Loading weights:   0%|          | 0/792 [00:00<?, ?it/s]Loading weights:  48%|████▊     | 377/792 [00:00<00:00, 3763.56it/s]Loading weights: 100%|██████████| 792/792 [00:00<00:00, 5608.30it/s]
+    640/1500                                1280/1500                                                                   Loading weights:   0%|          | 0/792 [00:00<?, ?it/s]Loading weights: 100%|██████████| 792/792 [00:00<00:00, 12106.94it/s]
+    640/5953                                1280/5953                               1920/5953                               2560/5953                               3200/5953                               3840/5953                               4480/5953                               5120/5953                               5760/5953                                                                   siglip2-large-patch16-384          1024   0.929   0.959   0.942     0.947     750     41.2
+
+Binomial standard error at n=1500 is about 0.013; treat differences below ~0.026 as a tie.
+`wide` = query aspect ratio >= 2.5, the subset where a fixed square resize squashes hardest
+and where NaFlex should show an advantage if the argument for it holds.
+
+wrote /elv/eval/experiments/08_embedders/scores.json
+DONE

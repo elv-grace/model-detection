@@ -1,0 +1,461 @@
+{
+ "provisional_labels": true,
+ "label_counts": {
+  "brand": 62,
+  "person": 97
+ },
+ "frames": 100,
+ "results": {
+  "gdino__m11": {
+   "detections": 16129,
+   "breadth": {
+    "distinct_tags": 11,
+    "off_prompt_tags": 5
+   },
+   "throughput_ms_per_frame": 289.0,
+   "throughput_fps": 3.46,
+   "latency_ms_median": 283.0,
+   "latency_ms_p90": 291.7,
+   "label": {
+    "brand": {
+     "threshold": 0.0625,
+     "tp": 60,
+     "fp": 11,
+     "fn": 2,
+     "tn": 27,
+     "recall": 0.967741935483871,
+     "fp_rate": 0.2894736842105263,
+     "precision": 0.8450704225352113,
+     "f1": 0.9022556390977443,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.21052631578947367,
+     "threshold_at_recall": 0.08333333333333333
+    },
+    "person": {
+     "threshold": 0.0625,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.1875
+    }
+   }
+  },
+  "gdino__m6": {
+   "detections": 17312,
+   "breadth": {
+    "distinct_tags": 7,
+    "off_prompt_tags": 0
+   },
+   "throughput_ms_per_frame": 283.3,
+   "throughput_fps": 3.53,
+   "latency_ms_median": 294.7,
+   "latency_ms_p90": 305.6,
+   "label": {
+    "brand": {
+     "threshold": 0.14583333333333334,
+     "tp": 59,
+     "fp": 9,
+     "fn": 3,
+     "tn": 29,
+     "recall": 0.9516129032258065,
+     "fp_rate": 0.23684210526315788,
+     "precision": 0.8676470588235294,
+     "f1": 0.9076923076923077,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.21052631578947367,
+     "threshold_at_recall": 0.16666666666666666
+    },
+    "person": {
+     "threshold": 0.10416666666666667,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.20833333333333334
+    }
+   }
+  },
+  "owlv2__m11": {
+   "detections": 4035,
+   "breadth": {
+    "distinct_tags": 12,
+    "off_prompt_tags": 5
+   },
+   "throughput_ms_per_frame": 197.9,
+   "throughput_fps": 5.05,
+   "latency_ms_median": 200.6,
+   "latency_ms_p90": 204.7,
+   "label": {
+    "brand": {
+     "threshold": 0.0625,
+     "tp": 55,
+     "fp": 5,
+     "fn": 7,
+     "tn": 33,
+     "recall": 0.8870967741935484,
+     "fp_rate": 0.13157894736842105,
+     "precision": 0.9166666666666666,
+     "f1": 0.9016393442622951,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.21052631578947367,
+     "threshold_at_recall": 0.041666666666666664
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.14583333333333334
+    }
+   }
+  },
+  "owlv2__m6": {
+   "detections": 3184,
+   "breadth": {
+    "distinct_tags": 7,
+    "off_prompt_tags": 0
+   },
+   "throughput_ms_per_frame": 195.5,
+   "throughput_fps": 5.12,
+   "latency_ms_median": 236.1,
+   "latency_ms_p90": 239.6,
+   "label": {
+    "brand": {
+     "threshold": 0.0625,
+     "tp": 57,
+     "fp": 6,
+     "fn": 5,
+     "tn": 32,
+     "recall": 0.9193548387096774,
+     "fp_rate": 0.15789473684210525,
+     "precision": 0.9047619047619048,
+     "f1": 0.912,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.15789473684210525,
+     "threshold_at_recall": 0.0625
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.14583333333333334
+    }
+   }
+  },
+  "world-text__m11": {
+   "detections": 7304,
+   "breadth": {
+    "distinct_tags": 12,
+    "off_prompt_tags": 5
+   },
+   "throughput_ms_per_frame": 55.2,
+   "throughput_fps": 18.12,
+   "latency_ms_median": 117.7,
+   "latency_ms_p90": 125.9,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 48,
+     "fp": 7,
+     "fn": 14,
+     "tn": 31,
+     "recall": 0.7741935483870968,
+     "fp_rate": 0.18421052631578946,
+     "precision": 0.8727272727272727,
+     "f1": 0.8205128205128205,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.375
+    }
+   }
+  },
+  "world-text__m6": {
+   "detections": 5405,
+   "breadth": {
+    "distinct_tags": 4,
+    "off_prompt_tags": 0
+   },
+   "throughput_ms_per_frame": 55.2,
+   "throughput_fps": 18.12,
+   "latency_ms_median": 118.1,
+   "latency_ms_p90": 127.2,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 42,
+     "fp": 7,
+     "fn": 20,
+     "tn": 31,
+     "recall": 0.6774193548387096,
+     "fp_rate": 0.18421052631578946,
+     "precision": 0.8571428571428571,
+     "f1": 0.7567567567567567,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.4791666666666667
+    }
+   }
+  },
+  "yoloe11-text__m11": {
+   "detections": 7671,
+   "breadth": {
+    "distinct_tags": 10,
+    "off_prompt_tags": 5
+   },
+   "throughput_ms_per_frame": 59.0,
+   "throughput_fps": 16.95,
+   "latency_ms_median": 130.5,
+   "latency_ms_p90": 142.1,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 48,
+     "fp": 8,
+     "fn": 14,
+     "tn": 30,
+     "recall": 0.7741935483870968,
+     "fp_rate": 0.21052631578947367,
+     "precision": 0.8571428571428571,
+     "f1": 0.8135593220338982,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.041666666666666664,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.4791666666666667
+    }
+   }
+  },
+  "yoloe11-text__m6": {
+   "detections": 7324,
+   "breadth": {
+    "distinct_tags": 5,
+    "off_prompt_tags": 0
+   },
+   "throughput_ms_per_frame": 58.5,
+   "throughput_fps": 17.09,
+   "latency_ms_median": 130.5,
+   "latency_ms_p90": 143.5,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 50,
+     "fp": 10,
+     "fn": 12,
+     "tn": 28,
+     "recall": 0.8064516129032258,
+     "fp_rate": 0.2631578947368421,
+     "precision": 0.8333333333333334,
+     "f1": 0.819672131147541,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.041666666666666664,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.4791666666666667
+    }
+   }
+  },
+  "yoloe26-text__m11": {
+   "detections": 6885,
+   "breadth": {
+    "distinct_tags": 12,
+    "off_prompt_tags": 5
+   },
+   "throughput_ms_per_frame": 57.5,
+   "throughput_fps": 17.38,
+   "latency_ms_median": 129.1,
+   "latency_ms_p90": 138.6,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 45,
+     "fp": 7,
+     "fn": 17,
+     "tn": 31,
+     "recall": 0.7258064516129032,
+     "fp_rate": 0.18421052631578946,
+     "precision": 0.8653846153846154,
+     "f1": 0.7894736842105263,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.3958333333333333
+    }
+   }
+  },
+  "yoloe26-text__m6": {
+   "detections": 6798,
+   "breadth": {
+    "distinct_tags": 7,
+    "off_prompt_tags": 0
+   },
+   "throughput_ms_per_frame": 58.0,
+   "throughput_fps": 17.24,
+   "latency_ms_median": 129.4,
+   "latency_ms_p90": 137.9,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 49,
+     "fp": 8,
+     "fn": 13,
+     "tn": 30,
+     "recall": 0.7903225806451613,
+     "fp_rate": 0.21052631578947367,
+     "precision": 0.8596491228070176,
+     "f1": 0.823529411764706,
+     "positives": 62,
+     "negatives": 38,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.3958333333333333
+    }
+   }
+  }
+ },
+ "not_scored": []
+}

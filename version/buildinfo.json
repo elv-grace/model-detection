@@ -1,0 +1,7 @@
+{
+  "vendor": "Eluvio, Inc.",
+  "source": "git@github.com:elv-grace/model-detection.git",
+  "revision": "062a5e6752a32cbb8a79ae26fbc5d36788510df0",
+  "branch": "main-dirty",
+  "build_info": "elv-grace on Linux ml01 6.2.0-39-generic #40~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Thu Nov 16 10:53:04 UTC 2 x86_64 x86_64 x86_64 GNU/Linux"
+}

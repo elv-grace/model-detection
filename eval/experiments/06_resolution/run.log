@@ -1,0 +1,587 @@
+=== ultralytics imgsz 640 ===
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  yoloe26-text (yoloe-26l-seg.pt)
+WARNING ⚠️ user config directory '/root/.cache/Ultralytics/Ultralytics' is not writable, using '/tmp/Ultralytics'. Set YOLO_CONFIG_DIR to override.
+Creating new Ultralytics Settings v0.0.7 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/tmp/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart#ultralytics-settings.
+[31m[1mrequirements:[0m Ultralytics requirement ['git+https://github.com/ultralytics/CLIP.git'] not found, attempting AutoUpdate...
+Collecting git+https://github.com/ultralytics/CLIP.git
+  Cloning https://github.com/ultralytics/CLIP.git to /tmp/pip-req-build-shkcazx6
+  Running command git clone --filter=blob:none --quiet https://github.com/ultralytics/CLIP.git /tmp/pip-req-build-shkcazx6
+  Resolved https://github.com/ultralytics/CLIP.git to commit a13192f8cb767260d7dfd98c843b0716593169e7
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting ftfy (from clip==1.0)
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+Requirement already satisfied: regex in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2026.7.19)
+Requirement already satisfied: tqdm in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (4.70.0)
+Requirement already satisfied: torch in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2.8.0)
+Requirement already satisfied: torchvision in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (0.23.0)
+Collecting wcwidth (from ftfy->clip==1.0)
+  Downloading wcwidth-0.8.3-py3-none-any.whl.metadata (43 kB)
+Requirement already satisfied: filelock in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.32.4)
+Requirement already satisfied: typing-extensions>=4.10.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (4.16.0)
+Requirement already satisfied: sympy>=1.13.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.14.0)
+Requirement already satisfied: networkx in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.6.1)
+Requirement already satisfied: jinja2 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.1.6)
+Requirement already satisfied: fsspec in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2026.7.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (9.10.2.21)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.3.3.83)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (10.3.9.90)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.7.3.90)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.5.8.93)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (0.7.1)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2.27.3)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.13.1.3)
+Requirement already satisfied: triton==3.4.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.4.0)
+Requirement already satisfied: setuptools>=40.8.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from triton==3.4.0->torch->clip==1.0) (83.0.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from sympy>=1.13.3->torch->clip==1.0) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from jinja2->torch->clip==1.0) (3.0.3)
+Requirement already satisfied: numpy in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (2.4.6)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (12.3.0)
+Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+Downloading wcwidth-0.8.3-py3-none-any.whl (331 kB)
+Building wheels for collected packages: clip
+  Building wheel for clip (pyproject.toml): started
+  Building wheel for clip (pyproject.toml): finished with status 'done'
+  Created wheel for clip: filename=clip-1.0-py3-none-any.whl size=1382832 sha256=c898f3dbcdd6e77c8f901f9b6b6f8a28bb2f58d9b6f95a50bbba637c0e06ca6e
+  Stored in directory: /tmp/pip-ephem-wheel-cache-fivxk_4m/wheels/04/89/1d/c5712518ddb082b177c25dd0e1119b6a1c45ea1ab4e7fcd8a6
+Successfully built clip
+Installing collected packages: wcwidth, ftfy, clip
+
+Successfully installed clip-1.0 ftfy-6.3.1 wcwidth-0.8.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[31m[1mrequirements:[0m AutoUpdate success ✅ 4.3s
+WARNING ⚠️ [31m[1mrequirements:[0m [1mRestart runtime or rerun command for updates to take effect[0m
+
+    8/100 frames, 1214 detections    16/100 frames, 2681 detections    24/100 frames, 4254 detections    32/100 frames, 5318 detections    40/100 frames, 5406 detections    48/100 frames, 5539 detections    56/100 frames, 5601 detections    64/100 frames, 5663 detections    72/100 frames, 5753 detections    80/100 frames, 6018 detections    88/100 frames, 6150 detections    96/100 frames, 6749 detections    100/100 frames, 6798 detections    100 frames, 6798 detections | throughput 61 ms/frame (16.5 fps) | latency median 131 ms, p90 146 ms      
+  yoloe11-text (yoloe-11l-seg.pt)
+    8/100 frames, 1228 detections    16/100 frames, 2636 detections    24/100 frames, 4233 detections    32/100 frames, 5205 detections    40/100 frames, 5346 detections    48/100 frames, 5516 detections    56/100 frames, 5611 detections    64/100 frames, 5729 detections    72/100 frames, 5873 detections    80/100 frames, 6305 detections    88/100 frames, 6486 detections    96/100 frames, 7227 detections    100/100 frames, 7324 detections    100 frames, 7324 detections | throughput 58 ms/frame (17.3 fps) | latency median 131 ms, p90 146 ms      
+  world-text (yolov8l-worldv2.pt)
+    8/100 frames, 955 detections    16/100 frames, 1941 detections    24/100 frames, 3262 detections    32/100 frames, 4071 detections    40/100 frames, 4156 detections    48/100 frames, 4273 detections    56/100 frames, 4334 detections    64/100 frames, 4411 detections    72/100 frames, 4509 detections    80/100 frames, 4740 detections    88/100 frames, 4879 detections    96/100 frames, 5364 detections    100/100 frames, 5405 detections    100 frames, 5405 detections | throughput 56 ms/frame (17.8 fps) | latency median 119 ms, p90 129 ms      
+  yolo11 (yolo11l.pt)
+    8/100 frames, 1227 detections    16/100 frames, 2504 detections    24/100 frames, 3928 detections    32/100 frames, 5228 detections    40/100 frames, 5497 detections    48/100 frames, 5980 detections    56/100 frames, 6254 detections    64/100 frames, 6570 detections    72/100 frames, 6920 detections    80/100 frames, 7847 detections    88/100 frames, 8135 detections    96/100 frames, 9349 detections    100/100 frames, 9798 detections    100 frames, 9798 detections | throughput 54 ms/frame (18.5 fps) | latency median 120 ms, p90 128 ms      
+
+wrote /elv/eval/experiments/06_resolution/runs_ul_640/<backend>/out.jsonl and summary.json
+=== ultralytics imgsz 960 ===
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  yoloe26-text (yoloe-26l-seg.pt)
+WARNING ⚠️ user config directory '/root/.cache/Ultralytics/Ultralytics' is not writable, using '/tmp/Ultralytics'. Set YOLO_CONFIG_DIR to override.
+Creating new Ultralytics Settings v0.0.7 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/tmp/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart#ultralytics-settings.
+[31m[1mrequirements:[0m Ultralytics requirement ['git+https://github.com/ultralytics/CLIP.git'] not found, attempting AutoUpdate...
+Collecting git+https://github.com/ultralytics/CLIP.git
+  Cloning https://github.com/ultralytics/CLIP.git to /tmp/pip-req-build-ykzq8n9s
+  Running command git clone --filter=blob:none --quiet https://github.com/ultralytics/CLIP.git /tmp/pip-req-build-ykzq8n9s
+  Resolved https://github.com/ultralytics/CLIP.git to commit a13192f8cb767260d7dfd98c843b0716593169e7
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting ftfy (from clip==1.0)
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+Requirement already satisfied: regex in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2026.7.19)
+Requirement already satisfied: tqdm in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (4.70.0)
+Requirement already satisfied: torch in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2.8.0)
+Requirement already satisfied: torchvision in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (0.23.0)
+Collecting wcwidth (from ftfy->clip==1.0)
+  Downloading wcwidth-0.8.3-py3-none-any.whl.metadata (43 kB)
+Requirement already satisfied: filelock in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.32.4)
+Requirement already satisfied: typing-extensions>=4.10.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (4.16.0)
+Requirement already satisfied: sympy>=1.13.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.14.0)
+Requirement already satisfied: networkx in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.6.1)
+Requirement already satisfied: jinja2 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.1.6)
+Requirement already satisfied: fsspec in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2026.7.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (9.10.2.21)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.3.3.83)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (10.3.9.90)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.7.3.90)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.5.8.93)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (0.7.1)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2.27.3)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.13.1.3)
+Requirement already satisfied: triton==3.4.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.4.0)
+Requirement already satisfied: setuptools>=40.8.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from triton==3.4.0->torch->clip==1.0) (83.0.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from sympy>=1.13.3->torch->clip==1.0) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from jinja2->torch->clip==1.0) (3.0.3)
+Requirement already satisfied: numpy in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (2.4.6)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (12.3.0)
+Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+Downloading wcwidth-0.8.3-py3-none-any.whl (331 kB)
+Building wheels for collected packages: clip
+  Building wheel for clip (pyproject.toml): started
+  Building wheel for clip (pyproject.toml): finished with status 'done'
+  Created wheel for clip: filename=clip-1.0-py3-none-any.whl size=1382832 sha256=9ee1bac92b23b6206feadc4276107778b76ed51dd0631f6622027623cca22b0e
+  Stored in directory: /tmp/pip-ephem-wheel-cache-4b_1hrht/wheels/04/89/1d/c5712518ddb082b177c25dd0e1119b6a1c45ea1ab4e7fcd8a6
+Successfully built clip
+Installing collected packages: wcwidth, ftfy, clip
+
+Successfully installed clip-1.0 ftfy-6.3.1 wcwidth-0.8.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[31m[1mrequirements:[0m AutoUpdate success ✅ 4.3s
+WARNING ⚠️ [31m[1mrequirements:[0m [1mRestart runtime or rerun command for updates to take effect[0m
+
+    8/100 frames, 1157 detections    16/100 frames, 2359 detections    24/100 frames, 3892 detections    32/100 frames, 4901 detections    40/100 frames, 5009 detections    48/100 frames, 5148 detections    56/100 frames, 5201 detections    64/100 frames, 5255 detections    72/100 frames, 5322 detections    80/100 frames, 5607 detections    88/100 frames, 5716 detections    96/100 frames, 6665 detections    100/100 frames, 6731 detections    100 frames, 6731 detections | throughput 74 ms/frame (13.5 fps) | latency median 142 ms, p90 154 ms      
+  yoloe11-text (yoloe-11l-seg.pt)
+    8/100 frames, 1238 detections    16/100 frames, 2659 detections    24/100 frames, 4267 detections    32/100 frames, 5234 detections    40/100 frames, 5413 detections    48/100 frames, 5599 detections    56/100 frames, 5720 detections    64/100 frames, 5863 detections    72/100 frames, 6017 detections    80/100 frames, 6526 detections    88/100 frames, 6817 detections    96/100 frames, 7775 detections    100/100 frames, 7872 detections    100 frames, 7872 detections | throughput 74 ms/frame (13.6 fps) | latency median 145 ms, p90 156 ms      
+  world-text (yolov8l-worldv2.pt)
+    8/100 frames, 943 detections    16/100 frames, 1827 detections    24/100 frames, 3020 detections    32/100 frames, 3725 detections    40/100 frames, 3804 detections    48/100 frames, 3922 detections    56/100 frames, 3985 detections    64/100 frames, 4067 detections    72/100 frames, 4171 detections    80/100 frames, 4417 detections    88/100 frames, 4546 detections    96/100 frames, 5154 detections    100/100 frames, 5191 detections    100 frames, 5191 detections | throughput 69 ms/frame (14.5 fps) | latency median 126 ms, p90 136 ms      
+  yolo11 (yolo11l.pt)
+    8/100 frames, 1379 detections    16/100 frames, 2788 detections    24/100 frames, 4340 detections    32/100 frames, 5839 detections    40/100 frames, 6146 detections    48/100 frames, 6684 detections    56/100 frames, 7009 detections    64/100 frames, 7377 detections    72/100 frames, 7896 detections    80/100 frames, 9112 detections    88/100 frames, 9516 detections    96/100 frames, 11405 detections    100/100 frames, 12202 detections    100 frames, 12202 detections | throughput 65 ms/frame (15.5 fps) | latency median 126 ms, p90 134 ms      
+
+wrote /elv/eval/experiments/06_resolution/runs_ul_960/<backend>/out.jsonl and summary.json
+=== ultralytics imgsz 1280 ===
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  yoloe26-text (yoloe-26l-seg.pt)
+WARNING ⚠️ user config directory '/root/.cache/Ultralytics/Ultralytics' is not writable, using '/tmp/Ultralytics'. Set YOLO_CONFIG_DIR to override.
+Creating new Ultralytics Settings v0.0.7 file ✅ 
+View Ultralytics Settings with 'yolo settings' or at '/tmp/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart#ultralytics-settings.
+[31m[1mrequirements:[0m Ultralytics requirement ['git+https://github.com/ultralytics/CLIP.git'] not found, attempting AutoUpdate...
+Collecting git+https://github.com/ultralytics/CLIP.git
+  Cloning https://github.com/ultralytics/CLIP.git to /tmp/pip-req-build-dsckysxm
+  Running command git clone --filter=blob:none --quiet https://github.com/ultralytics/CLIP.git /tmp/pip-req-build-dsckysxm
+  Resolved https://github.com/ultralytics/CLIP.git to commit a13192f8cb767260d7dfd98c843b0716593169e7
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting ftfy (from clip==1.0)
+  Downloading ftfy-6.3.1-py3-none-any.whl.metadata (7.3 kB)
+Requirement already satisfied: regex in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2026.7.19)
+Requirement already satisfied: tqdm in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (4.70.0)
+Requirement already satisfied: torch in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (2.8.0)
+Requirement already satisfied: torchvision in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from clip==1.0) (0.23.0)
+Collecting wcwidth (from ftfy->clip==1.0)
+  Downloading wcwidth-0.8.3-py3-none-any.whl.metadata (43 kB)
+Requirement already satisfied: filelock in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.32.4)
+Requirement already satisfied: typing-extensions>=4.10.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (4.16.0)
+Requirement already satisfied: sympy>=1.13.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.14.0)
+Requirement already satisfied: networkx in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.6.1)
+Requirement already satisfied: jinja2 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.1.6)
+Requirement already satisfied: fsspec in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2026.7.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (9.10.2.21)
+Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.3.3.83)
+Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (10.3.9.90)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (11.7.3.90)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.5.8.93)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (0.7.1)
+Requirement already satisfied: nvidia-nccl-cu12==2.27.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (2.27.3)
+Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.90)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (12.8.93)
+Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (1.13.1.3)
+Requirement already satisfied: triton==3.4.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torch->clip==1.0) (3.4.0)
+Requirement already satisfied: setuptools>=40.8.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from triton==3.4.0->torch->clip==1.0) (83.0.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from sympy>=1.13.3->torch->clip==1.0) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from jinja2->torch->clip==1.0) (3.0.3)
+Requirement already satisfied: numpy in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (2.4.6)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in /opt/conda/envs/mlpod/lib/python3.11/site-packages (from torchvision->clip==1.0) (12.3.0)
+Downloading ftfy-6.3.1-py3-none-any.whl (44 kB)
+Downloading wcwidth-0.8.3-py3-none-any.whl (331 kB)
+Building wheels for collected packages: clip
+  Building wheel for clip (pyproject.toml): started
+  Building wheel for clip (pyproject.toml): finished with status 'done'
+  Created wheel for clip: filename=clip-1.0-py3-none-any.whl size=1382832 sha256=0f69a76bc9ca3692c9c85dde3a1881deb84e4963e8b918d7040bd77ddfa1cb59
+  Stored in directory: /tmp/pip-ephem-wheel-cache-cztjx541/wheels/04/89/1d/c5712518ddb082b177c25dd0e1119b6a1c45ea1ab4e7fcd8a6
+Successfully built clip
+Installing collected packages: wcwidth, ftfy, clip
+
+Successfully installed clip-1.0 ftfy-6.3.1 wcwidth-0.8.3
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+
+[31m[1mrequirements:[0m AutoUpdate success ✅ 4.3s
+WARNING ⚠️ [31m[1mrequirements:[0m [1mRestart runtime or rerun command for updates to take effect[0m
+
+    8/100 frames, 1235 detections    16/100 frames, 2423 detections    24/100 frames, 4016 detections    32/100 frames, 5125 detections    40/100 frames, 5246 detections    48/100 frames, 5411 detections    56/100 frames, 5480 detections    64/100 frames, 5549 detections    72/100 frames, 5661 detections    80/100 frames, 5961 detections    88/100 frames, 6097 detections    96/100 frames, 6976 detections    100/100 frames, 7057 detections    100 frames, 7057 detections | throughput 98 ms/frame (10.2 fps) | latency median 158 ms, p90 183 ms      
+  yoloe11-text (yoloe-11l-seg.pt)
+    8/100 frames, 1249 detections    16/100 frames, 2555 detections    24/100 frames, 4180 detections    32/100 frames, 5279 detections    40/100 frames, 5472 detections    48/100 frames, 5716 detections    56/100 frames, 5845 detections    64/100 frames, 5991 detections    72/100 frames, 6172 detections    80/100 frames, 6832 detections    88/100 frames, 7240 detections    96/100 frames, 8433 detections    100/100 frames, 8558 detections    100 frames, 8558 detections | throughput 97 ms/frame (10.3 fps) | latency median 160 ms, p90 173 ms      
+  world-text (yolov8l-worldv2.pt)
+    8/100 frames, 991 detections    16/100 frames, 1846 detections    24/100 frames, 3030 detections    32/100 frames, 3785 detections    40/100 frames, 3875 detections    48/100 frames, 4017 detections    56/100 frames, 4092 detections    64/100 frames, 4185 detections    72/100 frames, 4281 detections    80/100 frames, 4549 detections    88/100 frames, 4696 detections    96/100 frames, 5290 detections    100/100 frames, 5337 detections    100 frames, 5337 detections | throughput 90 ms/frame (11.1 fps) | latency median 143 ms, p90 152 ms      
+  yolo11 (yolo11l.pt)
+    8/100 frames, 1508 detections    16/100 frames, 3156 detections    24/100 frames, 4772 detections    32/100 frames, 6379 detections    40/100 frames, 6694 detections    48/100 frames, 7226 detections    56/100 frames, 7646 detections    64/100 frames, 8046 detections    72/100 frames, 8592 detections    80/100 frames, 9944 detections    88/100 frames, 10533 detections    96/100 frames, 12630 detections    100/100 frames, 13616 detections    100 frames, 13616 detections | throughput 80 ms/frame (12.5 fps) | latency median 133 ms, p90 146 ms      
+
+wrote /elv/eval/experiments/06_resolution/runs_ul_1280/<backend>/out.jsonl and summary.json
+=== hf imgsz 800 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  gdino (IDEA-Research/grounding-dino-base)
+Loading weights:   0%|          | 0/1182 [00:00<?, ?it/s]Loading weights:  35%|███▌      | 417/1182 [00:00<00:00, 4167.59it/s]Loading weights: 100%|██████████| 1182/1182 [00:00<00:00, 8612.52it/s]
+    8/100 frames, 2818 detections    16/100 frames, 5512 detections    24/100 frames, 8973 detections    32/100 frames, 11469 detections    40/100 frames, 11612 detections    48/100 frames, 11792 detections    56/100 frames, 12005 detections    64/100 frames, 12248 detections    72/100 frames, 12654 detections    80/100 frames, 13175 detections    88/100 frames, 13709 detections    96/100 frames, 17001 detections    100/100 frames, 17312 detections    100 frames, 17312 detections | throughput 287 ms/frame (3.5 fps) | latency median 281 ms, p90 291 ms      
+  owlv2 (google/owlv2-base-patch16-ensemble)
+Loading weights:   0%|          | 0/418 [00:00<?, ?it/s]Loading weights: 100%|██████████| 418/418 [00:00<00:00, 8325.35it/s]
+Traceback (most recent call last):
+  File "/elv/eval/tools/run_bp.py", line 353, in main
+    infer(inputs)
+  File "/elv/eval/tools/run_bp.py", line 273, in infer
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1484, in forward
+    query_embeds, feature_map, outputs = self.image_text_embedder(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1207, in image_text_embedder
+    outputs = self.owlv2(
+              ^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 956, in forward
+    vision_outputs: BaseModelOutputWithPooling = self.vision_model(
+                                                 ^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/output_capturing.py", line 262, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 757, in forward
+    hidden_states = self.embeddings(pixel_values, interpolate_pos_encoding=interpolate_pos_encoding)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 353, in forward
+    embeddings = embeddings + self.position_embedding(self.position_ids)
+                 ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (2501) must match the size of tensor b (3601) at non-singleton dimension 1
+    FAILED: RuntimeError: The size of tensor a (2501) must match the size of tensor b (3601) at non-singleton dimension 1
+
+wrote /elv/eval/experiments/06_resolution/runs_hf_800/<backend>/out.jsonl and summary.json
+=== hf imgsz 1100 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  gdino (IDEA-Research/grounding-dino-base)
+Loading weights:   0%|          | 0/1182 [00:00<?, ?it/s]Loading weights:  33%|███▎      | 395/1182 [00:00<00:00, 3942.44it/s]Loading weights: 100%|██████████| 1182/1182 [00:00<00:00, 7190.91it/s]
+Traceback (most recent call last):
+  File "/elv/eval/tools/run_bp.py", line 363, in main
+    results = infer(inputs)
+              ^^^^^^^^^^^^^
+  File "/elv/eval/tools/run_bp.py", line 316, in infer
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 2497, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 2156, in forward
+    encoder_outputs = self.encoder(
+                      ^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1525, in forward
+    (vision_features, text_features), attentions = encoder_layer(
+                                                   ^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1099, in forward
+    (vision_features, vision_deformable_attn) = self.deformable_layer(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1000, in forward
+    hidden_states, attn_weights = self.self_attn(
+                                  ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 615, in forward
+    output = self.attn(
+             ^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 124, in forward
+    (torch.stack(sampling_value_list, dim=-2).flatten(-2) * attention_weights)
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.83 GiB. GPU 0 has a total capacity of 23.64 GiB of which 4.16 GiB is free. Process 1915735 has 294.00 MiB memory in use. Process 686883 has 19.18 GiB memory in use. Of the allocated memory 14.80 GiB is allocated by PyTorch, and 4.18 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+    FAILED: OutOfMemoryError: CUDA out of memory. Tried to allocate 4.83 GiB. GPU 0 has a total capacity of 23.64 GiB of which 4.16 GiB is free. Process 1915735 has 294.00 MiB memory in use. Process 686883 has 19.18 GiB memory in use. Of the allocated memory 14.80 GiB is allocated by PyTorch, and 4.18 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+  owlv2 (google/owlv2-base-patch16-ensemble)
+Loading weights:   0%|          | 0/418 [00:00<?, ?it/s]Loading weights: 100%|██████████| 418/418 [00:00<00:00, 7130.97it/s]
+Traceback (most recent call last):
+  File "/elv/eval/tools/run_bp.py", line 353, in main
+    infer(inputs)
+  File "/elv/eval/tools/run_bp.py", line 273, in infer
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1484, in forward
+    query_embeds, feature_map, outputs = self.image_text_embedder(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1207, in image_text_embedder
+    outputs = self.owlv2(
+              ^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 956, in forward
+    vision_outputs: BaseModelOutputWithPooling = self.vision_model(
+                                                 ^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/output_capturing.py", line 262, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 757, in forward
+    hidden_states = self.embeddings(pixel_values, interpolate_pos_encoding=interpolate_pos_encoding)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 353, in forward
+    embeddings = embeddings + self.position_embedding(self.position_ids)
+                 ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (4625) must match the size of tensor b (3601) at non-singleton dimension 1
+    FAILED: RuntimeError: The size of tensor a (4625) must match the size of tensor b (3601) at non-singleton dimension 1
+
+wrote /elv/eval/experiments/06_resolution/runs_hf_1100/<backend>/out.jsonl and summary.json
+=== hf imgsz 1400 ===
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+100 frames, 7 prompts from schema default: logo, letter logo, car logo, emblem, brand, label, person
+
+  gdino (IDEA-Research/grounding-dino-base)
+Loading weights:   0%|          | 0/1182 [00:00<?, ?it/s]Loading weights:  33%|███▎      | 394/1182 [00:00<00:00, 3935.74it/s]Loading weights: 100%|██████████| 1182/1182 [00:00<00:00, 7154.18it/s]
+Traceback (most recent call last):
+  File "/elv/eval/tools/run_bp.py", line 363, in main
+    results = infer(inputs)
+              ^^^^^^^^^^^^^
+  File "/elv/eval/tools/run_bp.py", line 316, in infer
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 2497, in forward
+    outputs = self.model(
+              ^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 2156, in forward
+    encoder_outputs = self.encoder(
+                      ^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1525, in forward
+    (vision_features, text_features), attentions = encoder_layer(
+                                                   ^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1099, in forward
+    (vision_features, vision_deformable_attn) = self.deformable_layer(
+                                                ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 1000, in forward
+    hidden_states, attn_weights = self.self_attn(
+                                  ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 615, in forward
+    output = self.attn(
+             ^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/grounding_dino/modeling_grounding_dino.py", line 124, in forward
+    (torch.stack(sampling_value_list, dim=-2).flatten(-2) * attention_weights)
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 7.77 GiB. GPU 0 has a total capacity of 23.64 GiB of which 2.36 GiB is free. Process 1915735 has 294.00 MiB memory in use. Process 687492 has 20.98 GiB memory in use. Of the allocated memory 15.51 GiB is allocated by PyTorch, and 5.28 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+    FAILED: OutOfMemoryError: CUDA out of memory. Tried to allocate 7.77 GiB. GPU 0 has a total capacity of 23.64 GiB of which 2.36 GiB is free. Process 1915735 has 294.00 MiB memory in use. Process 687492 has 20.98 GiB memory in use. Of the allocated memory 15.51 GiB is allocated by PyTorch, and 5.28 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+  owlv2 (google/owlv2-base-patch16-ensemble)
+Loading weights:   0%|          | 0/418 [00:00<?, ?it/s]Loading weights: 100%|██████████| 418/418 [00:00<00:00, 7640.70it/s]
+Traceback (most recent call last):
+  File "/elv/eval/tools/run_bp.py", line 353, in main
+    infer(inputs)
+  File "/elv/eval/tools/run_bp.py", line 273, in infer
+    outputs = model(**inputs)
+              ^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1484, in forward
+    query_embeds, feature_map, outputs = self.image_text_embedder(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 1207, in image_text_embedder
+    outputs = self.owlv2(
+              ^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 956, in forward
+    vision_outputs: BaseModelOutputWithPooling = self.vision_model(
+                                                 ^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/generic.py", line 1068, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/utils/output_capturing.py", line 262, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 757, in forward
+    hidden_states = self.embeddings(pixel_values, interpolate_pos_encoding=interpolate_pos_encoding)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/envs/mlpod/lib/python3.11/site-packages/transformers/models/owlv2/modeling_owlv2.py", line 353, in forward
+    embeddings = embeddings + self.position_embedding(self.position_ids)
+                 ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RuntimeError: The size of tensor a (7570) must match the size of tensor b (3601) at non-singleton dimension 1
+    FAILED: RuntimeError: The size of tensor a (7570) must match the size of tensor b (3601) at non-singleton dimension 1
+
+wrote /elv/eval/experiments/06_resolution/runs_hf_1400/<backend>/out.jsonl and summary.json
+DONE

@@ -1,0 +1,892 @@
+{
+  "max_side": 1920,
+  "classes": [
+    {
+      "key": "logo",
+      "label": "Logo / brand mark",
+      "hint": "any brand mark, wordmark, or emblem",
+      "prompts": [
+        "logo",
+        "car logo",
+        "letter logo"
+      ]
+    },
+    {
+      "key": "person",
+      "label": "Person",
+      "hint": "any visible person, including crowd",
+      "prompts": [
+        "person"
+      ]
+    },
+    {
+      "key": "sign_or_text",
+      "label": "Sign / text",
+      "hint": "signage, billboard, banner, scoreboard text, captions",
+      "prompts": [
+        "text",
+        "sign",
+        "billboard",
+        "banner",
+        "scoreboard"
+      ]
+    },
+    {
+      "key": "screen",
+      "label": "Screen / monitor",
+      "hint": "TV, monitor, phone or laptop screen, jumbotron",
+      "prompts": [
+        "screen",
+        "monitor",
+        "television",
+        "computer screen"
+      ]
+    },
+    {
+      "key": "board",
+      "label": "Writing board",
+      "hint": "whiteboard, blackboard, chalkboard",
+      "prompts": [
+        "whiteboard",
+        "blackboard"
+      ]
+    },
+    {
+      "key": "ball",
+      "label": "Ball",
+      "hint": "basketball, football, any sports ball",
+      "prompts": [
+        "ball",
+        "basketball",
+        "football"
+      ]
+    },
+    {
+      "key": "bottle_or_cup",
+      "label": "Bottle / cup",
+      "hint": "drink bottle, can, cup \u2014 product stand-in",
+      "prompts": [
+        "bottle",
+        "cup",
+        "beer bottle",
+        "coffee cup"
+      ]
+    },
+    {
+      "key": "car",
+      "label": "Car / road vehicle",
+      "hint": "car, taxi, SUV, van, pickup \u2014 four-wheeled road vehicles only (not buses or bikes)",
+      "prompts": [
+        "car",
+        "truck",
+        "van",
+        "taxi",
+        "sports car",
+        "suv",
+        "police car"
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "id": "NBA33min__000",
+      "source": "NBA33min.mp4",
+      "timestamp": 39.64,
+      "frame_idx": 2376,
+      "frame": "frames/NBA33min__000.png",
+      "thumb": "thumbs/NBA33min__000.jpg"
+    },
+    {
+      "id": "NBA33min__001",
+      "source": "NBA33min.mp4",
+      "timestamp": 105.25,
+      "frame_idx": 6309,
+      "frame": "frames/NBA33min__001.png",
+      "thumb": "thumbs/NBA33min__001.jpg"
+    },
+    {
+      "id": "NBA33min__002",
+      "source": "NBA33min.mp4",
+      "timestamp": 170.86,
+      "frame_idx": 10241,
+      "frame": "frames/NBA33min__002.png",
+      "thumb": "thumbs/NBA33min__002.jpg"
+    },
+    {
+      "id": "NBA33min__003",
+      "source": "NBA33min.mp4",
+      "timestamp": 242.471,
+      "frame_idx": 14534,
+      "frame": "frames/NBA33min__003.png",
+      "thumb": "thumbs/NBA33min__003.jpg"
+    },
+    {
+      "id": "NBA33min__004",
+      "source": "NBA33min.mp4",
+      "timestamp": 302.081,
+      "frame_idx": 18107,
+      "frame": "frames/NBA33min__004.png",
+      "thumb": "thumbs/NBA33min__004.jpg"
+    },
+    {
+      "id": "NBA33min__005",
+      "source": "NBA33min.mp4",
+      "timestamp": 367.691,
+      "frame_idx": 22039,
+      "frame": "frames/NBA33min__005.png",
+      "thumb": "thumbs/NBA33min__005.jpg"
+    },
+    {
+      "id": "NBA33min__006",
+      "source": "NBA33min.mp4",
+      "timestamp": 433.302,
+      "frame_idx": 25972,
+      "frame": "frames/NBA33min__006.png",
+      "thumb": "thumbs/NBA33min__006.jpg"
+    },
+    {
+      "id": "NBA33min__007",
+      "source": "NBA33min.mp4",
+      "timestamp": 498.912,
+      "frame_idx": 29905,
+      "frame": "frames/NBA33min__007.png",
+      "thumb": "thumbs/NBA33min__007.jpg"
+    },
+    {
+      "id": "NBA33min__008",
+      "source": "NBA33min.mp4",
+      "timestamp": 564.523,
+      "frame_idx": 33838,
+      "frame": "frames/NBA33min__008.png",
+      "thumb": "thumbs/NBA33min__008.jpg"
+    },
+    {
+      "id": "NBA33min__009",
+      "source": "NBA33min.mp4",
+      "timestamp": 630.133,
+      "frame_idx": 37770,
+      "frame": "frames/NBA33min__009.png",
+      "thumb": "thumbs/NBA33min__009.jpg"
+    },
+    {
+      "id": "NBA33min__010",
+      "source": "NBA33min.mp4",
+      "timestamp": 695.743,
+      "frame_idx": 41703,
+      "frame": "frames/NBA33min__010.png",
+      "thumb": "thumbs/NBA33min__010.jpg"
+    },
+    {
+      "id": "NBA33min__011",
+      "source": "NBA33min.mp4",
+      "timestamp": 761.354,
+      "frame_idx": 45636,
+      "frame": "frames/NBA33min__011.png",
+      "thumb": "thumbs/NBA33min__011.jpg"
+    },
+    {
+      "id": "NBA33min__012",
+      "source": "NBA33min.mp4",
+      "timestamp": 826.964,
+      "frame_idx": 49568,
+      "frame": "frames/NBA33min__012.png",
+      "thumb": "thumbs/NBA33min__012.jpg"
+    },
+    {
+      "id": "NBA33min__013",
+      "source": "NBA33min.mp4",
+      "timestamp": 892.574,
+      "frame_idx": 53501,
+      "frame": "frames/NBA33min__013.png",
+      "thumb": "thumbs/NBA33min__013.jpg"
+    },
+    {
+      "id": "NBA33min__014",
+      "source": "NBA33min.mp4",
+      "timestamp": 958.185,
+      "frame_idx": 57434,
+      "frame": "frames/NBA33min__014.png",
+      "thumb": "thumbs/NBA33min__014.jpg"
+    },
+    {
+      "id": "NBA33min__015",
+      "source": "NBA33min.mp4",
+      "timestamp": 1023.795,
+      "frame_idx": 61366,
+      "frame": "frames/NBA33min__015.png",
+      "thumb": "thumbs/NBA33min__015.jpg"
+    },
+    {
+      "id": "NBA33min__016",
+      "source": "NBA33min.mp4",
+      "timestamp": 1089.406,
+      "frame_idx": 65299,
+      "frame": "frames/NBA33min__016.png",
+      "thumb": "thumbs/NBA33min__016.jpg"
+    },
+    {
+      "id": "NBA33min__017",
+      "source": "NBA33min.mp4",
+      "timestamp": 1155.016,
+      "frame_idx": 69232,
+      "frame": "frames/NBA33min__017.png",
+      "thumb": "thumbs/NBA33min__017.jpg"
+    },
+    {
+      "id": "NBA33min__018",
+      "source": "NBA33min.mp4",
+      "timestamp": 1220.626,
+      "frame_idx": 73164,
+      "frame": "frames/NBA33min__018.png",
+      "thumb": "thumbs/NBA33min__018.jpg"
+    },
+    {
+      "id": "NBA33min__019",
+      "source": "NBA33min.mp4",
+      "timestamp": 1286.237,
+      "frame_idx": 77097,
+      "frame": "frames/NBA33min__019.png",
+      "thumb": "thumbs/NBA33min__019.jpg"
+    },
+    {
+      "id": "NBA33min__020",
+      "source": "NBA33min.mp4",
+      "timestamp": 1351.847,
+      "frame_idx": 81030,
+      "frame": "frames/NBA33min__020.png",
+      "thumb": "thumbs/NBA33min__020.jpg"
+    },
+    {
+      "id": "NBA33min__021",
+      "source": "NBA33min.mp4",
+      "timestamp": 1417.457,
+      "frame_idx": 84962,
+      "frame": "frames/NBA33min__021.png",
+      "thumb": "thumbs/NBA33min__021.jpg"
+    },
+    {
+      "id": "NBA33min__022",
+      "source": "NBA33min.mp4",
+      "timestamp": 1483.068,
+      "frame_idx": 88895,
+      "frame": "frames/NBA33min__022.png",
+      "thumb": "thumbs/NBA33min__022.jpg"
+    },
+    {
+      "id": "NBA33min__023",
+      "source": "NBA33min.mp4",
+      "timestamp": 1548.678,
+      "frame_idx": 92828,
+      "frame": "frames/NBA33min__023.png",
+      "thumb": "thumbs/NBA33min__023.jpg"
+    },
+    {
+      "id": "NBA33min__024",
+      "source": "NBA33min.mp4",
+      "timestamp": 1614.289,
+      "frame_idx": 96761,
+      "frame": "frames/NBA33min__024.png",
+      "thumb": "thumbs/NBA33min__024.jpg"
+    },
+    {
+      "id": "NBA33min__025",
+      "source": "NBA33min.mp4",
+      "timestamp": 1679.899,
+      "frame_idx": 100693,
+      "frame": "frames/NBA33min__025.png",
+      "thumb": "thumbs/NBA33min__025.jpg"
+    },
+    {
+      "id": "NBA33min__026",
+      "source": "NBA33min.mp4",
+      "timestamp": 1745.509,
+      "frame_idx": 104626,
+      "frame": "frames/NBA33min__026.png",
+      "thumb": "thumbs/NBA33min__026.jpg"
+    },
+    {
+      "id": "NBA33min__027",
+      "source": "NBA33min.mp4",
+      "timestamp": 1811.12,
+      "frame_idx": 108559,
+      "frame": "frames/NBA33min__027.png",
+      "thumb": "thumbs/NBA33min__027.jpg"
+    },
+    {
+      "id": "NBA33min__028",
+      "source": "NBA33min.mp4",
+      "timestamp": 1876.73,
+      "frame_idx": 112491,
+      "frame": "frames/NBA33min__028.png",
+      "thumb": "thumbs/NBA33min__028.jpg"
+    },
+    {
+      "id": "NBA33min__029",
+      "source": "NBA33min.mp4",
+      "timestamp": 1942.34,
+      "frame_idx": 116424,
+      "frame": "frames/NBA33min__029.png",
+      "thumb": "thumbs/NBA33min__029.jpg"
+    },
+    {
+      "id": "sn1__000",
+      "source": "sn1.mp4",
+      "timestamp": 9.121,
+      "frame_idx": 219,
+      "frame": "frames/sn1__000.png",
+      "thumb": "thumbs/sn1__000.jpg"
+    },
+    {
+      "id": "sn1__001",
+      "source": "sn1.mp4",
+      "timestamp": 23.403,
+      "frame_idx": 561,
+      "frame": "frames/sn1__001.png",
+      "thumb": "thumbs/sn1__001.jpg"
+    },
+    {
+      "id": "sn1__002",
+      "source": "sn1.mp4",
+      "timestamp": 40.685,
+      "frame_idx": 975,
+      "frame": "frames/sn1__002.png",
+      "thumb": "thumbs/sn1__002.jpg"
+    },
+    {
+      "id": "sn1__003",
+      "source": "sn1.mp4",
+      "timestamp": 57.968,
+      "frame_idx": 1390,
+      "frame": "frames/sn1__003.png",
+      "thumb": "thumbs/sn1__003.jpg"
+    },
+    {
+      "id": "sn1__004",
+      "source": "sn1.mp4",
+      "timestamp": 75.25,
+      "frame_idx": 1804,
+      "frame": "frames/sn1__004.png",
+      "thumb": "thumbs/sn1__004.jpg"
+    },
+    {
+      "id": "sn1__005",
+      "source": "sn1.mp4",
+      "timestamp": 92.532,
+      "frame_idx": 2219,
+      "frame": "frames/sn1__005.png",
+      "thumb": "thumbs/sn1__005.jpg"
+    },
+    {
+      "id": "sn1__006",
+      "source": "sn1.mp4",
+      "timestamp": 109.814,
+      "frame_idx": 2633,
+      "frame": "frames/sn1__006.png",
+      "thumb": "thumbs/sn1__006.jpg"
+    },
+    {
+      "id": "sn1__007",
+      "source": "sn1.mp4",
+      "timestamp": 127.097,
+      "frame_idx": 3047,
+      "frame": "frames/sn1__007.png",
+      "thumb": "thumbs/sn1__007.jpg"
+    },
+    {
+      "id": "sn1__008",
+      "source": "sn1.mp4",
+      "timestamp": 144.379,
+      "frame_idx": 3462,
+      "frame": "frames/sn1__008.png",
+      "thumb": "thumbs/sn1__008.jpg"
+    },
+    {
+      "id": "sn1__009",
+      "source": "sn1.mp4",
+      "timestamp": 161.661,
+      "frame_idx": 3876,
+      "frame": "frames/sn1__009.png",
+      "thumb": "thumbs/sn1__009.jpg"
+    },
+    {
+      "id": "sn1__010",
+      "source": "sn1.mp4",
+      "timestamp": 178.943,
+      "frame_idx": 4290,
+      "frame": "frames/sn1__010.png",
+      "thumb": "thumbs/sn1__010.jpg"
+    },
+    {
+      "id": "sn1__011",
+      "source": "sn1.mp4",
+      "timestamp": 196.226,
+      "frame_idx": 4705,
+      "frame": "frames/sn1__011.png",
+      "thumb": "thumbs/sn1__011.jpg"
+    },
+    {
+      "id": "sn1__012",
+      "source": "sn1.mp4",
+      "timestamp": 213.508,
+      "frame_idx": 5119,
+      "frame": "frames/sn1__012.png",
+      "thumb": "thumbs/sn1__012.jpg"
+    },
+    {
+      "id": "sn1__013",
+      "source": "sn1.mp4",
+      "timestamp": 230.79,
+      "frame_idx": 5533,
+      "frame": "frames/sn1__013.png",
+      "thumb": "thumbs/sn1__013.jpg"
+    },
+    {
+      "id": "sn1__014",
+      "source": "sn1.mp4",
+      "timestamp": 248.072,
+      "frame_idx": 5948,
+      "frame": "frames/sn1__014.png",
+      "thumb": "thumbs/sn1__014.jpg"
+    },
+    {
+      "id": "sn1__015",
+      "source": "sn1.mp4",
+      "timestamp": 265.355,
+      "frame_idx": 6362,
+      "frame": "frames/sn1__015.png",
+      "thumb": "thumbs/sn1__015.jpg"
+    },
+    {
+      "id": "sn1__016",
+      "source": "sn1.mp4",
+      "timestamp": 282.637,
+      "frame_idx": 6777,
+      "frame": "frames/sn1__016.png",
+      "thumb": "thumbs/sn1__016.jpg"
+    },
+    {
+      "id": "sn1__017",
+      "source": "sn1.mp4",
+      "timestamp": 299.919,
+      "frame_idx": 7191,
+      "frame": "frames/sn1__017.png",
+      "thumb": "thumbs/sn1__017.jpg"
+    },
+    {
+      "id": "bd2__000",
+      "source": "bd2.mp4",
+      "timestamp": 2.759,
+      "frame_idx": 66,
+      "frame": "frames/bd2__000.png",
+      "thumb": "thumbs/bd2__000.jpg"
+    },
+    {
+      "id": "bd2__001",
+      "source": "bd2.mp4",
+      "timestamp": 12.948,
+      "frame_idx": 310,
+      "frame": "frames/bd2__001.png",
+      "thumb": "thumbs/bd2__001.jpg"
+    },
+    {
+      "id": "bd2__002",
+      "source": "bd2.mp4",
+      "timestamp": 23.137,
+      "frame_idx": 555,
+      "frame": "frames/bd2__002.png",
+      "thumb": "thumbs/bd2__002.jpg"
+    },
+    {
+      "id": "bd2__003",
+      "source": "bd2.mp4",
+      "timestamp": 33.325,
+      "frame_idx": 799,
+      "frame": "frames/bd2__003.png",
+      "thumb": "thumbs/bd2__003.jpg"
+    },
+    {
+      "id": "bd2__004",
+      "source": "bd2.mp4",
+      "timestamp": 43.514,
+      "frame_idx": 1043,
+      "frame": "frames/bd2__004.png",
+      "thumb": "thumbs/bd2__004.jpg"
+    },
+    {
+      "id": "bd2__005",
+      "source": "bd2.mp4",
+      "timestamp": 53.703,
+      "frame_idx": 1288,
+      "frame": "frames/bd2__005.png",
+      "thumb": "thumbs/bd2__005.jpg"
+    },
+    {
+      "id": "bd2__006",
+      "source": "bd2.mp4",
+      "timestamp": 63.891,
+      "frame_idx": 1532,
+      "frame": "frames/bd2__006.png",
+      "thumb": "thumbs/bd2__006.jpg"
+    },
+    {
+      "id": "bd2__007",
+      "source": "bd2.mp4",
+      "timestamp": 74.08,
+      "frame_idx": 1776,
+      "frame": "frames/bd2__007.png",
+      "thumb": "thumbs/bd2__007.jpg"
+    },
+    {
+      "id": "bd2__008",
+      "source": "bd2.mp4",
+      "timestamp": 84.269,
+      "frame_idx": 2020,
+      "frame": "frames/bd2__008.png",
+      "thumb": "thumbs/bd2__008.jpg"
+    },
+    {
+      "id": "bd2__009",
+      "source": "bd2.mp4",
+      "timestamp": 94.457,
+      "frame_idx": 2265,
+      "frame": "frames/bd2__009.png",
+      "thumb": "thumbs/bd2__009.jpg"
+    },
+    {
+      "id": "bd2__010",
+      "source": "bd2.mp4",
+      "timestamp": 104.646,
+      "frame_idx": 2509,
+      "frame": "frames/bd2__010.png",
+      "thumb": "thumbs/bd2__010.jpg"
+    },
+    {
+      "id": "bd2__011",
+      "source": "bd2.mp4",
+      "timestamp": 114.834,
+      "frame_idx": 2753,
+      "frame": "frames/bd2__011.png",
+      "thumb": "thumbs/bd2__011.jpg"
+    },
+    {
+      "id": "bd2__012",
+      "source": "bd2.mp4",
+      "timestamp": 125.023,
+      "frame_idx": 2998,
+      "frame": "frames/bd2__012.png",
+      "thumb": "thumbs/bd2__012.jpg"
+    },
+    {
+      "id": "bd2__013",
+      "source": "bd2.mp4",
+      "timestamp": 135.212,
+      "frame_idx": 3242,
+      "frame": "frames/bd2__013.png",
+      "thumb": "thumbs/bd2__013.jpg"
+    },
+    {
+      "id": "bd1__000",
+      "source": "bd1.mp4",
+      "timestamp": 1.96,
+      "frame_idx": 47,
+      "frame": "frames/bd1__000.png",
+      "thumb": "thumbs/bd1__000.jpg"
+    },
+    {
+      "id": "bd1__001",
+      "source": "bd1.mp4",
+      "timestamp": 10.515,
+      "frame_idx": 252,
+      "frame": "frames/bd1__001.png",
+      "thumb": "thumbs/bd1__001.jpg"
+    },
+    {
+      "id": "bd1__002",
+      "source": "bd1.mp4",
+      "timestamp": 19.07,
+      "frame_idx": 457,
+      "frame": "frames/bd1__002.png",
+      "thumb": "thumbs/bd1__002.jpg"
+    },
+    {
+      "id": "bd1__003",
+      "source": "bd1.mp4",
+      "timestamp": 27.625,
+      "frame_idx": 662,
+      "frame": "frames/bd1__003.png",
+      "thumb": "thumbs/bd1__003.jpg"
+    },
+    {
+      "id": "bd1__004",
+      "source": "bd1.mp4",
+      "timestamp": 36.18,
+      "frame_idx": 867,
+      "frame": "frames/bd1__004.png",
+      "thumb": "thumbs/bd1__004.jpg"
+    },
+    {
+      "id": "bd1__005",
+      "source": "bd1.mp4",
+      "timestamp": 44.735,
+      "frame_idx": 1073,
+      "frame": "frames/bd1__005.png",
+      "thumb": "thumbs/bd1__005.jpg"
+    },
+    {
+      "id": "bd1__006",
+      "source": "bd1.mp4",
+      "timestamp": 53.289,
+      "frame_idx": 1278,
+      "frame": "frames/bd1__006.png",
+      "thumb": "thumbs/bd1__006.jpg"
+    },
+    {
+      "id": "bd1__007",
+      "source": "bd1.mp4",
+      "timestamp": 61.844,
+      "frame_idx": 1483,
+      "frame": "frames/bd1__007.png",
+      "thumb": "thumbs/bd1__007.jpg"
+    },
+    {
+      "id": "bd1__008",
+      "source": "bd1.mp4",
+      "timestamp": 70.399,
+      "frame_idx": 1688,
+      "frame": "frames/bd1__008.png",
+      "thumb": "thumbs/bd1__008.jpg"
+    },
+    {
+      "id": "bd1__009",
+      "source": "bd1.mp4",
+      "timestamp": 78.954,
+      "frame_idx": 1893,
+      "frame": "frames/bd1__009.png",
+      "thumb": "thumbs/bd1__009.jpg"
+    },
+    {
+      "id": "bd1__010",
+      "source": "bd1.mp4",
+      "timestamp": 87.509,
+      "frame_idx": 2098,
+      "frame": "frames/bd1__010.png",
+      "thumb": "thumbs/bd1__010.jpg"
+    },
+    {
+      "id": "bd1__011",
+      "source": "bd1.mp4",
+      "timestamp": 96.064,
+      "frame_idx": 2303,
+      "frame": "frames/bd1__011.png",
+      "thumb": "thumbs/bd1__011.jpg"
+    },
+    {
+      "id": "1__000",
+      "source": "1.mp4",
+      "timestamp": 0.601,
+      "frame_idx": 14,
+      "frame": "frames/1__000.png",
+      "thumb": "thumbs/1__000.jpg"
+    },
+    {
+      "id": "1__001",
+      "source": "1.mp4",
+      "timestamp": 4.719,
+      "frame_idx": 113,
+      "frame": "frames/1__001.png",
+      "thumb": "thumbs/1__001.jpg"
+    },
+    {
+      "id": "1__002",
+      "source": "1.mp4",
+      "timestamp": 8.838,
+      "frame_idx": 212,
+      "frame": "frames/1__002.png",
+      "thumb": "thumbs/1__002.jpg"
+    },
+    {
+      "id": "1__003",
+      "source": "1.mp4",
+      "timestamp": 12.957,
+      "frame_idx": 311,
+      "frame": "frames/1__003.png",
+      "thumb": "thumbs/1__003.jpg"
+    },
+    {
+      "id": "1__004",
+      "source": "1.mp4",
+      "timestamp": 17.076,
+      "frame_idx": 409,
+      "frame": "frames/1__004.png",
+      "thumb": "thumbs/1__004.jpg"
+    },
+    {
+      "id": "1__005",
+      "source": "1.mp4",
+      "timestamp": 21.195,
+      "frame_idx": 508,
+      "frame": "frames/1__005.png",
+      "thumb": "thumbs/1__005.jpg"
+    },
+    {
+      "id": "1__006",
+      "source": "1.mp4",
+      "timestamp": 25.314,
+      "frame_idx": 607,
+      "frame": "frames/1__006.png",
+      "thumb": "thumbs/1__006.jpg"
+    },
+    {
+      "id": "1__007",
+      "source": "1.mp4",
+      "timestamp": 29.432,
+      "frame_idx": 706,
+      "frame": "frames/1__007.png",
+      "thumb": "thumbs/1__007.jpg"
+    },
+    {
+      "id": "spiderman30s__000",
+      "source": "spiderman30s.mp4",
+      "timestamp": 0.601,
+      "frame_idx": 14,
+      "frame": "frames/spiderman30s__000.png",
+      "thumb": "thumbs/spiderman30s__000.jpg"
+    },
+    {
+      "id": "spiderman30s__001",
+      "source": "spiderman30s.mp4",
+      "timestamp": 4.719,
+      "frame_idx": 113,
+      "frame": "frames/spiderman30s__001.png",
+      "thumb": "thumbs/spiderman30s__001.jpg"
+    },
+    {
+      "id": "spiderman30s__002",
+      "source": "spiderman30s.mp4",
+      "timestamp": 8.837,
+      "frame_idx": 212,
+      "frame": "frames/spiderman30s__002.png",
+      "thumb": "thumbs/spiderman30s__002.jpg"
+    },
+    {
+      "id": "spiderman30s__003",
+      "source": "spiderman30s.mp4",
+      "timestamp": 12.956,
+      "frame_idx": 311,
+      "frame": "frames/spiderman30s__003.png",
+      "thumb": "thumbs/spiderman30s__003.jpg"
+    },
+    {
+      "id": "spiderman30s__004",
+      "source": "spiderman30s.mp4",
+      "timestamp": 17.074,
+      "frame_idx": 409,
+      "frame": "frames/spiderman30s__004.png",
+      "thumb": "thumbs/spiderman30s__004.jpg"
+    },
+    {
+      "id": "spiderman30s__005",
+      "source": "spiderman30s.mp4",
+      "timestamp": 21.193,
+      "frame_idx": 508,
+      "frame": "frames/spiderman30s__005.png",
+      "thumb": "thumbs/spiderman30s__005.jpg"
+    },
+    {
+      "id": "spiderman30s__006",
+      "source": "spiderman30s.mp4",
+      "timestamp": 25.311,
+      "frame_idx": 607,
+      "frame": "frames/spiderman30s__006.png",
+      "thumb": "thumbs/spiderman30s__006.jpg"
+    },
+    {
+      "id": "spiderman30s__007",
+      "source": "spiderman30s.mp4",
+      "timestamp": 29.429,
+      "frame_idx": 706,
+      "frame": "frames/spiderman30s__007.png",
+      "thumb": "thumbs/spiderman30s__007.jpg"
+    },
+    {
+      "id": "NBAallstar10s__000",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 0.2,
+      "frame_idx": 12,
+      "frame": "frames/NBAallstar10s__000.png",
+      "thumb": "thumbs/NBAallstar10s__000.jpg"
+    },
+    {
+      "id": "NBAallstar10s__001",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 2.122,
+      "frame_idx": 127,
+      "frame": "frames/NBAallstar10s__001.png",
+      "thumb": "thumbs/NBAallstar10s__001.jpg"
+    },
+    {
+      "id": "NBAallstar10s__002",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 4.044,
+      "frame_idx": 242,
+      "frame": "frames/NBAallstar10s__002.png",
+      "thumb": "thumbs/NBAallstar10s__002.jpg"
+    },
+    {
+      "id": "NBAallstar10s__003",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 5.966,
+      "frame_idx": 358,
+      "frame": "frames/NBAallstar10s__003.png",
+      "thumb": "thumbs/NBAallstar10s__003.jpg"
+    },
+    {
+      "id": "NBAallstar10s__004",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 7.888,
+      "frame_idx": 473,
+      "frame": "frames/NBAallstar10s__004.png",
+      "thumb": "thumbs/NBAallstar10s__004.jpg"
+    },
+    {
+      "id": "NBAallstar10s__005",
+      "source": "NBAallstar10s.mp4",
+      "timestamp": 9.81,
+      "frame_idx": 588,
+      "frame": "frames/NBAallstar10s__005.png",
+      "thumb": "thumbs/NBAallstar10s__005.jpg"
+    },
+    {
+      "id": "nfl__000",
+      "source": "nfl.jpg",
+      "timestamp": null,
+      "frame_idx": 0,
+      "frame": "frames/nfl__000.png",
+      "thumb": "thumbs/nfl__000.jpg"
+    },
+    {
+      "id": "nfl2__000",
+      "source": "nfl2.jpg",
+      "timestamp": null,
+      "frame_idx": 0,
+      "frame": "frames/nfl2__000.png",
+      "thumb": "thumbs/nfl2__000.jpg"
+    },
+    {
+      "id": "chalkboard__000",
+      "source": "chalkboard.png",
+      "timestamp": null,
+      "frame_idx": 0,
+      "frame": "frames/chalkboard__000.png",
+      "thumb": "thumbs/chalkboard__000.jpg"
+    },
+    {
+      "id": "cupcakes__000",
+      "source": "cupcakes.png",
+      "timestamp": null,
+      "frame_idx": 0,
+      "frame": "frames/cupcakes__000.png",
+      "thumb": "thumbs/cupcakes__000.jpg"
+    }
+  ]
+}

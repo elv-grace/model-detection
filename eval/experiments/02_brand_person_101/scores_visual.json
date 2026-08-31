@@ -1,0 +1,3244 @@
+{
+ "provisional_labels": true,
+ "label_counts": {
+  "brand": 75,
+  "person": 97
+ },
+ "frames": 100,
+ "results": {
+  "yoloe11__brand__brand_car_benz1": {
+   "detections": 28,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 12,
+     "fp": 0,
+     "fn": 63,
+     "tn": 25,
+     "recall": 0.16,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2758620689655173,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 12,
+     "fp": 0,
+     "fn": 63,
+     "tn": 25,
+     "recall": 0.16,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2758620689655173,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__brand_car_benz2": {
+   "detections": 18,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 11,
+     "fp": 0,
+     "fn": 64,
+     "tn": 25,
+     "recall": 0.14666666666666667,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2558139534883721,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 11,
+     "fp": 0,
+     "fn": 64,
+     "tn": 25,
+     "recall": 0.14666666666666667,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2558139534883721,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_Adidas_0": {
+   "detections": 73,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 31,
+     "fp": 15,
+     "fn": 44,
+     "tn": 10,
+     "recall": 0.41333333333333333,
+     "fp_rate": 0.6,
+     "precision": 0.6739130434782609,
+     "f1": 0.512396694214876,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 31,
+     "fp": 15,
+     "fn": 44,
+     "tn": 10,
+     "recall": 0.41333333333333333,
+     "fp_rate": 0.6,
+     "precision": 0.6739130434782609,
+     "f1": 0.512396694214876,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_Gap_0": {
+   "detections": 44,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 23,
+     "fp": 12,
+     "fn": 52,
+     "tn": 13,
+     "recall": 0.30666666666666664,
+     "fp_rate": 0.48,
+     "precision": 0.6571428571428571,
+     "f1": 0.41818181818181815,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 23,
+     "fp": 12,
+     "fn": 52,
+     "tn": 13,
+     "recall": 0.30666666666666664,
+     "fp_rate": 0.48,
+     "precision": 0.6571428571428571,
+     "f1": 0.41818181818181815,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_NBA_0": {
+   "detections": 196,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 53,
+     "fp": 22,
+     "fn": 22,
+     "tn": 3,
+     "recall": 0.7066666666666667,
+     "fp_rate": 0.88,
+     "precision": 0.7066666666666667,
+     "f1": 0.7066666666666667,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 53,
+     "fp": 22,
+     "fn": 22,
+     "tn": 3,
+     "recall": 0.7066666666666667,
+     "fp_rate": 0.88,
+     "precision": 0.7066666666666667,
+     "f1": 0.7066666666666667,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_New_Era_Cap_Company_0": {
+   "detections": 116,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 35,
+     "fp": 24,
+     "fn": 40,
+     "tn": 1,
+     "recall": 0.4666666666666667,
+     "fp_rate": 0.96,
+     "precision": 0.5932203389830508,
+     "f1": 0.5223880597014926,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 35,
+     "fp": 24,
+     "fn": 40,
+     "tn": 1,
+     "recall": 0.4666666666666667,
+     "fp_rate": 0.96,
+     "precision": 0.5932203389830508,
+     "f1": 0.5223880597014926,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_Nike_0": {
+   "detections": 87,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 33,
+     "fp": 20,
+     "fn": 42,
+     "tn": 5,
+     "recall": 0.44,
+     "fp_rate": 0.8,
+     "precision": 0.6226415094339622,
+     "f1": 0.515625,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 33,
+     "fp": 20,
+     "fn": 42,
+     "tn": 5,
+     "recall": 0.44,
+     "fp_rate": 0.8,
+     "precision": 0.6226415094339622,
+     "f1": 0.515625,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__brand__pool_UPS_0": {
+   "detections": 303,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 64,
+     "fp": 24,
+     "fn": 11,
+     "tn": 1,
+     "recall": 0.8533333333333334,
+     "fp_rate": 0.96,
+     "precision": 0.7272727272727273,
+     "f1": 0.785276073619632,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 64,
+     "fp": 24,
+     "fn": 11,
+     "tn": 1,
+     "recall": 0.8533333333333334,
+     "fp_rate": 0.96,
+     "precision": 0.7272727272727273,
+     "f1": 0.785276073619632,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__person__person_basketball_player1": {
+   "detections": 1260,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.08333333333333333
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.08333333333333333
+    }
+   }
+  },
+  "yoloe11__person__person_basketball_player2": {
+   "detections": 3038,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.0625
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.0625
+    }
+   }
+  },
+  "yoloe11__person__person_basketball_player3": {
+   "detections": 3073,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.25
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.25
+    }
+   }
+  },
+  "yoloe11__person__person_basketball_referee": {
+   "detections": 2933,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.14583333333333334
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.14583333333333334
+    }
+   }
+  },
+  "yoloe11__person__person_cafe1": {
+   "detections": 2471,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   }
+  },
+  "yoloe11__person__person_cafe2": {
+   "detections": 1286,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   }
+  },
+  "yoloe11__person__person_cafe3": {
+   "detections": 1660,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   }
+  },
+  "yoloe11__person__person_facebook": {
+   "detections": 3276,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.20833333333333334
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.20833333333333334
+    }
+   }
+  },
+  "yoloe11__person__person_hostess": {
+   "detections": 2898,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0625,
+     "tp": 97,
+     "fp": 0,
+     "fn": 0,
+     "tn": 3,
+     "recall": 1.0,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 1.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.3541666666666667
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0625,
+     "tp": 97,
+     "fp": 0,
+     "fn": 0,
+     "tn": 3,
+     "recall": 1.0,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 1.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.3541666666666667
+    }
+   }
+  },
+  "yoloe11__person__person_speaker_presenting": {
+   "detections": 94,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 70,
+     "fp": 0,
+     "fn": 27,
+     "tn": 3,
+     "recall": 0.7216494845360825,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.8383233532934131,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 70,
+     "fp": 0,
+     "fn": 27,
+     "tn": 3,
+     "recall": 0.7216494845360825,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.8383233532934131,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__person__person_spidergwen": {
+   "detections": 64,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 39,
+     "fp": 2,
+     "fn": 58,
+     "tn": 1,
+     "recall": 0.4020618556701031,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9512195121951219,
+     "f1": 0.5652173913043479,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 39,
+     "fp": 2,
+     "fn": 58,
+     "tn": 1,
+     "recall": 0.4020618556701031,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9512195121951219,
+     "f1": 0.5652173913043479,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__person__person_spiderman1": {
+   "detections": 225,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 84,
+     "fp": 1,
+     "fn": 13,
+     "tn": 2,
+     "recall": 0.865979381443299,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9882352941176471,
+     "f1": 0.9230769230769231,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 84,
+     "fp": 1,
+     "fn": 13,
+     "tn": 2,
+     "recall": 0.865979381443299,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9882352941176471,
+     "f1": 0.9230769230769231,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe11__person__person_spiderman2": {
+   "detections": 730,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.041666666666666664
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.0,
+     "threshold_at_recall": 0.041666666666666664
+    }
+   }
+  },
+  "yoloe26__brand__brand_car_benz1": {
+   "detections": 19,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 10,
+     "fp": 0,
+     "fn": 65,
+     "tn": 25,
+     "recall": 0.13333333333333333,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.23529411764705882,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 10,
+     "fp": 0,
+     "fn": 65,
+     "tn": 25,
+     "recall": 0.13333333333333333,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.23529411764705882,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__brand_car_benz2": {
+   "detections": 8,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 6,
+     "fp": 0,
+     "fn": 69,
+     "tn": 25,
+     "recall": 0.08,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.14814814814814814,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 6,
+     "fp": 0,
+     "fn": 69,
+     "tn": 25,
+     "recall": 0.08,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.14814814814814814,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_Adidas_0": {
+   "detections": 5,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 3,
+     "fp": 2,
+     "fn": 72,
+     "tn": 23,
+     "recall": 0.04,
+     "fp_rate": 0.08,
+     "precision": 0.6,
+     "f1": 0.075,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 3,
+     "fp": 2,
+     "fn": 72,
+     "tn": 23,
+     "recall": 0.04,
+     "fp_rate": 0.08,
+     "precision": 0.6,
+     "f1": 0.075,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_Gap_0": {
+   "detections": 16,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 9,
+     "fp": 6,
+     "fn": 66,
+     "tn": 19,
+     "recall": 0.12,
+     "fp_rate": 0.24,
+     "precision": 0.6,
+     "f1": 0.19999999999999998,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 9,
+     "fp": 6,
+     "fn": 66,
+     "tn": 19,
+     "recall": 0.12,
+     "fp_rate": 0.24,
+     "precision": 0.6,
+     "f1": 0.19999999999999998,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_NBA_0": {
+   "detections": 22,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 5,
+     "fp": 11,
+     "fn": 70,
+     "tn": 14,
+     "recall": 0.06666666666666667,
+     "fp_rate": 0.44,
+     "precision": 0.3125,
+     "f1": 0.10989010989010989,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 5,
+     "fp": 11,
+     "fn": 70,
+     "tn": 14,
+     "recall": 0.06666666666666667,
+     "fp_rate": 0.44,
+     "precision": 0.3125,
+     "f1": 0.10989010989010989,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_New_Era_Cap_Company_0": {
+   "detections": 74,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 21,
+     "fp": 19,
+     "fn": 54,
+     "tn": 6,
+     "recall": 0.28,
+     "fp_rate": 0.76,
+     "precision": 0.525,
+     "f1": 0.3652173913043478,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 21,
+     "fp": 19,
+     "fn": 54,
+     "tn": 6,
+     "recall": 0.28,
+     "fp_rate": 0.76,
+     "precision": 0.525,
+     "f1": 0.3652173913043478,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_Nike_0": {
+   "detections": 45,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 15,
+     "fp": 14,
+     "fn": 60,
+     "tn": 11,
+     "recall": 0.2,
+     "fp_rate": 0.56,
+     "precision": 0.5172413793103449,
+     "f1": 0.28846153846153844,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 15,
+     "fp": 14,
+     "fn": 60,
+     "tn": 11,
+     "recall": 0.2,
+     "fp_rate": 0.56,
+     "precision": 0.5172413793103449,
+     "f1": 0.28846153846153844,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__brand__pool_UPS_0": {
+   "detections": 1867,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 75,
+     "fp": 24,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.96,
+     "precision": 0.7575757575757576,
+     "f1": 0.8620689655172413,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.96,
+     "threshold_at_recall": 0.0
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 75,
+     "fp": 24,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.96,
+     "precision": 0.7575757575757576,
+     "f1": 0.8620689655172413,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.96,
+     "threshold_at_recall": 0.0
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 97,
+     "tn": 3,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__person__person_basketball_player1": {
+   "detections": 194,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 81,
+     "fp": 1,
+     "fn": 16,
+     "tn": 2,
+     "recall": 0.8350515463917526,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9878048780487805,
+     "f1": 0.9050279329608938,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 81,
+     "fp": 1,
+     "fn": 16,
+     "tn": 2,
+     "recall": 0.8350515463917526,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9878048780487805,
+     "f1": 0.9050279329608938,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__person__person_basketball_player2": {
+   "detections": 3119,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 90,
+     "fp": 1,
+     "fn": 7,
+     "tn": 2,
+     "recall": 0.9278350515463918,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.989010989010989,
+     "f1": 0.9574468085106383,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 90,
+     "fp": 1,
+     "fn": 7,
+     "tn": 2,
+     "recall": 0.9278350515463918,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.989010989010989,
+     "f1": 0.9574468085106383,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   }
+  },
+  "yoloe26__person__person_basketball_player3": {
+   "detections": 2948,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 94,
+     "fp": 1,
+     "fn": 3,
+     "tn": 2,
+     "recall": 0.9690721649484536,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9894736842105263,
+     "f1": 0.9791666666666666,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 94,
+     "fp": 1,
+     "fn": 3,
+     "tn": 2,
+     "recall": 0.9690721649484536,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9894736842105263,
+     "f1": 0.9791666666666666,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   }
+  },
+  "yoloe26__person__person_basketball_referee": {
+   "detections": 4414,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 95,
+     "fp": 1,
+     "fn": 2,
+     "tn": 2,
+     "recall": 0.979381443298969,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9895833333333334,
+     "f1": 0.9844559585492227,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 95,
+     "fp": 1,
+     "fn": 2,
+     "tn": 2,
+     "recall": 0.979381443298969,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9895833333333334,
+     "f1": 0.9844559585492227,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   }
+  },
+  "yoloe26__person__person_cafe1": {
+   "detections": 1376,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   }
+  },
+  "yoloe26__person__person_cafe2": {
+   "detections": 2324,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   }
+  },
+  "yoloe26__person__person_cafe3": {
+   "detections": 1401,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 93,
+     "fp": 1,
+     "fn": 4,
+     "tn": 2,
+     "recall": 0.9587628865979382,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9893617021276596,
+     "f1": 0.9738219895287958,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   }
+  },
+  "yoloe26__person__person_facebook": {
+   "detections": 2852,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0625
+    }
+   }
+  },
+  "yoloe26__person__person_hostess": {
+   "detections": 2606,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 2,
+     "fn": 0,
+     "tn": 1,
+     "recall": 1.0,
+     "fp_rate": 0.6666666666666666,
+     "precision": 0.9797979797979798,
+     "f1": 0.989795918367347,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.020833333333333332
+    }
+   }
+  },
+  "yoloe26__person__person_speaker_presenting": {
+   "detections": 55,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 48,
+     "fp": 0,
+     "fn": 49,
+     "tn": 3,
+     "recall": 0.4948453608247423,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.6620689655172414,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 48,
+     "fp": 0,
+     "fn": 49,
+     "tn": 3,
+     "recall": 0.4948453608247423,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.6620689655172414,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__person__person_spidergwen": {
+   "detections": 13,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 12,
+     "fp": 1,
+     "fn": 85,
+     "tn": 2,
+     "recall": 0.12371134020618557,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9230769230769231,
+     "f1": 0.2181818181818182,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 12,
+     "fp": 1,
+     "fn": 85,
+     "tn": 2,
+     "recall": 0.12371134020618557,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9230769230769231,
+     "f1": 0.2181818181818182,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__person__person_spiderman1": {
+   "detections": 24,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 17,
+     "fp": 0,
+     "fn": 80,
+     "tn": 3,
+     "recall": 0.17525773195876287,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2982456140350877,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 17,
+     "fp": 0,
+     "fn": 80,
+     "tn": 3,
+     "recall": 0.17525773195876287,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.2982456140350877,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    }
+   }
+  },
+  "yoloe26__person__person_spiderman2": {
+   "detections": 712,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 1
+   },
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 91,
+     "fp": 1,
+     "fn": 6,
+     "tn": 2,
+     "recall": 0.9381443298969072,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9891304347826086,
+     "f1": 0.9629629629629629,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   },
+   "coverage": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 0,
+     "fp": 0,
+     "fn": 75,
+     "tn": 25,
+     "recall": 0.0,
+     "fp_rate": 0.0,
+     "precision": 0.0,
+     "f1": 0.0,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 91,
+     "fp": 1,
+     "fn": 6,
+     "tn": 2,
+     "recall": 0.9381443298969072,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9891304347826086,
+     "f1": 0.9629629629629629,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.0
+    }
+   }
+  }
+ }
+}

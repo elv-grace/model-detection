@@ -1,0 +1,38 @@
+[
+  {
+    "backend": "yoloe11-text",
+    "detections": 8692,
+    "seconds": 6.9,
+    "vocab_size": 29
+  },
+  {
+    "backend": "yoloe26-text",
+    "detections": 7648,
+    "seconds": 6.0,
+    "vocab_size": 29
+  },
+  {
+    "backend": "yoloe11-pf",
+    "detections": 13067,
+    "seconds": 6.4,
+    "vocab_size": 4585
+  },
+  {
+    "backend": "yoloe26-pf",
+    "detections": 6643,
+    "seconds": 5.9,
+    "vocab_size": 4585
+  },
+  {
+    "backend": "world-text",
+    "detections": 8897,
+    "seconds": 6.1,
+    "vocab_size": 29
+  },
+  {
+    "backend": "yolo11",
+    "detections": 9798,
+    "seconds": 5.6,
+    "vocab_size": 80
+  }
+]

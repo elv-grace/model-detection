@@ -1,0 +1,1360 @@
+<title>Brand and Person Detector Sweep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+:root{
+  --ground:#F7F8F9; --panel:#FFFFFF; --ink:#16191D; --muted:#626A75; --faint:#8A929C;
+  --rule:#E2E5E9; --rule-strong:#CBD1D8;
+  --accent:#1E6F63; --accent-soft:#E4F0ED;
+  --good:#2E7D5B; --caution:#B0761A; --critical:#A6402E;
+  --bar:#B7C2C0; --bar-hi:#1E6F63;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101316; --panel:#171B20; --ink:#E7EAEE; --muted:#9BA4AF; --faint:#7A838E;
+    --rule:#262C33; --rule-strong:#374049;
+    --accent:#46A697; --accent-soft:#16302C;
+    --good:#5BB98A; --caution:#D9A03F; --critical:#D2705C;
+    --bar:#38424A; --bar-hi:#46A697;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101316; --panel:#171B20; --ink:#E7EAEE; --muted:#9BA4AF; --faint:#7A838E;
+  --rule:#262C33; --rule-strong:#374049;
+  --accent:#46A697; --accent-soft:#16302C;
+  --good:#5BB98A; --caution:#D9A03F; --critical:#D2705C;
+  --bar:#38424A; --bar-hi:#46A697;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px 120px;}
+.col{max-width:840px;}
+
+header.top{border-bottom:1px solid var(--rule); margin-bottom:52px; padding:64px 0 30px;}
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 18px;
+}
+h1{
+  font-family:var(--sans); font-weight:700; font-size:clamp(34px,5vw,50px);
+  line-height:1.06; letter-spacing:-.022em; margin:0 0 20px; text-wrap:balance; max-width:17ch;
+}
+.standfirst{font-size:20px; line-height:1.55; color:var(--muted); margin:0; max-width:62ch;}
+.runmeta{
+  display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:30px;
+  font-family:var(--mono); font-size:12px; color:var(--faint);
+}
+.runmeta b{color:var(--ink); font-weight:500;}
+
+section{margin:0 0 60px;}
+h2{font-family:var(--sans); font-weight:600; font-size:26px; letter-spacing:-.012em;
+  margin:0 0 6px; text-wrap:balance;}
+h2 .num{font-family:var(--mono); font-size:12px; color:var(--faint);
+  letter-spacing:.1em; display:block; margin-bottom:9px; font-weight:400;}
+h3{font-family:var(--sans); font-weight:600; font-size:17.5px; letter-spacing:-.005em;
+  margin:34px 0 8px;}
+p{margin:0 0 15px;}
+.col p, .col ul, .col ol{max-width:68ch;}
+ul,ol{margin:0 0 15px; padding-left:22px;}
+li{margin-bottom:7px;}
+a{color:var(--accent);}
+code{font-family:var(--mono); font-size:.87em; background:var(--accent-soft);
+  padding:1px 5px; border-radius:3px; color:var(--ink);}
+hr{border:0; border-top:1px solid var(--rule); margin:52px 0;}
+.lede{font-size:18.5px; color:var(--muted); margin-bottom:22px; max-width:64ch;}
+
+.finding{background:var(--panel); border:1px solid var(--rule); border-left:3px solid var(--accent);
+  padding:20px 24px; margin:0 0 18px; border-radius:2px;}
+.finding.caution{border-left-color:var(--caution);}
+.finding.critical{border-left-color:var(--critical);}
+.finding.good{border-left-color:var(--good);}
+.finding h3{margin:0 0 7px; font-size:16.5px;}
+.finding p{margin:0; font-size:16px; color:var(--muted);}
+.finding p + p{margin-top:10px;}
+.finding strong{color:var(--ink); font-weight:600;}
+/* A limit on the finding above it, set apart so it is not read as part of the claim. */
+.finding p.caveat{font-size:15px; padding-top:11px; border-top:1px dashed var(--rule);}
+
+.note{font-family:var(--sans); font-size:14.5px; line-height:1.55; color:var(--muted);
+  background:var(--panel); border:1px dashed var(--rule-strong); border-radius:2px;
+  padding:14px 18px; margin:0 0 22px;}
+.note b{color:var(--ink);}
+
+.scroller{overflow-x:auto; margin:0 0 12px; border:1px solid var(--rule); border-radius:2px; background:var(--panel);}
+table{border-collapse:collapse; width:100%; font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums;}
+th,td{padding:9px 13px; text-align:right; white-space:nowrap; border-bottom:1px solid var(--rule);}
+th{font-weight:500; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--faint); background:var(--ground); position:sticky; top:0;}
+th:first-child,td:first-child{text-align:left;}
+tbody tr:last-child td{border-bottom:0;}
+tbody tr:hover td{background:var(--accent-soft);}
+td.name{font-weight:500; color:var(--ink);}
+td.dim{color:var(--faint);}
+caption{caption-side:bottom; text-align:left; font-family:var(--sans); font-size:13px;
+  color:var(--faint); padding:11px 13px; line-height:1.5;}
+.best{color:var(--good); font-weight:600;}
+.worst{color:var(--critical);}
+
+.chart{margin:0 0 14px; border:1px solid var(--rule); border-radius:2px; background:var(--panel); padding:20px 22px;}
+.chart h3{margin:0 0 3px; font-size:15.5px;}
+.chart .sub{font-family:var(--sans); font-size:13px; color:var(--faint); margin:0 0 18px;}
+.rows{display:flex; flex-direction:column; gap:9px;}
+.row{display:grid; grid-template-columns:150px 1fr 52px; align-items:center; gap:14px;}
+.row .lbl{font-family:var(--mono); font-size:12px; color:var(--ink); text-align:right;}
+.row .track{background:var(--ground); border-radius:2px; height:17px; position:relative; overflow:hidden;}
+.row .fill{height:100%; background:var(--bar); border-radius:2px;}
+.row.hi .fill{background:var(--bar-hi);}
+.row .val{font-family:var(--mono); font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums;}
+.axis{display:flex; justify-content:space-between; margin:14px 0 0 164px;
+  font-family:var(--mono); font-size:10.5px; color:var(--faint);
+  border-top:1px solid var(--rule); padding-top:6px;}
+.strip .track{height:22px;}
+.dot{position:absolute; top:50%; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; border-radius:50%; background:var(--accent);}
+.dot.pale{background:var(--bar);}
+
+figure{margin:0 0 26px;}
+figure img{width:100%; height:auto; display:block; border:1px solid var(--rule); border-radius:2px;}
+figcaption{font-family:var(--sans); font-size:13.5px; line-height:1.55; color:var(--muted);
+  margin-top:10px; max-width:78ch;}
+figcaption b{color:var(--ink); font-weight:600;}
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:26px;}
+.pair figure{margin:0;}
+@media (max-width:860px){.pair{grid-template-columns:1fr;}}
+
+.qa{border-top:1px solid var(--rule); padding-top:22px; margin-top:22px;}
+.qa .q{font-family:var(--sans); font-weight:600; font-size:17px; color:var(--ink);
+  margin:0 0 10px; max-width:64ch;}
+.verdict{display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:.08em;
+  text-transform:uppercase; padding:3px 9px; border-radius:2px; margin-bottom:11px;
+  background:var(--accent-soft); color:var(--accent); border:1px solid var(--rule-strong);}
+.verdict.yes{color:var(--good);} .verdict.no{color:var(--critical);} .verdict.part{color:var(--caution);}
+
+.steps{counter-reset:step; list-style:none; padding:0; margin:0 0 20px;}
+.steps li{counter-increment:step; position:relative; padding-left:42px; margin-bottom:16px; max-width:68ch;}
+.steps li::before{
+  content:counter(step); position:absolute; left:0; top:2px;
+  font-family:var(--mono); font-size:11px; font-weight:600; color:var(--accent);
+  background:var(--accent-soft); border:1px solid var(--rule-strong);
+  width:26px; height:22px; display:grid; place-items:center; border-radius:2px;}
+.steps li b{font-family:var(--sans); font-size:16px;}
+
+footer{border-top:1px solid var(--rule); margin-top:60px; padding-top:26px;
+  font-family:var(--mono); font-size:12px; color:var(--faint); line-height:1.8;}
+
+@media (max-width:720px){
+  body{font-size:16px;}
+  .row{grid-template-columns:110px 1fr 46px; gap:9px;}
+  .axis{margin-left:120px;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
+</style>
+
+<div class="wrap">
+
+<header class="top">
+  <p class="eyebrow">model-detection · phase A</p>
+  <h1>Brand and Person Detector Sweep</h1>
+  <p class="standfirst">Eight detectors measured against hand-drawn box ground truth, under a
+  schema where <em>brand</em> means the mark itself and <em>person</em> is one word. Boxes replace
+  frame presence as the headline and change the ranking. The finding that drives every decision
+  here is that brand detection is a small-object problem: most real marks sit under 24 pixels, and
+  what a model can do about that turns out to depend on its architecture.</p>
+  <div class="runmeta">
+    <span><b>100</b> frozen frames</span>
+    <span><b>25</b> frames boxed by hand</span>
+    <span><b>446</b> ground-truth boxes</span>
+    <span><b>7</b> prompts</span>
+    <span><b>8</b> backends</span>
+    <span><b>6</b> input resolutions</span>
+    <span><b>42</b> single-exemplar visual runs</span>
+    <span><b>2</b> embedders</span>
+    <span><b>9</b> crop sizes</span>
+    <span>GPU <b>Quadro RTX 6000</b></span>
+  </div>
+</header>
+
+<div class="col">
+
+<section>
+  <h2><span class="num">FINDINGS</span>What the boxes changed</h2>
+  <p class="lede">Frame presence could not rank these detectors. Box ground truth can, and four of
+  its results change what should be built rather than merely who wins.</p>
+
+  <div class="finding critical">
+    <h3>Brand detection is a small-object problem, and that is the binding constraint</h3>
+    <p>Half the ground-truth marks are under 24&nbsp;px on their short side and two thirds are
+    under 32&nbsp;px. Every detector's recall falls off a cliff there: Grounding DINO covers
+    <strong>0.92</strong> of marks 80&nbsp;px and larger but only <strong>0.41</strong> below
+    16&nbsp;px, and it is the best of the field at both ends.</p>
+    <p>This is not a prompt problem and no amount of prompt engineering will move it. It is
+    resolution, and it had a concrete consequence for Phase&nbsp;B: a <code>min_crop_pixels</code>
+    of 32 discards two thirds of the marks the detector is being asked to find. That parameter is
+    now measured rather than argued and sits at <b>16</b>, which keeps 81% &mdash; but the
+    detector still has to <em>find</em> a 22&nbsp;px mark before any of it applies.</p>
+  </div>
+
+  <div class="finding critical">
+    <h3>Only two backends can find brand marks at all</h3>
+    <p>OWLv2 and Grounding DINO reach brand AP <strong>0.310</strong> and <strong>0.166</strong>.
+    The next best is <strong>0.062</strong>, and the YOLOE and YOLO-World text heads sit between
+    0.02 and 0.06 — an order of magnitude down, not a close third. Bootstrapped over frames, both
+    leaders clear the rest of the field with no overlap; <em>they do not cleanly separate from
+    each other</em>, so treat this as a two-model shortlist rather than a winner.</p>
+    <p>The split is architectural, not a matter of tuning, and it is the same split the bare-word
+    ablation found: MobileCLIP-style encoders compare one pooled prompt vector against region
+    vectors, and a mark is not a category they have a vector for. Both models that work have a
+    BERT text encoder cross-attending to image features.</p>
+  </div>
+
+  <div class="finding good">
+    <h3>Person is solved, and the cheapest model wins it</h3>
+    <p>Plain YOLO11 takes person on every measure that matters — AP <strong>0.743</strong>, mean
+    IoU <strong>0.89</strong>, <strong>53&nbsp;ms</strong> per frame — against 0.634 for OWLv2 at
+    3.6&times; the cost. A closed COCO-80 detector beats every open-vocabulary model at the one
+    class COCO was built around.</p>
+    <p>So the two classes want different detectors, and nothing forces one model to serve both.</p>
+  </div>
+
+  <div class="finding caution">
+    <h3>Adding <code>symbol</code> to the brand prompts makes things worse</h3>
+    <p>Tested head-to-head: it costs the leader (OWLv2 brand AP 0.310&nbsp;→&nbsp;0.284) and gains
+    nothing anywhere else. It is not junk — 8 of its 14 detections on ground-truth frames land on
+    real marks — but it wins the argmax on boxes <code>logo</code> already had, and re-ranks them
+    lower. <strong>Rejected; the list stays at six terms.</strong></p>
+  </div>
+</section>
+
+</div>
+
+<section>
+  <h2><span class="num">RESULT 1 — BOX GROUND TRUTH</span>The headline measurement</h2>
+  <div class="col">
+    <p class="lede">25 frames from 11 clips, boxed by hand: 192 brand marks, 254 people, 15 ignore
+    regions over crowds too dense to box exhaustively. Greedy COCO-style matching at IoU 0.5,
+    101-point interpolated AP, with cross-prompt de-duplication applied — see Result&nbsp;2, it is
+    part of the pipeline rather than a scoring choice.</p>
+  </div>
+</section>
+
+<div class="scroller">
+  <table>
+    <caption><b>cov</b> is class-agnostic coverage: ground-truth boxes hit by <em>any</em>
+    detection whatever it was labelled. It is the fair number for the prompt-free backends, which
+    answer from their own vocabularies, and it is closer to what the pipeline does with a label —
+    which is nothing. <b>IoU</b> is the mean over matched boxes, and it reads directly on crop
+    quality: it is the number Phase&nbsp;B inherits.</caption>
+    <thead>
+      <tr>
+        <th>run</th>
+        <th>brand AP</th><th>P</th><th>R</th><th>cov</th><th>IoU</th>
+        <th>person AP</th><th>P</th><th>R</th><th>cov</th><th>IoU</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">owlv2</td>
+        <td class="best">0.308</td><td>0.37</td><td class="best">0.43</td><td>0.54</td><td>0.78</td>
+        <td>0.650</td><td>0.65</td><td class="best">0.68</td><td>0.80</td><td>0.82</td></tr>
+      <tr><td class="name">gdino</td>
+        <td>0.205</td><td>0.31</td><td>0.31</td><td class="best">0.61</td><td class="best">0.82</td>
+        <td>0.628</td><td>0.66</td><td>0.55</td><td class="best">0.95</td><td>0.85</td></tr>
+      <tr><td class="name">yoloe26-text</td>
+        <td>0.062</td><td class="best">0.43</td><td>0.09</td><td>0.15</td><td>0.79</td>
+        <td>0.680</td><td>0.79</td><td>0.56</td><td>0.92</td><td>0.86</td></tr>
+      <tr><td class="name">world-text</td>
+        <td>0.033</td><td>0.29</td><td>0.08</td><td>0.11</td><td class="best">0.83</td>
+        <td>0.698</td><td>0.79</td><td>0.58</td><td>0.92</td><td>0.86</td></tr>
+      <tr><td class="name">yoloe11-text</td>
+        <td>0.023</td><td>0.28</td><td>0.07</td><td>0.10</td><td class="best">0.83</td>
+        <td>0.657</td><td>0.69</td><td>0.60</td><td>0.93</td><td>0.87</td></tr>
+      <tr><td class="name">yoloe11-pf</td>
+        <td>0.019</td><td>0.44</td><td>0.02</td><td>0.11</td><td>0.79</td>
+        <td>0.481</td><td>0.63</td><td>0.46</td><td>0.70</td><td>0.87</td></tr>
+      <tr><td class="name">yoloe26-pf</td>
+        <td>0.010</td><td>1.00</td><td class="worst">0.01</td><td class="worst">0.07</td><td>0.85</td>
+        <td class="worst">0.199</td><td>0.49</td><td class="worst">0.22</td><td class="worst">0.29</td><td>0.86</td></tr>
+      <tr><td class="name">yolo11</td>
+        <td class="worst">0.000</td><td class="worst">0.00</td><td class="worst">0.00</td><td class="worst">0.04</td><td class="dim">&mdash;</td>
+        <td class="best">0.752</td><td class="best">0.83</td><td>0.66</td><td>0.95</td><td class="best">0.89</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="note"><b>yolo11's brand 0.00 is a measurement, not a gap.</b> COCO-80 contains no
+  logo class, so a closed detector cannot name a mark — and its class-agnostic coverage of 0.04
+  says it does not accidentally box them either. It is here to bound what a fixed general
+  detector gives you for free, and the answer for brand is: nothing.</div>
+
+  <h3>Where the recall actually goes</h3>
+  <p>Splitting brand coverage by the size of the mark is the single most useful cut in this
+  report, because the ground truth is dominated by small marks and the aggregate number hides
+  that. 106 of 192 marks are under 24&nbsp;px on the short side.</p>
+</div>
+
+<div class="chart">
+  <h3>Brand coverage by mark size</h3>
+  <p class="sub">Class-agnostic coverage at IoU 0.5, by the ground-truth box's shorter side in
+  pixels. Bracketed counts are how many marks fall in each band.</p>
+  <div class="rows">
+    <div class="row"><span class="lbl">&lt;16 px  (37)</span><span class="track"><span class="fill" style="width:43%"></span></span><span class="val">0.43</span></div>
+    <div class="row"><span class="lbl">16–24 px  (69)</span><span class="track"><span class="fill" style="width:39%"></span></span><span class="val">0.39</span></div>
+    <div class="row"><span class="lbl">24–32 px  (20)</span><span class="track"><span class="fill" style="width:65%"></span></span><span class="val">0.65</span></div>
+    <div class="row"><span class="lbl">32–48 px  (28)</span><span class="track"><span class="fill" style="width:71%"></span></span><span class="val">0.71</span></div>
+    <div class="row"><span class="lbl">48–80 px  (25)</span><span class="track"><span class="fill" style="width:72%"></span></span><span class="val">0.72</span></div>
+    <div class="row hi"><span class="lbl">80+ px  (13)</span><span class="track"><span class="fill" style="width:77%"></span></span><span class="val">0.77</span></div>
+  </div>
+  <div class="axis"><span>0.00</span><span>0.50</span><span>1.00</span></div>
+  <p class="sub" style="margin:16px 0 0">OWLv2. Grounding DINO has the same shape and a steeper
+  top end: 0.41 / 0.51 / 0.65 / 0.82 / 0.76 / <b>0.92</b>. The YOLOE and YOLO-World text heads
+  never exceed 0.25 in any band.</p>
+</div>
+
+<div class="col">
+  <div class="finding caution">
+    <h3>The detectors find the marks a person notices, and miss the rest</h3>
+    <p>Ground-truth marks have a median short side of <strong>22&nbsp;px</strong>. The marks
+    OWLv2 and Grounding DINO actually return have a median of <strong>37</strong> and
+    <strong>40&nbsp;px</strong>. They are not boxing loosely — mean IoU is 0.78 and 0.82 — they
+    are finding a larger-than-average subset and leaving the small half on the floor.</p>
+    <p>For the tagger this is arguably the right failure. A 14&nbsp;px logo on a distant LED
+    hoarding will not embed to anything a logo pool can retrieve, so missing it costs little.
+    What it does mean is that <em>brand recall against exhaustive ground truth understates
+    usable performance</em>, and the report says so rather than quoting 0.44 as if every missed
+    mark were a loss.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 2 &mdash; DE-DUPLICATION</span>Six terms, one mark</h2>
+  <p class="lede">Asking for six near-synonymous brand terms means a mark answering to several of
+  them comes back several times. Grounding DINO emits 768 overlapping brand-box pairs from 1,245
+  detections on the ground-truth frames, 399 of them between <em>different</em> terms. Every
+  repeat is a false positive here and a wasted SigLIP forward pass in production.</p>
+
+  <div class="finding good">
+    <h3>Class-agnostic suppression buys precision for nothing</h3>
+    <p>Grounding DINO's brand AP goes <strong>0.166 &rarr; 0.205</strong> and its precision 0.25
+    &rarr; 0.31, with class-agnostic coverage <em>unchanged</em> at 0.61 &mdash; the gain is
+    entirely removed duplicates, not newly found marks. Person AP rises for every backend. It also
+    cuts the crops the pipeline would embed by about a third.</p>
+    <p>Suppression must run <em>across</em> prompt terms, not within each: per-class NMS would keep
+    the <code>logo</code> box and the <code>letter logo</code> box of one wordmark, and those
+    cross-term pairs are the majority of the problem. It stays inside a class bucket though &mdash;
+    a <code>person</code> box overlapping a <code>logo</code> box is two real findings, the mark
+    and the player wearing it.</p>
+  </div>
+
+  <div class="finding caution">
+    <h3>The threshold is set by a constraint, because fitting AP picks a harmful value</h3>
+    <p>Brand AP peaks at IoU <strong>0.45</strong>. That value is wrong: coverage falls there
+    (gdino 0.609 &rarr; 0.594, owlv2 0.542 &rarr; 0.516), meaning suppression is merging marks that
+    are genuinely distinct &mdash; adjacent logos on one hoarding, a wordmark inside an emblem. AP
+    cannot see it because both boxes were being counted anyway.</p>
+    <p>So the rule is <em>coverage must not fall</em>, and the threshold is the smallest value
+    satisfying it: <strong>0.6</strong>. It also happens to be where person AP peaks.</p>
+  </div>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Sweep over the suppression threshold. Coverage is the safety column &mdash; a value
+    that reduces it is destroying real marks whatever it does to AP.</caption>
+    <thead><tr><th>nms IoU</th><th>gdino brand AP</th><th>owlv2 brand AP</th>
+      <th>gdino cov</th><th>owlv2 cov</th><th>yolo11 person AP</th></tr></thead>
+    <tbody>
+      <tr><td class="name">off</td><td>0.166</td><td class="best">0.310</td>
+        <td class="best">0.609</td><td class="best">0.542</td><td>0.743</td></tr>
+      <tr><td class="name">0.45</td><td class="best">0.212</td><td>0.303</td>
+        <td class="worst">0.594</td><td class="worst">0.516</td><td>0.729</td></tr>
+      <tr><td class="name">0.50</td><td>0.210</td><td>0.306</td>
+        <td class="best">0.609</td><td class="worst">0.526</td><td>0.750</td></tr>
+      <tr><td class="name">0.60 &nbsp;adopted</td><td>0.205</td><td>0.308</td>
+        <td class="best">0.609</td><td class="best">0.542</td><td class="best">0.752</td></tr>
+      <tr><td class="name">0.80</td><td>0.195</td><td>0.307</td>
+        <td class="best">0.609</td><td class="best">0.542</td><td>0.743</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 3 &mdash; OPERATING POINT</span>What a config file actually delivers</h2>
+  <p class="lede">Every ranking number here is at each detector's own best threshold, chosen by
+  looking at the same 25 frames it is then scored on. That is right for ranking and wrong for
+  shipping. This measures the gap: pick the threshold on ten clips, evaluate on the eleventh,
+  eleven times over.</p>
+  <div class="note"><b>The split is by clip, not by frame.</b> Three frames from one NBA
+  possession share camera, lighting, jerseys and hoardings &mdash; and the same physical logos at
+  the same scale. Splitting by frame would put near-duplicates on both sides and inherit most of
+  the optimism the exercise exists to measure.</div>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Leave-one-clip-out, threshold chosen by best F1 on the training clips. <b>threshold
+    range</b> is the spread of the eleven independently chosen values &mdash; a wide range means no
+    single config value is safe.</caption>
+    <thead><tr><th>class &middot; run</th><th>in-sample F1</th><th>held-out F1</th><th>drop</th>
+      <th>held P</th><th>held R</th><th>threshold range</th></tr></thead>
+    <tbody>
+      <tr><td class="name">brand &middot; owlv2</td><td>0.397</td><td class="best">0.339</td><td>&minus;0.058</td>
+        <td>0.36</td><td>0.32</td><td class="dim">0.067&ndash;0.098</td></tr>
+      <tr><td class="name">brand &middot; gdino</td><td>0.309</td><td>0.286</td><td class="best">&minus;0.023</td>
+        <td>0.28</td><td>0.30</td><td class="dim">0.142&ndash;0.162</td></tr>
+      <tr><td class="name">brand &middot; yoloe26-text</td><td>0.154</td><td class="worst">0.147</td><td>&minus;0.007</td>
+        <td>0.42</td><td class="worst">0.09</td><td class="dim">0.005&ndash;0.006</td></tr>
+      <tr><td class="name">person &middot; yolo11</td><td>0.734</td><td class="best">0.719</td><td class="best">&minus;0.015</td>
+        <td class="best">0.80</td><td>0.65</td><td class="dim">0.101&ndash;0.119</td></tr>
+      <tr><td class="name">person &middot; owlv2</td><td>0.667</td><td>0.625</td><td>&minus;0.041</td>
+        <td>0.63</td><td>0.62</td><td class="dim">0.064&ndash;0.089</td></tr>
+      <tr><td class="name">person &middot; gdino</td><td>0.599</td><td>0.516</td><td>&minus;0.083</td>
+        <td>0.54</td><td>0.50</td><td class="dim">0.180&ndash;0.253</td></tr>
+      <tr><td class="name">person &middot; yoloe26-text</td><td>0.656</td><td class="worst">0.483</td><td class="worst">&minus;0.173</td>
+        <td>0.41</td><td>0.59</td><td class="worst">0.043&ndash;0.171</td></tr>
+      <tr><td class="name">person &middot; yoloe11-text</td><td>0.641</td><td class="worst">0.449</td><td class="worst">&minus;0.193</td>
+        <td>0.37</td><td>0.57</td><td class="worst">0.059&ndash;0.211</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding critical">
+    <h3>The YOLOE text heads do not generalise their threshold, and presence never showed it</h3>
+    <p>yoloe26-text's person F1 looks competitive in-sample at 0.656 against yolo11's 0.734. Held
+    out it collapses to <strong>0.483</strong> while yolo11 barely moves to <strong>0.719</strong>
+    &mdash; and the eleven chosen thresholds span 0.043&ndash;0.171, a four-fold range, against
+    yolo11's 0.101&ndash;0.119.</p>
+    <p>A four-fold spread means there is no single config value that works across content types.
+    That is a deployment property no aggregate metric in this report would have surfaced, and it is
+    the strongest argument for YOLO11 on person: not that it scores highest, but that its score is
+    the one that survives contact with unseen footage.</p>
+  </div>
+  <div class="finding good">
+    <h3>Grounding DINO is the best-calibrated brand detector</h3>
+    <p>It loses the least to held-out evaluation of any brand model (&minus;0.023) and its threshold
+    range is tight at 0.142&ndash;0.162. OWLv2 still leads on held-out F1 (0.339 against 0.286) but
+    gives up more (&minus;0.058), and the two remain within each other's confidence intervals.</p>
+    <p>Targeting precision instead of F1 tightens both further: at a 0.6 precision target, OWLv2
+    holds 0.320 held-out F1 with a &minus;0.012 drop and gdino 0.120 with &minus;0.018. If a wrong
+    brand tag is worse than a missing one, that is the mode to ship.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 4 &mdash; RESOLUTION</span>The one lever on the binding constraint</h2>
+  <p class="lede">Two thirds of ground-truth marks are under 32&nbsp;px, so input size acts directly
+  on the thing limiting brand detection. It works &mdash; on half the field. The other half cannot
+  be scaled at all, which was not the expected result.</p>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>brand AP / class-agnostic coverage / ms per frame, at three input sizes. The
+    ultralytics models sweep 640&ndash;1280; the HF models sweep from their own native size
+    upward.</caption>
+    <thead><tr><th>model</th><th>low</th><th>mid</th><th>high</th></tr></thead>
+    <tbody>
+      <tr><td class="name">yoloe26-text</td><td>640: 0.062 / 0.15 / 61ms</td>
+        <td>960: 0.096 / 0.23 / 74ms</td><td class="best">1280: 0.133 / 0.25 / 98ms</td></tr>
+      <tr><td class="name">yoloe11-text</td><td>640: 0.023 / 0.10</td>
+        <td>960: 0.053 / 0.18</td><td class="best">1280: 0.062 / 0.21</td></tr>
+      <tr><td class="name">world-text</td><td class="best">640: 0.033 / 0.11</td>
+        <td>960: 0.031 / 0.09</td><td class="worst">1280: 0.023 / 0.09</td></tr>
+      <tr><td class="name">gdino</td><td class="best">800: 0.205 / 0.61 / 293ms</td>
+        <td>1100: 0.057 / 0.17</td><td class="worst">1400: 0.001 / 0.01</td></tr>
+      <tr><td class="name">owlv2</td><td class="best">800: 0.274 / 0.48 / 157ms</td>
+        <td>1100: 0.185 / 0.35</td><td>1400: 0.268 / 0.48</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding good">
+    <h3>yoloe26 doubles its brand AP, exactly where the theory says it should</h3>
+    <p>0.062 &rarr; 0.133 for 1.6&times; the compute. Coverage by mark size shows it is a genuine
+    small-object response and not a general accuracy shift: the middle bands move, the largest band
+    does not budge because it was never resolution-limited, and the smallest stays on the floor.</p>
+  </div>
+</div>
+
+<div class="chart">
+  <h3>yoloe26-text brand coverage by mark size, 640 against 1280</h3>
+  <p class="sub">Paired bars per band: the pale bar is 640, the accent bar 1280. Bracketed counts
+  are the ground-truth marks in each band.</p>
+  <div class="rows">
+    <div class="row"><span class="lbl">&lt;16 px (37)</span><span class="track"><span class="fill" style="width:5%"></span></span><span class="val">0.05</span></div>
+    <div class="row hi"><span class="lbl">&nbsp;</span><span class="track"><span class="fill" style="width:8%"></span></span><span class="val">0.08</span></div>
+    <div class="row"><span class="lbl">16&ndash;24 px (69)</span><span class="track"><span class="fill" style="width:4%"></span></span><span class="val">0.04</span></div>
+    <div class="row hi"><span class="lbl">&nbsp;</span><span class="track"><span class="fill" style="width:16%"></span></span><span class="val">0.16</span></div>
+    <div class="row"><span class="lbl">24&ndash;32 px (20)</span><span class="track"><span class="fill" style="width:10%"></span></span><span class="val">0.10</span></div>
+    <div class="row hi"><span class="lbl">&nbsp;</span><span class="track"><span class="fill" style="width:30%"></span></span><span class="val">0.30</span></div>
+    <div class="row"><span class="lbl">32&ndash;48 px (28)</span><span class="track"><span class="fill" style="width:21%"></span></span><span class="val">0.21</span></div>
+    <div class="row hi"><span class="lbl">&nbsp;</span><span class="track"><span class="fill" style="width:46%"></span></span><span class="val">0.46</span></div>
+    <div class="row"><span class="lbl">48+ px (38)</span><span class="track"><span class="fill" style="width:39%"></span></span><span class="val">0.39</span></div>
+    <div class="row hi"><span class="lbl">&nbsp;</span><span class="track"><span class="fill" style="width:39%"></span></span><span class="val">0.39</span></div>
+  </div>
+  <div class="axis"><span>0.00</span><span>0.50</span><span>1.00</span></div>
+</div>
+
+<div class="col">
+  <div class="finding critical">
+    <h3>Grounding DINO and OWLv2 cannot be scaled by resolution at all</h3>
+    <p>Grounding DINO collapses to AP 0.001 &mdash; and takes <em>person</em> down with it, 0.627
+    &rarr; 0.021. Person collapsing is the tell, because resolution does not destroy person
+    detection, so this was checked as a plumbing bug before being believed.</p>
+    <p>It is not one. Running <code>--hf-imgsz 800</code> against the stock default returns
+    byte-identical output, so the override is faithful; and batch 1 against batch 4 gives identical
+    detections and identical box geometry, so it is not batch padding interacting with
+    <code>target_sizes</code>. The failure is visible in the boxes: median normalised box width goes
+    <strong>0.038 &rarr; 0.487 &rarr; 0.623</strong> while the detection count falls
+    <strong>2589 &rarr; 365 &rarr; 240</strong>. The model stops localising and emits a few large
+    diffuse boxes.</p>
+    <p>That is DETR-family behaviour. The decoder's learned reference points and object queries are
+    tuned to the training resolution of 800 shortest edge by 1333 longest, and a larger input moves
+    them off the distribution they were fitted to. OWLv2 is the same story with a softer curve: it
+    needs <code>interpolate_pos_encoding=True</code> to accept any non-960 input, and gains nothing
+    when it does.</p>
+  </div>
+
+  <div class="finding good">
+    <h3>At the shipping operating point the gap is far smaller than AP suggests</h3>
+    <p>Re-running the held-out threshold selection at 1280 puts yoloe26-text's brand F1 at
+    <strong>0.267</strong> against Grounding DINO's <strong>0.286</strong> &mdash; seven percent
+    apart, where AP is 1.5&times; apart. Its threshold is also the most stable in the study: 0.007
+    across all eleven folds, with a held-out drop of 0.004.</p>
+    <p>AP grades the whole score-ordered list; held-out F1 grades the operating point you actually
+    ship. They disagree here because yoloe26 emits few brand detections and nearly all of them are
+    kept, so its ranking has little room to be wrong. Coverage remains the honest gap &mdash; 0.25
+    against 0.61 &mdash; and coverage is what says how many distinct marks ever reach the index.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 5 — THE GROUND TRUTH ITSELF</span>What was labelled, and how</h2>
+  <p class="lede">The ground truth is the one artefact with nothing downstream to catch its
+  mistakes: a mislabelled frame does not announce itself, it just moves every detector's AP in
+  the same direction. So it is shown here rather than asserted.</p>
+</section>
+</div>
+
+<figure>
+  <img src="__SHEET_G_gt_frames__" alt="All 25 ground-truth frames with brand boxes in orange and person boxes in blue">
+  <figcaption>All 25 frames. <b>Orange = brand</b> (the mark), <b>blue = person</b>, grey
+  double-outline = ignore region. Two frames are deliberate negatives —
+  <code>cupcakes__000</code> has neither class and <code>chalkboard__000</code> has one mark and
+  no people — because a set with no negatives cannot measure a false positive.</figcaption>
+</figure>
+
+<div class="col">
+  <h3>Seeding did not decide the answer</h3>
+  <p>Boxes were pre-drawn from a balanced union of Grounding DINO, OWLv2, yoloe11-text and
+  YOLO11, so labelling was accept-and-nudge rather than draw-from-scratch. That saves a great
+  deal of time and introduces an obvious risk: ground truth that is really just a consensus of
+  the models being graded, which would flatter all four and penalise nothing.</p>
+  <p>It did not happen, and the labelling record shows why. Of 524 proposals, <strong>225 were
+  rejected</strong> and <strong>158 boxes were drawn fresh</strong> where no proposal came within
+  IoU 0.5. For brand the independence is near-total: <strong>139 of 192 marks (72%) were drawn by
+  hand</strong>, because the seed detectors simply had not found them. Person is the opposite —
+  222 of 254 accepted verbatim — which is consistent with person being the class the field
+  already solves.</p>
+  <div class="note"><b>The one caveat worth stating.</b> The 53 brand boxes that did come from
+  seeds are, by construction, boxes some detector drew, so those four backends get an IoU
+  advantage on that subset. It is bounded by the 72% that did not, and it cannot explain a
+  ranking gap of 0.310 against 0.022.</div>
+</div>
+
+<figure>
+  <img src="__SHEET_G_gt_crops_brand__" alt="All 192 ground-truth brand marks, cropped with context">
+  <figcaption>Every ground-truth brand box, cropped with context and captioned with its size in
+  pixels. This is what <b>brand = the mark</b> means in practice: the NFL shield rather than the
+  helmet, the Nike swoosh rather than the jersey, the GAP wordmark rather than the hoodie. It is
+  also where the small-object problem becomes obvious — the majority of these are barely legible
+  at full resolution, and a good part of the NBA crowd footage is marks on distant LED
+  hoardings.</figcaption>
+</figure>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 6 — FRAME PRESENCE</span>The metric the boxes replaced</h2>
+  <p class="lede">Presence asks only "did the detector fire somewhere on a frame containing the
+  class". It has been <strong>retired as a ranking instrument</strong> and is now off by default
+  in the scorer, which prints cost and breadth instead. It is kept here because the reason it
+  failed is worth seeing, and because the speed numbers come from the same runs.</p>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption><b>fp@.9</b> is the false-positive rate at the most selective threshold that still
+    reaches 90% brand recall; <code>—</code> means the detector never reaches 90% recall at any
+    threshold, so no such operating point exists. <b>off</b> counts tags outside the prompt list,
+    which is why the prompt-free rows emit hundreds of them.</caption>
+    <thead>
+      <tr><th>run</th><th>brand F1</th><th>rec</th><th>fp@.9</th>
+        <th>person F1</th><th>rec</th><th>ms/frame</th><th>latency</th><th>tags</th><th>off</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">owlv2</td><td class="best">0.91</td><td>0.92</td><td class="best">0.16</td>
+        <td>0.99</td><td>1.00</td><td>193</td><td>203</td><td>7</td><td>0</td></tr>
+      <tr><td class="name">gdino</td><td class="best">0.91</td><td class="best">0.95</td><td>0.21</td>
+        <td>0.99</td><td>1.00</td><td class="worst">286</td><td class="worst">297</td><td>7</td><td>0</td></tr>
+      <tr><td class="name">yoloe26-text</td><td>0.82</td><td>0.79</td><td class="dim">&mdash;</td>
+        <td>0.99</td><td>1.00</td><td>58</td><td>130</td><td>7</td><td>0</td></tr>
+      <tr><td class="name">yoloe11-text</td><td>0.82</td><td>0.81</td><td class="dim">&mdash;</td>
+        <td>0.99</td><td>1.00</td><td>59</td><td>132</td><td>5</td><td>0</td></tr>
+      <tr><td class="name">world-text</td><td>0.76</td><td>0.68</td><td class="dim">&mdash;</td>
+        <td>0.99</td><td>1.00</td><td>55</td><td class="best">118</td><td>4</td><td>0</td></tr>
+      <tr><td class="name">yoloe11-pf</td><td>0.36</td><td>0.23</td><td class="dim">&mdash;</td>
+        <td>0.97</td><td>0.96</td><td>62</td><td>132</td><td>851</td><td class="worst">847</td></tr>
+      <tr><td class="name">yoloe26-pf</td><td class="worst">0.06</td><td class="worst">0.03</td><td class="dim">&mdash;</td>
+        <td>0.93</td><td>0.87</td><td>57</td><td>131</td><td>595</td><td>593</td></tr>
+      <tr><td class="name">yolo11</td><td class="worst">0.00</td><td class="worst">0.00</td><td class="dim">&mdash;</td>
+        <td>0.99</td><td>1.00</td><td class="best">53</td><td>120</td><td>59</td><td>58</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="note"><b>Person F1 of 0.99 ranks nothing.</b> Person is present in 97 of 100 frames,
+  so there are three negatives and precision is near 1.0 for anything that fires at all. That
+  ceiling is a property of the footage. Compare against the box column, where the same class
+  spreads from 0.197 to 0.743.</div>
+
+  <div class="finding good">
+    <h3>Presence and boxes agree on the top, and disagree everywhere else</h3>
+    <p>Both put OWLv2 and Grounding DINO first on brand, which is reassuring. Below that they
+    diverge completely: presence separates yoloe11-text (0.82) from yoloe26-pf (0.06) by 13&times;,
+    while boxes separate them by 2&times; — and presence rates yoloe26-text and yoloe11-text as
+    near-equals of the leaders at 0.82 against 0.91, where boxes put them
+    <strong>five times</strong> apart.</p>
+    <p>A detector firing <em>somewhere</em> on a frame that contains a logo is a low bar when 62
+    of 100 frames contain one. Boxes ask whether it found the mark.</p>
+  </div>
+
+  <h3>Presence labels were corrected from the boxes</h3>
+  <p>The 100-frame presence labels were made under the old 8-class schema, with brand derived
+  from its <code>logo</code> class. Where box ground truth exists it answers the same question
+  exactly, so it overrides — and it disagreed on four frames, <strong>all in the same
+  direction</strong>: the old pass asked whether a frame had a prominent logo, the box pass
+  caught every mark including small ones. Those four had been scored as false positives against
+  every detector that correctly found the mark. Brand positives went 58&nbsp;→&nbsp;62, and
+  OWLv2's fp@.9 improved 0.21&nbsp;→&nbsp;0.16.</p>
+  <p>Person needed no correction at all: 25 of 25 exact. The remaining 75 frames still carry
+  derived labels, so the two halves of that table are not labelled to the same standard. Which is
+  the argument for box AP as the headline, not an argument for patching presence further.</p>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 7 — PROMPT DESIGN</span>What to ask for, settled empirically</h2>
+  <p class="lede">Four prompt lists were run over the same frames and the same backends. The
+  question at each step was not "which scores higher" but "what does the detector return" — and
+  three times the crop changed, not just the label.</p>
+</section>
+
+<div class="scroller">
+  <table>
+    <caption>Brand AP against box ground truth, IoU 0.5. Two rows cannot be scored on AP and say
+    so: the 101-term list predates the box ground truth, and <code>symbol</code> alone is outside
+    the schema so nothing it finds is classified as brand — for that row the comparable number is
+    class-agnostic coverage, against 0.61 / 0.54 for the six adopted terms.</caption>
+    <thead><tr><th>prompt list</th><th>terms</th><th>owlv2</th><th>gdino</th><th>yoloe26</th>
+      <th>world</th><th>verdict</th></tr></thead>
+    <tbody>
+      <tr><td class="name">bare words</td><td>2</td><td class="dim">&mdash;</td><td class="dim">&mdash;</td>
+        <td class="dim">&mdash;</td><td class="dim">&mdash;</td>
+        <td class="dim">splits the field by architecture</td></tr>
+      <tr><td class="name">101 concrete nouns</td><td>101</td><td class="dim">&mdash;</td><td class="dim">&mdash;</td>
+        <td class="dim">&mdash;</td><td class="dim">&mdash;</td>
+        <td class="dim">1% of brand crops were marks</td></tr>
+      <tr><td class="name">6 mark terms</td><td>7</td><td class="best">0.310</td><td class="best">0.166</td>
+        <td class="best">0.062</td><td>0.030</td><td class="dim"><b>adopted</b></td></tr>
+      <tr><td class="name">6 marks + symbol</td><td>8</td><td class="worst">0.284</td><td>0.169</td>
+        <td class="best">0.062</td><td class="best">0.034</td><td class="dim">rejected</td></tr>
+      <tr><td class="name">symbol alone</td><td>2</td><td class="dim">n/a</td><td class="dim">n/a</td>
+        <td class="dim">n/a</td><td class="dim">n/a</td>
+        <td class="dim">coverage 0.56 gdino / 0.17 owlv2</td></tr>
+    </tbody>
+  </table>
+</div>
+
+  <div class="finding critical">
+    <h3>Object nouns overshadow the mark, and the crop moves with them</h3>
+    <p>Asked for <code>sportswear</code>, a detector returns the hoodie. Asked for
+    <code>logo</code>, it returns the wordmark on it. Under the 101-noun list only
+    <strong>1%</strong> of Grounding DINO's brand-bucket crops were mark-like — 63% were shoes —
+    and <strong>51%</strong> were under 32&nbsp;px of something that was not a mark. Under the six
+    mark terms, 100% are mark-like.</p>
+    <p>Surfaces reproduce the same failure one level up: adding <code>banner</code> and
+    <code>billboard</code> moved the box from the logo to the hoarding carrying it. The rule that
+    came out of this is the schema's whole content — <em>name the mark, never the thing it sits
+    on</em>.</p>
+  </div>
+
+  <div class="finding critical">
+    <h3>Bare abstract words split the field by text-encoder architecture</h3>
+    <p>Prompted with the single word <code>brand</code>, Grounding DINO grounds it to real marks
+    and OWLv2 partially does. The YOLOE and YOLO-World heads return essentially nothing — one
+    detection in 100 frames for YOLO-World.</p>
+    <p>The cause is structural. MobileCLIP-style encoders pool a prompt into one vector and
+    compare it against region vectors, and there is no region that looks like the <em>concept</em>
+    brand. Grounding DINO's BERT encoder cross-attends to image features and can ground an
+    abstract word onto concrete evidence. This is the same divide that decides Result&nbsp;1, seen
+    from a different angle.</p>
+  </div>
+</div>
+
+<div class="pair">
+  <figure>
+    <img src="__SHEET_B_gdino__bare__brand__" alt="Grounding DINO prompted with the single word brand">
+    <figcaption><b>gdino</b>, prompt <code>brand</code>. Real marks, from one abstract
+    word.</figcaption>
+  </figure>
+  <figure>
+    <img src="__SHEET_B_yoloe26-text__bare__brand__" alt="yoloe26-text prompted with the single word brand">
+    <figcaption><b>yoloe26-text</b>, same prompt. Whole objects and background — the word has no
+    usable embedding.</figcaption>
+  </figure>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 8 — THE PIXELS</span>What was actually boxed</h2>
+  <p class="lede">The sheets consult no labels, so they answer the one thing no scalar reports:
+  <em>what</em> was found. Box AP says OWLv2 and Grounding DINO lead brand — the sheets say
+  whether they are finding wordmarks or crops of jersey fabric, and only one of those retrieves
+  against a logo pool.</p>
+</section>
+</div>
+
+<div class="pair">
+  <figure>
+    <img src="__SHEET_owlv2__brand__" alt="OWLv2 top 24 brand detections under the mark schema">
+    <figcaption><b>owlv2 · brand</b>, top 24 by score. NBA, NFL, Hyundai, Amazon Prime, New Era,
+    ESPN, Health Equity. Every cell is a mark; none is the garment or the hoarding it sits on. The
+    0.310 AP is real.</figcaption>
+  </figure>
+  <figure>
+    <img src="__SHEET_gdino__brand__" alt="Grounding DINO top 24 brand detections under the mark schema">
+    <figcaption><b>gdino · brand</b>. Same character, and the boxes are tighter — mean IoU 0.82
+    against 0.78 — with higher coverage, 0.61 against 0.54. Its lower AP comes from ranking, not
+    from framing, and the two models' AP intervals overlap.</figcaption>
+  </figure>
+</div>
+
+<div class="pair">
+  <figure>
+    <img src="__SHEET_yoloe11-text__brand__" alt="yoloe11-text brand detections, mostly not marks">
+    <figcaption><b>yoloe11-text · brand</b>, for contrast. It fires, and presence rewards it with
+    F1 0.82 — but the crops are whole objects and background. This is the gap the box metric
+    exposes and presence hides.</figcaption>
+  </figure>
+  <figure>
+    <img src="__SHEET_yolo11__person__" alt="YOLO11 top person detections, tight whole-body boxes">
+    <figcaption><b>yolo11 · person</b>. Tight whole-body boxes, mean IoU 0.89, at 53&nbsp;ms a
+    frame. The cheapest model in the sweep, and the best at this class.</figcaption>
+  </figure>
+</div>
+
+<div class="col">
+  <h3>Crop sizes the embedder will inherit</h3>
+  <p>Phase B's first decision is a minimum crop size, and these are the distributions it acts on.
+  SigLIP 2 NaFlex upscales aggressively, but a 14&nbsp;px logo upscaled to 256 is 14&nbsp;px of
+  information.</p>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Detections from the six-term run over all 100 frames, bucketed by the schema's
+    prompt terms. <b>med</b> is the median shorter side in pixels.</caption>
+    <thead><tr><th>run</th><th>brand dets</th><th>&lt;32 px</th><th>med</th>
+      <th>person dets</th><th>&lt;32 px</th><th>med</th></tr></thead>
+    <tbody>
+      <tr><td class="name">gdino</td><td>6,025</td><td>37%</td><td>40</td>
+        <td>11,287</td><td class="best">12%</td><td class="best">75</td></tr>
+      <tr><td class="name">owlv2</td><td>1,618</td><td class="worst">41%</td><td>37</td>
+        <td>1,566</td><td>16%</td><td>78</td></tr>
+      <tr><td class="name">yoloe26-text</td><td>190</td><td class="best">23%</td><td class="best">55</td>
+        <td>6,608</td><td>21%</td><td>53</td></tr>
+      <tr><td class="name">yoloe11-text</td><td>215</td><td>22%</td><td>51</td>
+        <td>7,109</td><td class="worst">24%</td><td>50</td></tr>
+      <tr><td class="name">world-text</td><td>180</td><td>36%</td><td>40</td>
+        <td>5,225</td><td>16%</td><td>57</td></tr>
+      <tr><td class="name">yoloe11-pf</td><td>38</td><td class="best">16%</td><td class="best">60</td>
+        <td>3,763</td><td>18%</td><td>55</td></tr>
+      <tr><td class="name">yolo11</td><td class="worst">0</td><td class="dim">&mdash;</td><td class="dim">&mdash;</td>
+        <td>5,388</td><td>23%</td><td>55</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="note"><b>Read the small-crop columns as a cost of finding things, not a defect.</b>
+  The models with the largest median brand crop are the ones that found 190 marks instead of
+  6,025. Ground truth has a median of 22 px, so a run whose median is 55 px is not framing better
+  — it is only seeing the easy half.</div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">RESULT 9 — IMAGE PROMPTING</span>Settled, and it simplifies the design</h2>
+  <p class="lede">42 single-exemplar runs, one reference image at a time rather than an averaged
+  batch, using the logo pool for brand and new <code>person_*</code> exemplars for person. The
+  conclusion holds after the reframing and removes a whole branch from the pipeline.</p>
+
+  <div class="finding critical">
+    <h3>Brand visual prompting is degenerate, and its recall number is an artifact</h3>
+    <p>Prompted with a Nike or UPS logo crop, YOLOE returns near-full-frame boxes. It scores 0.44
+    recall on frame presence, which looks like a result until the sheet shows there is no
+    localisation happening — a box covering the frame contains the logo trivially. The metric
+    counts it; the crop is worthless to an embedder.</p>
+  </div>
+
+  <div class="finding good">
+    <h3>Person visual prompting works and is redundant</h3>
+    <p>Per-exemplar person prompts give tight, correct boxes. They also give nothing the word
+    <code>person</code> did not already give, and identification — <em>which</em> person, which
+    pose — is a downstream query against the embeddings regardless.</p>
+    <p>So the target parameter can be <strong>text-only</strong>, image similarity stays a
+    query-side operation on the vector index, and the detector choice is freed from YOLOE and its
+    AGPL-3.0 licence. That last point is not a small one.</p>
+  </div>
+</section>
+</div>
+
+<div class="pair">
+  <figure>
+    <img src="__SHEET_V_yoloe11__person__person_basketball_referee__person__" alt="Person visual prompt: tight per-instance boxes">
+    <figcaption><b>Person exemplar.</b> Tight, correct, and no better than the word.</figcaption>
+  </figure>
+  <figure>
+    <img src="__SHEET_V_yoloe11__brand__pool_Nike_0__brand__" alt="Brand visual prompt: degenerate full-frame boxes">
+    <figcaption><b>Brand exemplar (Nike).</b> Near-full-frame boxes. This is what 0.44 recall
+    looks like when you inspect it.</figcaption>
+  </figure>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">PHASE B &mdash; EMBEDDERS</span>Which SigLIP 2, and what retrieval actually delivers</h2>
+  <p class="lede">The vectors exist to answer "which brand is this crop" by cosine similarity
+  against a pool of 2,960 brands. So the benchmark is that query, not a similarity score in the
+  abstract. Two checkpoints fit the vectorstore's 1024-d cap; so400m does not, at 1152-d.</p>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Brand-logo retrieval, 1,500 query images against a 5,953-image gallery. Binomial
+    standard error at n=1500 is 0.013, so anything under ~0.026 is a tie. <b>ms/crop</b> is
+    GPU-only on already-decoded crops &mdash; what the tagger pays.</caption>
+    <thead><tr><th>model</th><th>dim</th><th>r@1</th><th>r@5</th><th>MRR</th>
+      <th>wide r@1</th><th>ms/crop</th></tr></thead>
+    <tbody>
+      <tr><td class="name">siglip2-base-patch16-naflex</td><td>768</td>
+        <td>0.926</td><td>0.947</td><td>0.937</td><td>0.943</td>
+        <td class="best">5.95</td></tr>
+      <tr><td class="name">siglip2-large-patch16-384</td><td>1024</td>
+        <td>0.929</td><td class="best">0.959</td><td>0.942</td><td class="best">0.947</td>
+        <td class="worst">36.42</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding good">
+    <h3>Quality is a tie; cost is 6.1&times;</h3>
+    <p>r@1 differs by <strong>0.003</strong>, well inside the noise band. Per-crop cost differs by
+    <strong>6.1&times;</strong>. At ~17 crops per frame that is 101 ms of embedding per frame
+    against 619 ms &mdash; the embedder would go from a fifth of the frame budget to more than the
+    detector costs. <strong>base-naflex</strong>, on cost.</p>
+    <p>An end-to-end timing over JPEGs on disk showed 30.7 against 41.2 ms and badly understated
+    this, because image decode dominated it. The tagger's crops arrive already decoded, so the
+    GPU-only figure is the honest one.</p>
+  </div>
+
+  <div class="finding caution">
+    <h3>An argument in the design notes did not survive its own test</h3>
+    <p>The README argued NaFlex must beat the fixed-384 variant because a square resize squashes
+    wide wordmarks, and that wordmarks are this index's payload. The <b>wide</b> column tests
+    exactly that &mdash; aspect ratio &ge; 2.5, which is half the pool (median 2.59, p90 5.57, max
+    10.4), so the test has teeth.</p>
+    <p>It did not hold. base-naflex led at 400 brands (0.937 against 0.932) and large-384 led at
+    1,500 (0.943 against 0.947). The direction <em>flipped</em>, so it is noise. The squash is a
+    real mechanism, but it does not register at retrieval level. NaFlex still wins &mdash; on
+    cost, which is measured.</p>
+  </div>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>The realistic query: a <em>detected crop</em> against the pool, rather than a clean
+    reference against other references. Underpowered by construction &mdash; n=15, SE ~0.13
+    &mdash; so it says whether cross-domain retrieval works, not which model is better.</caption>
+    <thead><tr><th>model</th><th>r@1</th><th>r@5</th><th>Gap</th><th>KIA</th><th>NBA</th>
+      <th>NFL</th><th>Nike</th></tr></thead>
+    <tbody>
+      <tr><td class="name">base-naflex</td><td>0.60</td><td>0.60</td><td>1.00</td>
+        <td class="worst">0.00</td><td>0.50</td><td>0.83</td><td>0.50</td></tr>
+      <tr><td class="name">large-384</td><td>0.60</td><td>0.60</td><td>1.00</td>
+        <td class="worst">0.00</td><td>0.50</td><td>0.83</td><td>0.50</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding critical">
+    <h3>Cross-domain costs a third of the recall, and the pool bounds the rest</h3>
+    <p>Same-domain <strong>0.93</strong> against cross-domain <strong>0.60</strong>. The powered
+    number is the optimistic one; a realistic expectation for the shipped pipeline is nearer 0.6.
+    Only 15 queries were possible &mdash; the footage is NBA and NFL broadcast, and its marks are
+    mostly leagues, teams and US insurers that the 2,960-brand pool does not contain.</p>
+    <p>Failure is <strong>bimodal</strong>: r@5 equals r@1 exactly, so when the right brand is not
+    the top hit it is not in the top five either. Good news for gating &mdash; a similarity
+    threshold should separate hits from misses cleanly rather than facing a long tail.</p>
+    <p><strong>KIA scores 0.00 for both models, and it is not the embedder's fault.</strong> The
+    pool's KIA references are all the old oval logo; the detections are the 2021 rebrand
+    wordmark. Visually different marks. Retrieval quality is bounded by <em>pool freshness</em>,
+    and no encoder choice repairs a stale reference &mdash; a brand that rebrands is invisible to
+    this index until its entry is refreshed. That deserves more attention than the model
+    comparison that surfaced it.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">PHASE B &mdash; CROP SIZE</span>What <code>min_crop_pixels</code> buys, and what it costs</h2>
+  <p class="lede">The gate drops a detection whose short side is under N source pixels. It shipped
+  at <b>32</b>, which discarded two thirds of every mark the detector exists to find &mdash; and
+  that 32 came from an argument about NaFlex upscaling, not from data. With the embedder chosen,
+  the argument became measurable. <b>It is now 16.</b></p>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Pool queries downscaled to a target short side, retrieved against native-resolution
+    references. 800 queries, 2,382 gallery images; binomial SE 0.018. <b>hit/miss gap</b> is the
+    difference between the mean top-1 cosine of a <em>correct</em> retrieval and of a
+    <em>wrong</em> one &mdash; how well a downstream similarity threshold could tell them apart.</caption>
+    <thead><tr><th>query short side</th><th>8 px</th><th>12 px</th><th>16 px</th><th>20 px</th>
+      <th>24 px</th><th>32 px</th><th>48 px</th><th>native</th></tr></thead>
+    <tbody>
+      <tr><td class="name">recall@1</td><td class="worst">0.124</td><td>0.354</td>
+        <td><b>0.598</b></td><td>0.748</td><td>0.821</td><td>0.911</td><td>0.934</td>
+        <td class="best">0.936</td></tr>
+      <tr><td class="name">NaFlex upscale</td><td>22.0&times;</td><td>14.8&times;</td>
+        <td>11.1&times;</td><td>8.9&times;</td><td>7.4&times;</td><td>5.6&times;</td>
+        <td>3.7&times;</td><td>1.0&times;</td></tr>
+      <tr><td class="name">hit/miss cosine gap</td><td class="worst">&minus;0.011</td><td>0.025</td>
+        <td>0.045</td><td>0.069</td><td>0.094</td><td>0.114</td><td>0.132</td>
+        <td class="best">0.148</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding critical">
+    <h3>Below ~10 px a crop does not fail quietly &mdash; it fails confidently</h3>
+    <p>At 8 px the hit/miss gap is <strong>negative</strong>: wrong answers come back with a
+    <em>higher</em> cosine than right ones. No downstream similarity threshold can filter that.
+    Those crops are not weak evidence, they are noise asserting itself, and they would poison a
+    similarity-gated index rather than merely miss.</p>
+    <p>That is the argument for having a floor at all, and it is the half of the original
+    reasoning that survived. The gap recovers monotonically with size and is back to native by
+    about 32 px.</p>
+  </div>
+
+  <div class="finding good">
+    <h3>Size really does become an axis in the embedding</h3>
+    <p>Measured on the 192 ground-truth brand crops. A crop's nearest neighbour among the others
+    is far closer to it in <em>size</em> than chance &mdash; median |log&#8322; size ratio|
+    <strong>0.31</strong> against <strong>0.83</strong> for a random pair. By bin, mean cosine
+    <em>within</em> the bin against the all-pairs floor of 0.699: under 16 px
+    <strong>+0.164</strong>, 16&ndash;24 px +0.083, 24&ndash;32 px +0.022, 32&ndash;48 px
+    &minus;0.058, over 48 px &minus;0.084.</p>
+    <p>Monotone, crossing the floor between 24 and 32 px. The mechanism the old default was built
+    on is <strong>confirmed</strong>. What it never established was where the cliff sits.</p>
+  </div>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>The two curves composed over the real mark-size distribution (brand median short side
+    22 px). <b>Identification recall</b>: of all marks, the fraction that survive the gate
+    <em>and</em> retrieve the right brand. <b>Identification precision</b>: of those that survive,
+    the fraction that retrieve the right brand.</caption>
+    <thead><tr><th><code>min_crop_pixels</code></th><th>marks kept</th><th>persons kept</th>
+      <th>ident recall</th><th>ident precision</th><th>marginal precision / recall</th></tr></thead>
+    <tbody>
+      <tr><td class="name">0</td><td>1.000</td><td>1.000</td><td class="best">0.741</td>
+        <td class="worst">0.741</td><td>&mdash;</td></tr>
+      <tr><td class="name">12</td><td>0.896</td><td>0.988</td><td>0.715</td><td>0.799</td>
+        <td>1.9</td></tr>
+      <tr><td class="name"><b>16 &larr; shipped</b></td><td><b>0.807</b></td><td>0.969</td>
+        <td><b>0.671</b></td><td><b>0.832</b></td><td><b>0.75</b></td></tr>
+      <tr><td class="name">20</td><td>0.615</td><td>0.949</td><td>0.542</td><td>0.882</td>
+        <td>0.39</td></tr>
+      <tr><td class="name">24</td><td>0.448</td><td>0.933</td><td>0.411</td><td>0.918</td>
+        <td>0.27</td></tr>
+      <tr><td class="name">32 &larr; old default</td><td class="worst">0.344</td><td>0.866</td>
+        <td class="worst">0.320</td><td class="best">0.932</td><td>0.15</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="finding good">
+    <h3>The trade turns over at 16</h3>
+    <p>Marginal precision bought per unit of recall given up: <strong>1.9</strong> from 8&rarr;12,
+    <strong>0.75</strong> from 12&rarr;16, then <strong>0.39</strong> from 16&rarr;20 and
+    <strong>0.15</strong> from 24&rarr;32. Below 16 the gate buys more than it costs; above it,
+    less. At 32 it was discarding two thirds of the marks to buy a precision point already within
+    0.10 of reach.</p>
+    <p>Throughput cost of the change is <strong>8&ndash;11%</strong>, not the 2.3&times; the mark
+    distribution implies &mdash; the detectors do not find most sub-32px marks in the first place.
+    Crops per frame after <code>max_detections</code>: yoloe-26 17.4&rarr;18.9,
+    grounding-dino 14.5&rarr;15.6, yolo11 10.9&rarr;12.1. Person is barely affected anywhere in
+    this range; in practice this is a <em>brand</em> parameter.</p>
+  </div>
+
+  <div class="finding">
+    <h3>The deciding argument is which mistake can be undone</h3>
+    <p>A floor set too <em>low</em> is recoverable: every tag carries
+    <code>additional_info.upscale</code>, which at a fixed patch budget is a monotone function of
+    crop area, so a consumer wanting a stricter floor filters for it. A floor set too
+    <em>high</em> is not &mdash; the crop was never embedded, and getting it back means
+    re-decoding the video and re-running detection, at 98&ndash;293 ms per frame against ~6 ms per
+    crop to embed. Given a trade this close, take the side whose mistake is reversible downstream.</p>
+    <p class="caveat">The retrieval curve was measured on clean reference art downscaled cleanly.
+    A real broadcast crop of the same pixel size carries motion blur and compression this does
+    not, so every recall figure above is <strong>optimistic</strong> and 16 is a floor rather than
+    a comfortable operating point. Whether real degradation pushes the answer to 20 is inside that
+    caveat and is not settled here.</p>
+  </div>
+</div>
+
+<hr>
+
+<div class="col">
+<section>
+  <h2><span class="num">DEPLOYMENT</span>What each choice costs to run</h2>
+  <p class="lede">The two classes want different detectors, so the tagger runs two — plus one
+  embedder. Detector cost scales with <em>frames</em>; embedder cost scales with <em>crops</em>,
+  which is frames times detections per frame, so a cheap detector that emits many boxes can cost
+  more downstream than an expensive one that emits few.</p>
+  <p>SigLIP 2 NaFlex measured at <strong>5.5 ms per crop</strong> (182 crops/s, batch 32) and is
+  flat across crop sizes: it pads to a fixed token budget, so a 24&nbsp;px wordmark costs the same
+  as a 300&nbsp;px person. Small marks are not cheap to embed.</p>
+</section>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Per-frame budget on the measurement GPU, at the held-out thresholds from
+    Result&nbsp;3 with de-duplication applied, each detector at its own best resolution
+    (Result&nbsp;4). Crop rates are per frame and therefore independent of sampling rate.</caption>
+    <thead><tr><th>configuration</th><th>detect</th><th>crops/frame</th><th>embed</th>
+      <th>total/frame</th><th>effective fps</th></tr></thead>
+    <tbody>
+      <tr><td class="name">gdino brand + yolo11 person</td><td class="worst">339 ms</td>
+        <td>7.9 + 9.2 = 17.1</td><td>94 ms</td><td class="worst">433 ms</td><td>2.3</td></tr>
+      <tr><td class="name">yoloe26@1280 brand + yolo11@640 person</td><td class="best">151 ms</td>
+        <td>~2 + 9.2 = 11.2</td><td class="best">62 ms</td><td class="best">213 ms</td><td>4.7</td></tr>
+      <tr><td class="name">owlv2 brand + yolo11 person</td><td>246 ms</td>
+        <td>6.5 + 9.2 = 15.7</td><td>86 ms</td><td>332 ms</td><td>3.0</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="chart">
+  <h3>Wall-clock for one 2-hour video</h3>
+  <p class="sub">7,200 seconds of source. Sampling rate is the dominant term — it multiplies
+  everything. common-ml defaults to fps 1; model-logo and model-celeb examples use fps 8.</p>
+  <div class="rows">
+    <div class="row"><span class="lbl">fps 1 · yoloe26</span><span class="track"><span class="fill" style="width:6%"></span></span><span class="val">26 m</span></div>
+    <div class="row hi"><span class="lbl">fps 1 · gdino</span><span class="track"><span class="fill" style="width:12.5%"></span></span><span class="val">52 m</span></div>
+    <div class="row"><span class="lbl">fps 2 · yoloe26</span><span class="track"><span class="fill" style="width:12%"></span></span><span class="val">51 m</span></div>
+    <div class="row hi"><span class="lbl">fps 2 · gdino</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="val">1 h 44</span></div>
+    <div class="row"><span class="lbl">fps 4 · yoloe26</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="val">1 h 42</span></div>
+    <div class="row hi"><span class="lbl">fps 4 · gdino</span><span class="track"><span class="fill" style="width:50%"></span></span><span class="val">3 h 28</span></div>
+    <div class="row"><span class="lbl">fps 8 · yoloe26</span><span class="track"><span class="fill" style="width:49%"></span></span><span class="val">3 h 25</span></div>
+    <div class="row hi"><span class="lbl">fps 8 · gdino</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">6 h 56</span></div>
+  </div>
+  <div class="axis"><span>0</span><span>3.5 h</span><span>7 h</span></div>
+  <p class="sub" style="margin:16px 0 0">Measured on a <b>Quadro RTX 6000</b> (Turing, 2018).
+  A current L40S or A100 should be roughly 2&ndash;3&times; faster, and detector and embedder are
+  timed serially here though they could overlap. Video decode is not included; it is negligible at
+  fps 1 and material at fps 8.</p>
+</div>
+
+<div class="col">
+  <div class="finding caution">
+    <h3>The 2&times; buys 2.4&times; the marks, and little else</h3>
+    <p>At each model's best resolution Grounding DINO costs 2&times; yoloe26-text end to end. For
+    that it returns brand coverage <strong>0.61 against 0.25</strong> and box AP <strong>0.205
+    against 0.133</strong> &mdash; but held-out F1 of only <strong>0.286 against 0.267</strong>.
+    The choice is therefore about how many <em>distinct</em> marks reach the index, not about
+    whether the ones that do are right.</p>
+    <p>The decision therefore turns on sampling rate rather than on the models. Brand marks persist
+    for seconds, so <b>fps 1&ndash;2 is the right rate for brand</b> and at that rate Grounding DINO
+    costs 52 minutes to 1h44 for a two-hour video — acceptable for offline tagging. It is fps 8
+    that makes it untenable at 6h56, and fps 8 is not what brand needs. Person can run at a higher
+    rate independently, since YOLO11 is cheap.</p>
+  </div>
+
+  <h3>Container image size</h3>
+  <p>Adding a second detector does not change it. The image is <strong>14.5&nbsp;GB</strong> and
+  carries no weights at all — they download at first load into the mounted cache under
+  <code>/root/.cache</code>. What dominates is the dependency layer at 12.2&nbsp;GB: bundled CUDA
+  libraries 4.1&nbsp;GB, torch 1.7&nbsp;GB, triton 542&nbsp;MB, then ffmpeg and build-essential at
+  915&nbsp;MB.</p>
+  <p>Both candidate stacks are <em>already installed</em>. Grounding DINO is transformers, which
+  SigLIP&nbsp;2 requires anyway; YOLOE and YOLO11 are both ultralytics. So either choice leaves the
+  image at 14.5&nbsp;GB and changes only the runtime cache.</p>
+</div>
+
+<div class="scroller">
+  <table>
+    <caption>Weights are downloaded to a mounted volume, not baked in. The right-hand column is
+    what the image would become if they were.</caption>
+    <thead><tr><th>configuration</th><th>image</th><th>weights (cached)</th><th>if baked in</th></tr></thead>
+    <tbody>
+      <tr><td class="name">gdino + yolo11 + SigLIP 2</td><td>14.5 GB</td>
+        <td>892 MB + 50 MB + 1.5 GB = <b>2.4 GB</b></td><td>~16.9 GB</td></tr>
+      <tr><td class="name">yoloe26 + yolo11 + SigLIP 2</td><td>14.5 GB</td>
+        <td>76 MB + 243 MB MobileCLIP + 50 MB + 1.5 GB = <b>1.9 GB</b></td><td>~16.4 GB</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col">
+  <div class="note"><b>If the image size matters, the savings are in the dependencies, not the
+  models.</b> Both <code>opencv-python</code> and <code>opencv-python-headless</code> are installed
+  (~200&nbsp;MB duplicated; headless alone is correct for a container), polars pulls
+  211&nbsp;MB, and triton's 542&nbsp;MB is only needed for <code>torch.compile</code>. Those are
+  worth more than any model choice. Registry transfer is roughly half the on-disk figure, since
+  layers ship compressed.</div>
+</div>
+
+<div class="col">
+<section>
+  <h2><span class="num">ANSWERS</span>The two methods, and what this measures</h2>
+
+  <div class="qa">
+    <p class="q">Are there two routes to brand and person — targeted detection from prompts, or
+    general detection filtered downstream by vector similarity?</p>
+    <p><span class="verdict yes">yes, and they are now measured separately</span></p>
+    <p>They are the class-aware and class-agnostic columns of Result&nbsp;1. Targeted detection is
+    <b>AP</b>: the detector was told what to look for and its label is checked. General detection
+    filtered downstream is <b>cov</b>: did a crop land on the object, whatever it was called.</p>
+    <p>For <b>person</b>, both work and the general route wins on cost — YOLO11 covers 0.96 of
+    people at 53&nbsp;ms with no prompting at all. For <b>brand</b>, the general route is not
+    available: the best prompt-free coverage is 0.12 and YOLO11's is 0.04. Nothing in a general
+    detector's vocabulary is a mark, so there is no set of general detections to filter down to
+    one. Brand requires targeted detection, and specifically requires one of the two
+    cross-attention models.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Is the pipeline right — source media, optional text target, detect, embed, and
+    identification is downstream?</p>
+    <p><span class="verdict yes">yes, with one qualification</span></p>
+    <p>The measurements support it. Identification is cosine similarity against a pool, so the
+    detector owes only crops that are tight around the entity — which is what mean IoU measures,
+    and it is 0.78–0.89 across the usable models.</p>
+    <p>The qualification is that "more general but still tight" has a floor. Brand marks below
+    about 24&nbsp;px are found less than half the time by the best model available, so the crop
+    the embedder needs sometimes does not exist. That is a resolution budget question, not a
+    prompt question, and it is the first thing Phase&nbsp;B should quantify.</p>
+  </div>
+
+  <div class="qa">
+    <p class="q">Is one word enough for person, and mark-only enough for brand?</p>
+    <p><span class="verdict yes">both confirmed</span></p>
+    <p><code>person</code> alone gives coverage of 0.92–0.97 on four backends; no concrete-noun
+    list improved on it. Mark-only took brand crops from 1% mark-like to 100%, and the
+    <code>symbol</code> test says the list is now at the point where adding terms costs more than
+    it returns.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">NEXT</span>What is left</h2>
+  <p class="lede">Phases A and B are both closed: the detectors, the embedder and every crop
+  parameter now have a measured value behind them. What remains is ground truth and one product
+  question, not modelling.</p>
+
+  <h3>Pool freshness is a product question now, not a modelling one</h3>
+  <p>KIA scores 0.00 for both embedders because the pool holds the old oval logo and the footage
+  shows the 2021 rebrand wordmark. Nothing in the model stack fixes that — a correct encoder
+  faithfully reports that two different marks are different. The index is only as current as its
+  references, so what is needed is an <em>owner and a refresh cadence</em> for the pool: how a
+  rebrand gets noticed, who adds the new art, whether old art is retired or kept as an alias for
+  archive footage. Those are decisions about a data asset, and no experiment here can settle
+  them.</p>
+  <p>It also bounds what the measured numbers mean. Only 5 of the brands in this footage exist in
+  the pool at all; the broadcast marks that dominate it — State Farm, ESPN, NBC, team logos — are
+  simply absent. Coverage of the pool, not the choice of encoder, is the ceiling on end-to-end
+  identification.</p>
+
+  <h3>Tiled or higher-resolution inference for small marks</h3>
+  <p>Still the highest-value modelling question, since small objects are the binding constraint.
+  <code>min_crop_pixels</code> is now measured and no longer part of it: at 16 the gate keeps 81%
+  of marks, so the loss has moved back upstream to what the detector <em>finds</em>. Coverage
+  below 16 px is 0.41 even for the best model in the field, and tiling is the standard remedy —
+  it costs throughput and has not been tried.</p>
+
+  <h3>Extend the box ground truth</h3>
+  <p>25 frames is enough to separate the field but not to rank its top two. Bootstrapping AP over
+  frames (400 resamples) puts OWLv2 at <b>0.310 [0.219, 0.441]</b> and Grounding DINO at
+  <b>0.166 [0.112, 0.246]</b> — intervals that touch. Both are cleanly clear of yoloe26-text at
+  0.062 [0.027, 0.109], so <em>which architecture</em> is settled and <em>which of the two
+  models</em> is not.</p>
+  <p>The other gap is coverage of the footage itself. The 11 clips are heavily sports-weighted,
+  and the mark-size distribution driving every conclusion here comes mostly from NBA crowd
+  frames. Another 25 frames from non-sports sources would test whether the small-mark floor is a
+  property of brands or of basketball.</p>
+
+  <h3>More negative frames</h3>
+  <p>Two of 25 frames have no brand and three of 100 have no person. False-positive rates are
+  therefore estimated from very few frames, and person's cannot be estimated at all. Frames with
+  no people and no marks are cheap to add and would make precision mean something.</p>
+
+  <h3>Done · the derived presence labels are retired</h3>
+  <p>Frame presence is no longer scored by default. <code>score_bp.py</code> now prints cost and
+  breadth — throughput, latency, detection counts, off-prompt tag counts — none of which need
+  ground truth, and the presence table is behind <code>--presence</code> with its provenance
+  stated. Ranking is <code>box_gt/score_boxes.py</code>; thresholds are
+  <code>box_gt/operating_point.py</code>.</p>
+  <p>The 75 frames were not relabelled, because relabelling them would have meant inventing ground
+  truth rather than measuring it. If the 100-frame set is wanted back as an instrument, those
+  frames need a human pass under the mark definition — but nothing currently depends on it.</p>
+</section>
+
+<section>
+  <h2><span class="num">METHOD</span>How the numbers were produced</h2>
+
+  <h3>Runs</h3>
+  <p>100 frames frozen from 11 clips. Every backend runs ungated — confidence near zero, high
+  detection cap — and each detection's score is written out, because detector scores are not
+  comparable across models and fixing one threshold for all of them would rank them by score
+  inflation. The scorer sweeps each detector over its own threshold grid.</p>
+  <p>Throughput is measured batched, which is how a tagger consumes video; latency is measured at
+  batch size 1 with the CUDA queue synchronised, which is what a single-image request pays. Warm-up
+  frames are excluded from both.</p>
+
+  <h3>Box matching</h3>
+  <p>Greedy by descending score: each detection takes the highest-IoU unclaimed ground-truth box
+  of the same class above IoU 0.5. One ground-truth box matches once, so duplicate detections on
+  the same object count as false positives. AP is 101-point interpolated, COCO convention. A
+  detection whose centre falls in an ignore region is dropped entirely — neither true nor false
+  positive — because dense crowds cannot be boxed exhaustively and punishing a detector for
+  finding a real person nobody drew would measure the labeller.</p>
+  <p>Precision is deliberately not reported class-agnostically. A prompt-free run that boxes a
+  chair is not wrong, it is just not boxing a target, and counting it as a false positive would
+  measure the schema rather than the detector.</p>
+
+  <h3>The Grounding DINO repair</h3>
+  <p>The first sweep recorded Grounding DINO at F1 0.27 with 94% of detections carrying an empty
+  label, and blamed prompt batching. That was wrong on both counts. Its post-processor keeps boxes
+  above <code>threshold</code> but decodes labels above <code>text_threshold</code>, which
+  defaulted to 0.25 while boxes were kept at 0.05 — so every box between the two kept its geometry
+  and lost its label. Chunking prompts could never have fixed it.</p>
+  <p>Labels are also always decoded from a BERT token span, which produced wordpiece fragments
+  like <code>##board</code> and spans straddling two phrases. Both are fixed: the thresholds are
+  bound together, and attribution is computed from the fast tokenizer's character offsets — each
+  phrase's span mapped to token positions, each box assigned the phrase carrying its highest
+  probability. One clean phrase per box. Empty labels went to 0% and the model got 3.2&times;
+  faster as a side effect of not decoding spans it would discard.</p>
+
+  <h3>No tag map</h3>
+  <p>Synonym bridging from the prompt-free vocabularies onto brand/person was previously done with
+  a hand-built keyword map. It was retired: built from keyword families with veto lists, it could
+  not survive compounds — an activity veto swallowed <code>fishing boat</code> and
+  <code>wedding cake</code>, a person rule captured <code>record player</code> — and one review
+  pass found around ninety such errors across 4,607 terms, with each correction moving the errors
+  rather than removing them.</p>
+  <p>It also turned out to be unnecessary. Under the mark schema there are no synonyms left to
+  bridge: <code>logo</code> and <code>person</code> appear verbatim in every vocabulary involved,
+  so all eight backends score directly on their own labels. Class-agnostic coverage answers the
+  question the map was there for, and answers it by measurement.</p>
+
+  <h3>Phase B protocols</h3>
+  <p>The embedder comparison and the crop-size sweep both use the 2,960-brand logo pool, because
+  it carries real brand identity and the box ground truth does not — it labels <em>brand</em>, not
+  <em>which</em> brand. One image per brand is the query, the rest go in the gallery, so difficulty
+  scales with the gallery rather than with the brand count.</p>
+  <p>An earlier design built pairs from the box ground truth by matching boxes across frames of one
+  clip at IoU&nbsp;&ge;&nbsp;0.3. It was discarded as invalid: frames are sampled seconds to a
+  minute apart, so in crowd footage a box at the same position is a <em>different</em> person. It
+  scored person recall@1 at 0.047, produced only 24 brand pairs, and returned identical numbers for
+  both candidates — the signature of a metric measuring its own construction.</p>
+  <p>The crop-size curve downscales pool queries and retrieves against native-resolution
+  references. Clean art downscaled cleanly is easier than a real broadcast crop of the same pixel
+  size, so that curve is optimistic and is read as a floor rather than an operating point.</p>
+
+  <h3>Reproducing</h3>
+  <p>Everything lives in <code>eval/</code>: <code>frameset/</code> the frozen frames and labels,
+  <code>tools/</code> the scripts, <code>experiments/01–09</code> one directory per experiment,
+  <code>box_gt/</code> the ground truth with its task builder, browser labelling tool and scorer,
+  <code>report/</code> this page. The labelling tool is a single self-contained HTML file with all
+  25 frames embedded.</p>
+  <p>Phase&nbsp;B specifically: <code>tools/compare_embedders.py</code> (pool retrieval),
+  <code>tools/crop_to_pool.py</code> (detected crop against the pool),
+  <code>tools/size_sensitivity.py</code> (<code>min_crop_pixels</code>),
+  <code>tools/padding_sensitivity.py</code> (<code>crop_padding</code>),
+  <code>tools/bench_embed.py</code> (GPU-only throughput). That the shipped tagger reproduces
+  these vectors is itself checked, by
+  <code>tools/verify_embedder_wiring.py</code> &mdash; it confirms the crop is the padded box while
+  the reported box is un-padded, and that the tagger's vision-tower call matches the benchmark's
+  <code>get_image_features</code> call to 2.4e&minus;07 in fp32.</p>
+</section>
+</div>
+
+<footer>
+  model-detection · phases A and B · 9 detector backends × 100 frames ·
+  25 frames × 446 hand-drawn boxes · 2 embedders × 2,960-brand pool<br>
+  Quadro RTX 6000 · shipping: yoloe26@1280 or grounding-dino@800 for brand,
+  yolo11@640 for person, siglip2-base-naflex to embed, min_crop_pixels 16<br>
+  Numbers regenerate from <code>eval/box_gt/score_boxes.py</code> and
+  <code>eval/tools/score_bp.py</code>; this page from <code>eval/report/build_report.py</code>.
+</footer>
+
+</div>

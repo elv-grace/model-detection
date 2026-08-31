@@ -1,0 +1,175 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Detector Eval — Presence Labelling</title>
+<style>
+  :root {
+    --bg:#f6f7f9; --fg:#14161a; --muted:#5b6270; --line:#d8dce3; --card:#ffffff;
+    --accent:#2f6feb; --on-accent:#ffffff; --warn:#b4690e;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#14161a; --fg:#e7e9ee; --muted:#9aa2b1; --line:#2c313a; --card:#1b1e24;
+      --accent:#5b8cf5; --on-accent:#0b0d10; --warn:#e0a33c;
+    }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font:15px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+  header { position:sticky; top:0; z-index:5; background:var(--card);
+           border-bottom:1px solid var(--line); padding:10px 16px;
+           display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  h1 { font-size:15px; margin:0; font-weight:650; }
+  .grow { flex:1 1 auto; }
+  .meta { color:var(--muted); font-size:13px; font-variant-numeric:tabular-nums; }
+  .bar { height:4px; background:var(--line); border-radius:2px; overflow:hidden; width:180px; }
+  .bar > i { display:block; height:100%; background:var(--accent); width:0; }
+  main { display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:16px; padding:16px;
+         align-items:start; }
+  @media (max-width:900px) { main { grid-template-columns:minmax(0,1fr); } }
+  .stage { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px; }
+  .stage img { display:block; width:100%; height:auto; max-height:70vh;
+               object-fit:contain; border-radius:6px; background:#000; }
+  .panel { background:var(--card); border:1px solid var(--line); border-radius:10px;
+           padding:14px; position:sticky; top:64px; }
+  .cls { display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left;
+         padding:8px 10px; margin-bottom:6px; border:1px solid var(--line);
+         border-radius:8px; background:transparent; color:inherit; cursor:pointer; font:inherit; }
+  .cls:hover { border-color:var(--accent); }
+  .cls[aria-pressed="true"] { background:var(--accent); color:var(--on-accent);
+                              border-color:var(--accent); }
+  .cls kbd { flex:0 0 auto; font:600 12px ui-monospace,monospace; border:1px solid currentColor;
+             border-radius:4px; padding:0 5px; opacity:.75; }
+  .cls b { display:block; font-weight:600; }
+  .cls i { display:block; font-size:12px; opacity:.75; font-style:normal; }
+  .row { display:flex; gap:8px; margin-top:12px; }
+  button.act { flex:1; padding:9px; border-radius:8px; border:1px solid var(--line);
+               background:transparent; color:inherit; cursor:pointer; font:inherit; }
+  button.act:hover { border-color:var(--accent); }
+  button.primary { background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+  .unsure[aria-pressed="true"] { background:var(--warn); color:var(--on-accent);
+                                 border-color:var(--warn); }
+  .hint { color:var(--muted); font-size:12px; margin-top:12px; }
+  .done { color:var(--accent); font-weight:600; }
+</style></head><body>
+
+<header>
+  <h1>Presence labelling</h1>
+  <div class="meta" id="pos"></div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="meta" id="count"></div>
+  <div class="grow"></div>
+  <button class="act primary" id="export" style="flex:0 0 auto">Download labels JSON</button>
+</header>
+
+<main>
+  <div class="stage">
+    <img id="img" alt="evaluation frame">
+    <div class="meta" id="src" style="margin-top:8px"></div>
+  </div>
+
+  <div class="panel">
+    <div id="classes"></div>
+    <button class="act unsure" id="unsure" aria-pressed="false">Mark frame unsure (u)</button>
+    <div class="row">
+      <button class="act" id="prev">&larr; Prev</button>
+      <button class="act primary" id="next">Next &rarr;</button>
+    </div>
+    <div class="hint">
+      Mark every class <b>visibly present</b> in the frame, however small.
+      Leaving all unchecked is a valid label meaning none are present — a frame counts as
+      done once you advance past it.
+      <br><br>
+      Keys: <kbd>1</kbd>&ndash;<kbd>9</kbd> toggle &middot;
+      <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> navigate &middot; <kbd>u</kbd> unsure.
+      Progress autosaves to this browser.
+    </div>
+  </div>
+</main>
+
+<script>
+const DATA = {"frames": [{"id": "NBA33min__000", "source": "NBA33min.mp4", "timestamp": 39.64, "frame_idx": 2376, "frame": "frames/NBA33min__000.png", "thumb": "thumbs/NBA33min__000.jpg"}, {"id": "NBA33min__001", "source": "NBA33min.mp4", "timestamp": 105.25, "frame_idx": 6309, "frame": "frames/NBA33min__001.png", "thumb": "thumbs/NBA33min__001.jpg"}, {"id": "NBA33min__002", "source": "NBA33min.mp4", "timestamp": 170.86, "frame_idx": 10241, "frame": "frames/NBA33min__002.png", "thumb": "thumbs/NBA33min__002.jpg"}, {"id": "NBA33min__003", "source": "NBA33min.mp4", "timestamp": 242.471, "frame_idx": 14534, "frame": "frames/NBA33min__003.png", "thumb": "thumbs/NBA33min__003.jpg"}, {"id": "NBA33min__004", "source": "NBA33min.mp4", "timestamp": 302.081, "frame_idx": 18107, "frame": "frames/NBA33min__004.png", "thumb": "thumbs/NBA33min__004.jpg"}, {"id": "NBA33min__005", "source": "NBA33min.mp4", "timestamp": 367.691, "frame_idx": 22039, "frame": "frames/NBA33min__005.png", "thumb": "thumbs/NBA33min__005.jpg"}, {"id": "NBA33min__006", "source": "NBA33min.mp4", "timestamp": 433.302, "frame_idx": 25972, "frame": "frames/NBA33min__006.png", "thumb": "thumbs/NBA33min__006.jpg"}, {"id": "NBA33min__007", "source": "NBA33min.mp4", "timestamp": 498.912, "frame_idx": 29905, "frame": "frames/NBA33min__007.png", "thumb": "thumbs/NBA33min__007.jpg"}, {"id": "NBA33min__008", "source": "NBA33min.mp4", "timestamp": 564.523, "frame_idx": 33838, "frame": "frames/NBA33min__008.png", "thumb": "thumbs/NBA33min__008.jpg"}, {"id": "NBA33min__009", "source": "NBA33min.mp4", "timestamp": 630.133, "frame_idx": 37770, "frame": "frames/NBA33min__009.png", "thumb": "thumbs/NBA33min__009.jpg"}, {"id": "NBA33min__010", "source": "NBA33min.mp4", "timestamp": 695.743, "frame_idx": 41703, "frame": "frames/NBA33min__010.png", "thumb": "thumbs/NBA33min__010.jpg"}, {"id": "NBA33min__011", "source": "NBA33min.mp4", "timestamp": 761.354, "frame_idx": 45636, "frame": "frames/NBA33min__011.png", "thumb": "thumbs/NBA33min__011.jpg"}, {"id": "NBA33min__012", "source": "NBA33min.mp4", "timestamp": 826.964, "frame_idx": 49568, "frame": "frames/NBA33min__012.png", "thumb": "thumbs/NBA33min__012.jpg"}, {"id": "NBA33min__013", "source": "NBA33min.mp4", "timestamp": 892.574, "frame_idx": 53501, "frame": "frames/NBA33min__013.png", "thumb": "thumbs/NBA33min__013.jpg"}, {"id": "NBA33min__014", "source": "NBA33min.mp4", "timestamp": 958.185, "frame_idx": 57434, "frame": "frames/NBA33min__014.png", "thumb": "thumbs/NBA33min__014.jpg"}, {"id": "NBA33min__015", "source": "NBA33min.mp4", "timestamp": 1023.795, "frame_idx": 61366, "frame": "frames/NBA33min__015.png", "thumb": "thumbs/NBA33min__015.jpg"}, {"id": "NBA33min__016", "source": "NBA33min.mp4", "timestamp": 1089.406, "frame_idx": 65299, "frame": "frames/NBA33min__016.png", "thumb": "thumbs/NBA33min__016.jpg"}, {"id": "NBA33min__017", "source": "NBA33min.mp4", "timestamp": 1155.016, "frame_idx": 69232, "frame": "frames/NBA33min__017.png", "thumb": "thumbs/NBA33min__017.jpg"}, {"id": "NBA33min__018", "source": "NBA33min.mp4", "timestamp": 1220.626, "frame_idx": 73164, "frame": "frames/NBA33min__018.png", "thumb": "thumbs/NBA33min__018.jpg"}, {"id": "NBA33min__019", "source": "NBA33min.mp4", "timestamp": 1286.237, "frame_idx": 77097, "frame": "frames/NBA33min__019.png", "thumb": "thumbs/NBA33min__019.jpg"}, {"id": "NBA33min__020", "source": "NBA33min.mp4", "timestamp": 1351.847, "frame_idx": 81030, "frame": "frames/NBA33min__020.png", "thumb": "thumbs/NBA33min__020.jpg"}, {"id": "NBA33min__021", "source": "NBA33min.mp4", "timestamp": 1417.457, "frame_idx": 84962, "frame": "frames/NBA33min__021.png", "thumb": "thumbs/NBA33min__021.jpg"}, {"id": "NBA33min__022", "source": "NBA33min.mp4", "timestamp": 1483.068, "frame_idx": 88895, "frame": "frames/NBA33min__022.png", "thumb": "thumbs/NBA33min__022.jpg"}, {"id": "NBA33min__023", "source": "NBA33min.mp4", "timestamp": 1548.678, "frame_idx": 92828, "frame": "frames/NBA33min__023.png", "thumb": "thumbs/NBA33min__023.jpg"}, {"id": "NBA33min__024", "source": "NBA33min.mp4", "timestamp": 1614.289, "frame_idx": 96761, "frame": "frames/NBA33min__024.png", "thumb": "thumbs/NBA33min__024.jpg"}, {"id": "NBA33min__025", "source": "NBA33min.mp4", "timestamp": 1679.899, "frame_idx": 100693, "frame": "frames/NBA33min__025.png", "thumb": "thumbs/NBA33min__025.jpg"}, {"id": "NBA33min__026", "source": "NBA33min.mp4", "timestamp": 1745.509, "frame_idx": 104626, "frame": "frames/NBA33min__026.png", "thumb": "thumbs/NBA33min__026.jpg"}, {"id": "NBA33min__027", "source": "NBA33min.mp4", "timestamp": 1811.12, "frame_idx": 108559, "frame": "frames/NBA33min__027.png", "thumb": "thumbs/NBA33min__027.jpg"}, {"id": "NBA33min__028", "source": "NBA33min.mp4", "timestamp": 1876.73, "frame_idx": 112491, "frame": "frames/NBA33min__028.png", "thumb": "thumbs/NBA33min__028.jpg"}, {"id": "NBA33min__029", "source": "NBA33min.mp4", "timestamp": 1942.34, "frame_idx": 116424, "frame": "frames/NBA33min__029.png", "thumb": "thumbs/NBA33min__029.jpg"}, {"id": "sn1__000", "source": "sn1.mp4", "timestamp": 9.121, "frame_idx": 219, "frame": "frames/sn1__000.png", "thumb": "thumbs/sn1__000.jpg"}, {"id": "sn1__001", "source": "sn1.mp4", "timestamp": 23.403, "frame_idx": 561, "frame": "frames/sn1__001.png", "thumb": "thumbs/sn1__001.jpg"}, {"id": "sn1__002", "source": "sn1.mp4", "timestamp": 40.685, "frame_idx": 975, "frame": "frames/sn1__002.png", "thumb": "thumbs/sn1__002.jpg"}, {"id": "sn1__003", "source": "sn1.mp4", "timestamp": 57.968, "frame_idx": 1390, "frame": "frames/sn1__003.png", "thumb": "thumbs/sn1__003.jpg"}, {"id": "sn1__004", "source": "sn1.mp4", "timestamp": 75.25, "frame_idx": 1804, "frame": "frames/sn1__004.png", "thumb": "thumbs/sn1__004.jpg"}, {"id": "sn1__005", "source": "sn1.mp4", "timestamp": 92.532, "frame_idx": 2219, "frame": "frames/sn1__005.png", "thumb": "thumbs/sn1__005.jpg"}, {"id": "sn1__006", "source": "sn1.mp4", "timestamp": 109.814, "frame_idx": 2633, "frame": "frames/sn1__006.png", "thumb": "thumbs/sn1__006.jpg"}, {"id": "sn1__007", "source": "sn1.mp4", "timestamp": 127.097, "frame_idx": 3047, "frame": "frames/sn1__007.png", "thumb": "thumbs/sn1__007.jpg"}, {"id": "sn1__008", "source": "sn1.mp4", "timestamp": 144.379, "frame_idx": 3462, "frame": "frames/sn1__008.png", "thumb": "thumbs/sn1__008.jpg"}, {"id": "sn1__009", "source": "sn1.mp4", "timestamp": 161.661, "frame_idx": 3876, "frame": "frames/sn1__009.png", "thumb": "thumbs/sn1__009.jpg"}, {"id": "sn1__010", "source": "sn1.mp4", "timestamp": 178.943, "frame_idx": 4290, "frame": "frames/sn1__010.png", "thumb": "thumbs/sn1__010.jpg"}, {"id": "sn1__011", "source": "sn1.mp4", "timestamp": 196.226, "frame_idx": 4705, "frame": "frames/sn1__011.png", "thumb": "thumbs/sn1__011.jpg"}, {"id": "sn1__012", "source": "sn1.mp4", "timestamp": 213.508, "frame_idx": 5119, "frame": "frames/sn1__012.png", "thumb": "thumbs/sn1__012.jpg"}, {"id": "sn1__013", "source": "sn1.mp4", "timestamp": 230.79, "frame_idx": 5533, "frame": "frames/sn1__013.png", "thumb": "thumbs/sn1__013.jpg"}, {"id": "sn1__014", "source": "sn1.mp4", "timestamp": 248.072, "frame_idx": 5948, "frame": "frames/sn1__014.png", "thumb": "thumbs/sn1__014.jpg"}, {"id": "sn1__015", "source": "sn1.mp4", "timestamp": 265.355, "frame_idx": 6362, "frame": "frames/sn1__015.png", "thumb": "thumbs/sn1__015.jpg"}, {"id": "sn1__016", "source": "sn1.mp4", "timestamp": 282.637, "frame_idx": 6777, "frame": "frames/sn1__016.png", "thumb": "thumbs/sn1__016.jpg"}, {"id": "sn1__017", "source": "sn1.mp4", "timestamp": 299.919, "frame_idx": 7191, "frame": "frames/sn1__017.png", "thumb": "thumbs/sn1__017.jpg"}, {"id": "bd2__000", "source": "bd2.mp4", "timestamp": 2.759, "frame_idx": 66, "frame": "frames/bd2__000.png", "thumb": "thumbs/bd2__000.jpg"}, {"id": "bd2__001", "source": "bd2.mp4", "timestamp": 12.948, "frame_idx": 310, "frame": "frames/bd2__001.png", "thumb": "thumbs/bd2__001.jpg"}, {"id": "bd2__002", "source": "bd2.mp4", "timestamp": 23.137, "frame_idx": 555, "frame": "frames/bd2__002.png", "thumb": "thumbs/bd2__002.jpg"}, {"id": "bd2__003", "source": "bd2.mp4", "timestamp": 33.325, "frame_idx": 799, "frame": "frames/bd2__003.png", "thumb": "thumbs/bd2__003.jpg"}, {"id": "bd2__004", "source": "bd2.mp4", "timestamp": 43.514, "frame_idx": 1043, "frame": "frames/bd2__004.png", "thumb": "thumbs/bd2__004.jpg"}, {"id": "bd2__005", "source": "bd2.mp4", "timestamp": 53.703, "frame_idx": 1288, "frame": "frames/bd2__005.png", "thumb": "thumbs/bd2__005.jpg"}, {"id": "bd2__006", "source": "bd2.mp4", "timestamp": 63.891, "frame_idx": 1532, "frame": "frames/bd2__006.png", "thumb": "thumbs/bd2__006.jpg"}, {"id": "bd2__007", "source": "bd2.mp4", "timestamp": 74.08, "frame_idx": 1776, "frame": "frames/bd2__007.png", "thumb": "thumbs/bd2__007.jpg"}, {"id": "bd2__008", "source": "bd2.mp4", "timestamp": 84.269, "frame_idx": 2020, "frame": "frames/bd2__008.png", "thumb": "thumbs/bd2__008.jpg"}, {"id": "bd2__009", "source": "bd2.mp4", "timestamp": 94.457, "frame_idx": 2265, "frame": "frames/bd2__009.png", "thumb": "thumbs/bd2__009.jpg"}, {"id": "bd2__010", "source": "bd2.mp4", "timestamp": 104.646, "frame_idx": 2509, "frame": "frames/bd2__010.png", "thumb": "thumbs/bd2__010.jpg"}, {"id": "bd2__011", "source": "bd2.mp4", "timestamp": 114.834, "frame_idx": 2753, "frame": "frames/bd2__011.png", "thumb": "thumbs/bd2__011.jpg"}, {"id": "bd2__012", "source": "bd2.mp4", "timestamp": 125.023, "frame_idx": 2998, "frame": "frames/bd2__012.png", "thumb": "thumbs/bd2__012.jpg"}, {"id": "bd2__013", "source": "bd2.mp4", "timestamp": 135.212, "frame_idx": 3242, "frame": "frames/bd2__013.png", "thumb": "thumbs/bd2__013.jpg"}, {"id": "bd1__000", "source": "bd1.mp4", "timestamp": 1.96, "frame_idx": 47, "frame": "frames/bd1__000.png", "thumb": "thumbs/bd1__000.jpg"}, {"id": "bd1__001", "source": "bd1.mp4", "timestamp": 10.515, "frame_idx": 252, "frame": "frames/bd1__001.png", "thumb": "thumbs/bd1__001.jpg"}, {"id": "bd1__002", "source": "bd1.mp4", "timestamp": 19.07, "frame_idx": 457, "frame": "frames/bd1__002.png", "thumb": "thumbs/bd1__002.jpg"}, {"id": "bd1__003", "source": "bd1.mp4", "timestamp": 27.625, "frame_idx": 662, "frame": "frames/bd1__003.png", "thumb": "thumbs/bd1__003.jpg"}, {"id": "bd1__004", "source": "bd1.mp4", "timestamp": 36.18, "frame_idx": 867, "frame": "frames/bd1__004.png", "thumb": "thumbs/bd1__004.jpg"}, {"id": "bd1__005", "source": "bd1.mp4", "timestamp": 44.735, "frame_idx": 1073, "frame": "frames/bd1__005.png", "thumb": "thumbs/bd1__005.jpg"}, {"id": "bd1__006", "source": "bd1.mp4", "timestamp": 53.289, "frame_idx": 1278, "frame": "frames/bd1__006.png", "thumb": "thumbs/bd1__006.jpg"}, {"id": "bd1__007", "source": "bd1.mp4", "timestamp": 61.844, "frame_idx": 1483, "frame": "frames/bd1__007.png", "thumb": "thumbs/bd1__007.jpg"}, {"id": "bd1__008", "source": "bd1.mp4", "timestamp": 70.399, "frame_idx": 1688, "frame": "frames/bd1__008.png", "thumb": "thumbs/bd1__008.jpg"}, {"id": "bd1__009", "source": "bd1.mp4", "timestamp": 78.954, "frame_idx": 1893, "frame": "frames/bd1__009.png", "thumb": "thumbs/bd1__009.jpg"}, {"id": "bd1__010", "source": "bd1.mp4", "timestamp": 87.509, "frame_idx": 2098, "frame": "frames/bd1__010.png", "thumb": "thumbs/bd1__010.jpg"}, {"id": "bd1__011", "source": "bd1.mp4", "timestamp": 96.064, "frame_idx": 2303, "frame": "frames/bd1__011.png", "thumb": "thumbs/bd1__011.jpg"}, {"id": "1__000", "source": "1.mp4", "timestamp": 0.601, "frame_idx": 14, "frame": "frames/1__000.png", "thumb": "thumbs/1__000.jpg"}, {"id": "1__001", "source": "1.mp4", "timestamp": 4.719, "frame_idx": 113, "frame": "frames/1__001.png", "thumb": "thumbs/1__001.jpg"}, {"id": "1__002", "source": "1.mp4", "timestamp": 8.838, "frame_idx": 212, "frame": "frames/1__002.png", "thumb": "thumbs/1__002.jpg"}, {"id": "1__003", "source": "1.mp4", "timestamp": 12.957, "frame_idx": 311, "frame": "frames/1__003.png", "thumb": "thumbs/1__003.jpg"}, {"id": "1__004", "source": "1.mp4", "timestamp": 17.076, "frame_idx": 409, "frame": "frames/1__004.png", "thumb": "thumbs/1__004.jpg"}, {"id": "1__005", "source": "1.mp4", "timestamp": 21.195, "frame_idx": 508, "frame": "frames/1__005.png", "thumb": "thumbs/1__005.jpg"}, {"id": "1__006", "source": "1.mp4", "timestamp": 25.314, "frame_idx": 607, "frame": "frames/1__006.png", "thumb": "thumbs/1__006.jpg"}, {"id": "1__007", "source": "1.mp4", "timestamp": 29.432, "frame_idx": 706, "frame": "frames/1__007.png", "thumb": "thumbs/1__007.jpg"}, {"id": "spiderman30s__000", "source": "spiderman30s.mp4", "timestamp": 0.601, "frame_idx": 14, "frame": "frames/spiderman30s__000.png", "thumb": "thumbs/spiderman30s__000.jpg"}, {"id": "spiderman30s__001", "source": "spiderman30s.mp4", "timestamp": 4.719, "frame_idx": 113, "frame": "frames/spiderman30s__001.png", "thumb": "thumbs/spiderman30s__001.jpg"}, {"id": "spiderman30s__002", "source": "spiderman30s.mp4", "timestamp": 8.837, "frame_idx": 212, "frame": "frames/spiderman30s__002.png", "thumb": "thumbs/spiderman30s__002.jpg"}, {"id": "spiderman30s__003", "source": "spiderman30s.mp4", "timestamp": 12.956, "frame_idx": 311, "frame": "frames/spiderman30s__003.png", "thumb": "thumbs/spiderman30s__003.jpg"}, {"id": "spiderman30s__004", "source": "spiderman30s.mp4", "timestamp": 17.074, "frame_idx": 409, "frame": "frames/spiderman30s__004.png", "thumb": "thumbs/spiderman30s__004.jpg"}, {"id": "spiderman30s__005", "source": "spiderman30s.mp4", "timestamp": 21.193, "frame_idx": 508, "frame": "frames/spiderman30s__005.png", "thumb": "thumbs/spiderman30s__005.jpg"}, {"id": "spiderman30s__006", "source": "spiderman30s.mp4", "timestamp": 25.311, "frame_idx": 607, "frame": "frames/spiderman30s__006.png", "thumb": "thumbs/spiderman30s__006.jpg"}, {"id": "spiderman30s__007", "source": "spiderman30s.mp4", "timestamp": 29.429, "frame_idx": 706, "frame": "frames/spiderman30s__007.png", "thumb": "thumbs/spiderman30s__007.jpg"}, {"id": "NBAallstar10s__000", "source": "NBAallstar10s.mp4", "timestamp": 0.2, "frame_idx": 12, "frame": "frames/NBAallstar10s__000.png", "thumb": "thumbs/NBAallstar10s__000.jpg"}, {"id": "NBAallstar10s__001", "source": "NBAallstar10s.mp4", "timestamp": 2.122, "frame_idx": 127, "frame": "frames/NBAallstar10s__001.png", "thumb": "thumbs/NBAallstar10s__001.jpg"}, {"id": "NBAallstar10s__002", "source": "NBAallstar10s.mp4", "timestamp": 4.044, "frame_idx": 242, "frame": "frames/NBAallstar10s__002.png", "thumb": "thumbs/NBAallstar10s__002.jpg"}, {"id": "NBAallstar10s__003", "source": "NBAallstar10s.mp4", "timestamp": 5.966, "frame_idx": 358, "frame": "frames/NBAallstar10s__003.png", "thumb": "thumbs/NBAallstar10s__003.jpg"}, {"id": "NBAallstar10s__004", "source": "NBAallstar10s.mp4", "timestamp": 7.888, "frame_idx": 473, "frame": "frames/NBAallstar10s__004.png", "thumb": "thumbs/NBAallstar10s__004.jpg"}, {"id": "NBAallstar10s__005", "source": "NBAallstar10s.mp4", "timestamp": 9.81, "frame_idx": 588, "frame": "frames/NBAallstar10s__005.png", "thumb": "thumbs/NBAallstar10s__005.jpg"}, {"id": "nfl__000", "source": "nfl.jpg", "timestamp": null, "frame_idx": 0, "frame": "frames/nfl__000.png", "thumb": "thumbs/nfl__000.jpg"}, {"id": "nfl2__000", "source": "nfl2.jpg", "timestamp": null, "frame_idx": 0, "frame": "frames/nfl2__000.png", "thumb": "thumbs/nfl2__000.jpg"}, {"id": "chalkboard__000", "source": "chalkboard.png", "timestamp": null, "frame_idx": 0, "frame": "frames/chalkboard__000.png", "thumb": "thumbs/chalkboard__000.jpg"}, {"id": "cupcakes__000", "source": "cupcakes.png", "timestamp": null, "frame_idx": 0, "frame": "frames/cupcakes__000.png", "thumb": "thumbs/cupcakes__000.jpg"}], "classes": [{"key": "logo", "label": "Logo / brand mark", "hint": "any brand mark, wordmark, or emblem", "prompts": ["logo", "car logo", "letter logo"]}, {"key": "person", "label": "Person", "hint": "any visible person, including crowd", "prompts": ["person"]}, {"key": "sign_or_text", "label": "Sign / text", "hint": "signage, billboard, banner, scoreboard text, captions", "prompts": ["text", "sign", "billboard", "banner", "scoreboard"]}, {"key": "screen", "label": "Screen / monitor", "hint": "TV, monitor, phone or laptop screen, jumbotron", "prompts": ["screen", "monitor", "television", "computer screen"]}, {"key": "board", "label": "Writing board", "hint": "whiteboard, blackboard, chalkboard", "prompts": ["whiteboard", "blackboard"]}, {"key": "ball", "label": "Ball", "hint": "basketball, football, any sports ball", "prompts": ["ball", "basketball", "football"]}, {"key": "bottle_or_cup", "label": "Bottle / cup", "hint": "drink bottle, can, cup \u2014 product stand-in", "prompts": ["bottle", "cup", "beer bottle", "coffee cup"]}, {"key": "car", "label": "Car / road vehicle", "hint": "car, taxi, SUV, van, pickup \u2014 four-wheeled road vehicles only (not buses or bikes)", "prompts": ["car", "truck", "van", "taxi", "sports car", "suv", "police car"]}]};
+const KEY = "model-detection-presence-v1";
+const frames = DATA.frames, classes = DATA.classes;
+
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+
+let i = 0;
+// Resume at the first unlabelled frame so a reopened session continues where it stopped.
+while (i < frames.length - 1 && state[frames[i].id]) i++;
+
+const el = id => document.getElementById(id);
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+
+function rec() {
+  const id = frames[i].id;
+  if (!state[id]) state[id] = { present: [], unsure: false };
+  return state[id];
+}
+
+function renderClasses() {
+  el("classes").innerHTML = classes.map((c, n) => `
+    <button class="cls" data-key="${c.key}" aria-pressed="false">
+      <kbd>${n + 1}</kbd>
+      <span style="flex:1"><b>${c.label}</b><i>${c.hint}</i></span>
+    </button>`).join("");
+  el("classes").querySelectorAll(".cls").forEach(b => b.onclick = () => toggle(b.dataset.key));
+}
+
+function toggle(key) {
+  const r = rec();
+  const at = r.present.indexOf(key);
+  if (at === -1) r.present.push(key); else r.present.splice(at, 1);
+  save(); paint();
+}
+
+function paint() {
+  const f = frames[i], r = state[f.id];
+  el("img").src = f.thumb;
+  el("src").textContent = `${f.source}  ·  ${f.timestamp === null ? "still" : "t=" + f.timestamp + "s"}`
+    + `  ·  frame_idx ${f.frame_idx}  ·  ${f.id}`;
+  el("pos").textContent = `frame ${i + 1} / ${frames.length}`;
+  const done = frames.filter(x => state[x.id]).length;
+  el("count").innerHTML = done === frames.length
+    ? `<span class="done">all ${done} labelled</span>` : `${done} labelled`;
+  el("prog").style.width = (100 * done / frames.length) + "%";
+  el("classes").querySelectorAll(".cls").forEach(b =>
+    b.setAttribute("aria-pressed", String(!!r && r.present.includes(b.dataset.key))));
+  el("unsure").setAttribute("aria-pressed", String(!!r && r.unsure));
+}
+
+function go(d) {
+  rec();                 // advancing past a frame is what marks it labelled
+  save();
+  i = Math.min(frames.length - 1, Math.max(0, i + d));
+  paint();
+}
+
+el("next").onclick = () => go(1);
+el("prev").onclick = () => go(-1);
+el("unsure").onclick = () => { const r = rec(); r.unsure = !r.unsure; save(); paint(); };
+
+el("export").onclick = () => {
+  const out = {
+    schema: classes.map(c => c.key),
+    labelled: frames.filter(f => state[f.id]).length,
+    total: frames.length,
+    labels: Object.fromEntries(frames.map(f =>
+      [f.id, state[f.id] || { present: [], unsure: false, skipped: true }])),
+  };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(out, null, 2)],
+    { type: "application/json" }));
+  const a = document.createElement("a");
+  a.href = url; a.download = "presence_labels.json"; a.click();
+  URL.revokeObjectURL(url);
+};
+
+addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") { go(1); e.preventDefault(); }
+  else if (e.key === "ArrowLeft") { go(-1); e.preventDefault(); }
+  else if (e.key === "u") { el("unsure").click(); }
+  else if (/^[1-9]$/.test(e.key)) { const c = classes[+e.key - 1]; if (c) toggle(c.key); }
+});
+
+renderClasses(); paint();
+</script></body></html>

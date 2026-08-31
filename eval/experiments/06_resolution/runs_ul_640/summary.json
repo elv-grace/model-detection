@@ -1,0 +1,42 @@
+[
+  {
+    "backend": "yoloe26-text",
+    "detections": 6798,
+    "throughput_ms_per_frame": 60.7,
+    "throughput_fps": 16.47,
+    "latency_ms_median": 130.5,
+    "latency_ms_p90": 145.6,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe11-text",
+    "detections": 7324,
+    "throughput_ms_per_frame": 57.6,
+    "throughput_fps": 17.35,
+    "latency_ms_median": 131.4,
+    "latency_ms_p90": 145.6,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "world-text",
+    "detections": 5405,
+    "throughput_ms_per_frame": 56.2,
+    "throughput_fps": 17.8,
+    "latency_ms_median": 119.2,
+    "latency_ms_p90": 129.2,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "yolo11",
+    "detections": 9798,
+    "throughput_ms_per_frame": 53.9,
+    "throughput_fps": 18.54,
+    "latency_ms_median": 119.6,
+    "latency_ms_p90": 127.6,
+    "prompts": 7,
+    "batch": 8
+  }
+]

@@ -1,0 +1,245 @@
+{
+ "provisional_labels": true,
+ "label_counts": {
+  "brand": 75,
+  "person": 97
+ },
+ "frames": 100,
+ "results": {
+  "gdino__bare": {
+   "detections": 14618,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 2
+   },
+   "throughput_ms_per_frame": 280.6,
+   "throughput_fps": 3.56,
+   "latency_ms_median": 287.4,
+   "latency_ms_p90": 295.1,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 75,
+     "fp": 25,
+     "fn": 0,
+     "tn": 0,
+     "recall": 1.0,
+     "fp_rate": 1.0,
+     "precision": 0.75,
+     "f1": 0.8571428571428571,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": 1.0,
+     "threshold_at_recall": 0.14583333333333334
+    },
+    "person": {
+     "threshold": 0.2916666666666667,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.3958333333333333
+    }
+   }
+  },
+  "owlv2__bare": {
+   "detections": 2334,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 2
+   },
+   "throughput_ms_per_frame": 193.9,
+   "throughput_fps": 5.16,
+   "latency_ms_median": 239.2,
+   "latency_ms_p90": 245.4,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 52,
+     "fp": 4,
+     "fn": 23,
+     "tn": 21,
+     "recall": 0.6933333333333334,
+     "fp_rate": 0.16,
+     "precision": 0.9285714285714286,
+     "f1": 0.7938931297709924,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.0,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.14583333333333334
+    }
+   }
+  },
+  "world-text__bare": {
+   "detections": 5001,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 2
+   },
+   "throughput_ms_per_frame": 54.9,
+   "throughput_fps": 18.2,
+   "latency_ms_median": 119.1,
+   "latency_ms_p90": 127.1,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 1,
+     "fp": 0,
+     "fn": 74,
+     "tn": 25,
+     "recall": 0.013333333333333334,
+     "fp_rate": 0.0,
+     "precision": 1.0,
+     "f1": 0.02631578947368421,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.041666666666666664,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.3958333333333333
+    }
+   }
+  },
+  "yoloe11-text__bare": {
+   "detections": 7164,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 2
+   },
+   "throughput_ms_per_frame": 58.8,
+   "throughput_fps": 17.0,
+   "latency_ms_median": 130.3,
+   "latency_ms_p90": 144.1,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 14,
+     "fp": 1,
+     "fn": 61,
+     "tn": 24,
+     "recall": 0.18666666666666668,
+     "fp_rate": 0.04,
+     "precision": 0.9333333333333333,
+     "f1": 0.31111111111111106,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.041666666666666664,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.4791666666666667
+    }
+   }
+  },
+  "yoloe26-text__bare": {
+   "detections": 6668,
+   "breadth": {
+    "other_detections": 0,
+    "other_distinct": 0,
+    "nonobject_frac": 0.0,
+    "distinct_total": 2
+   },
+   "throughput_ms_per_frame": 57.0,
+   "throughput_fps": 17.55,
+   "latency_ms_median": 129.9,
+   "latency_ms_p90": 138.4,
+   "label": {
+    "brand": {
+     "threshold": 0.0,
+     "tp": 17,
+     "fp": 1,
+     "fn": 58,
+     "tn": 24,
+     "recall": 0.22666666666666666,
+     "fp_rate": 0.04,
+     "precision": 0.9444444444444444,
+     "f1": 0.3655913978494624,
+     "positives": 75,
+     "negatives": 25,
+     "target_recall": 0.9,
+     "fp_at_recall": NaN,
+     "threshold_at_recall": NaN
+    },
+    "person": {
+     "threshold": 0.020833333333333332,
+     "tp": 97,
+     "fp": 1,
+     "fn": 0,
+     "tn": 2,
+     "recall": 1.0,
+     "fp_rate": 0.3333333333333333,
+     "precision": 0.9897959183673469,
+     "f1": 0.9948717948717948,
+     "positives": 97,
+     "negatives": 3,
+     "target_recall": 0.9,
+     "fp_at_recall": 0.3333333333333333,
+     "threshold_at_recall": 0.3958333333333333
+    }
+   }
+  }
+ }
+}

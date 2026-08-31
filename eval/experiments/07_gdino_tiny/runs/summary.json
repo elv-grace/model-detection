@@ -1,0 +1,12 @@
+[
+  {
+    "backend": "gdino-tiny",
+    "detections": 17134,
+    "throughput_ms_per_frame": 231.9,
+    "throughput_fps": 4.31,
+    "latency_ms_median": 223.1,
+    "latency_ms_p90": 226.7,
+    "prompts": 7,
+    "batch": 4
+  }
+]

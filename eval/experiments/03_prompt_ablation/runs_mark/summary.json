@@ -1,0 +1,102 @@
+[
+  {
+    "backend": "yoloe11-text__m6",
+    "detections": 7324,
+    "throughput_ms_per_frame": 58.5,
+    "throughput_fps": 17.09,
+    "latency_ms_median": 130.5,
+    "latency_ms_p90": 143.5,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe26-text__m6",
+    "detections": 6798,
+    "throughput_ms_per_frame": 58.0,
+    "throughput_fps": 17.24,
+    "latency_ms_median": 129.4,
+    "latency_ms_p90": 137.9,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "world-text__m6",
+    "detections": 5405,
+    "throughput_ms_per_frame": 55.2,
+    "throughput_fps": 18.12,
+    "latency_ms_median": 118.1,
+    "latency_ms_p90": 127.2,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "owlv2__m6",
+    "detections": 3184,
+    "throughput_ms_per_frame": 195.5,
+    "throughput_fps": 5.12,
+    "latency_ms_median": 236.1,
+    "latency_ms_p90": 239.6,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "gdino__m6",
+    "detections": 17312,
+    "throughput_ms_per_frame": 283.3,
+    "throughput_fps": 3.53,
+    "latency_ms_median": 294.7,
+    "latency_ms_p90": 305.6,
+    "prompts": 7,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe11-text__m11",
+    "detections": 7671,
+    "throughput_ms_per_frame": 59.0,
+    "throughput_fps": 16.95,
+    "latency_ms_median": 130.5,
+    "latency_ms_p90": 142.1,
+    "prompts": 12,
+    "batch": 8
+  },
+  {
+    "backend": "yoloe26-text__m11",
+    "detections": 6885,
+    "throughput_ms_per_frame": 57.5,
+    "throughput_fps": 17.38,
+    "latency_ms_median": 129.1,
+    "latency_ms_p90": 138.6,
+    "prompts": 12,
+    "batch": 8
+  },
+  {
+    "backend": "world-text__m11",
+    "detections": 7304,
+    "throughput_ms_per_frame": 55.2,
+    "throughput_fps": 18.12,
+    "latency_ms_median": 117.7,
+    "latency_ms_p90": 125.9,
+    "prompts": 12,
+    "batch": 8
+  },
+  {
+    "backend": "owlv2__m11",
+    "detections": 4035,
+    "throughput_ms_per_frame": 197.9,
+    "throughput_fps": 5.05,
+    "latency_ms_median": 200.6,
+    "latency_ms_p90": 204.7,
+    "prompts": 12,
+    "batch": 8
+  },
+  {
+    "backend": "gdino__m11",
+    "detections": 16129,
+    "throughput_ms_per_frame": 289.0,
+    "throughput_fps": 3.46,
+    "latency_ms_median": 283.0,
+    "latency_ms_p90": 291.7,
+    "prompts": 12,
+    "batch": 8
+  }
+]

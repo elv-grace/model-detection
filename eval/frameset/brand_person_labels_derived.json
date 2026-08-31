@@ -1,0 +1,668 @@
+{
+ "schema": [
+  "brand",
+  "person"
+ ],
+ "provisional": true,
+ "derived_from": "presence_labels.json",
+ "labels": {
+  "NBA33min__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__001": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__003": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__004": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__005": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__006": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__007": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__008": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__009": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__010": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__011": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__012": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__013": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__014": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__015": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__016": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__017": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__018": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__019": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__020": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__021": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__022": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__023": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__024": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__025": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__026": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__027": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__028": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBA33min__029": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__000": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__001": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__003": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__004": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__005": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__006": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__007": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__008": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__009": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__010": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__011": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__012": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__013": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__014": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__015": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__016": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "sn1__017": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__001": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__003": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__004": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__005": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__006": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__007": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__008": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__009": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__010": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__011": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__012": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd2__013": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__001": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__003": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__004": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__005": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__006": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__007": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__008": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__009": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__010": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "bd1__011": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__000": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__001": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__003": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__004": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__005": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__006": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "1__007": {
+   "present": [
+    "brand"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__000": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__001": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__003": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__004": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__005": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__006": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "spiderman30s__007": {
+   "present": [
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__001": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__002": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__003": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__004": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "NBAallstar10s__005": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "nfl__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "nfl2__000": {
+   "present": [
+    "brand",
+    "person"
+   ],
+   "unsure": false
+  },
+  "chalkboard__000": {
+   "present": [
+    "brand"
+   ],
+   "unsure": false
+  },
+  "cupcakes__000": {
+   "present": [],
+   "unsure": false
+  }
+ }
+}

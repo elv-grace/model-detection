@@ -1,0 +1,22 @@
+# Runtime model cache (YOLOE checkpoint, MobileCLIP text encoder, HF snapshots). Only
+# appears with the bind-mount fallback; the named-volume path stores it under podman's
+# graphroot. Ignored either way.
+.cache
+.hf_cache/
+models/*
+tags/*
+test-output/*
+version/*
+# output of the ungated calibration run (scripts/calibrate_class_conf.py)
+calib-out/
+# frozen evaluation frames (~75 MB) and their UI thumbnails. Regenerate deterministically
+# with `python eval/freeze_frames.py`; eval/frames.json is the committed source of truth.
+eval/frames/
+eval/thumbs/
+eval/*-out/
+__pycache__
+*.egg-info
+.pytest_cache
+test-files/long/
+smoke-in/
+smoke-out/

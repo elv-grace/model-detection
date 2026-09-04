@@ -89,6 +89,12 @@ Each detection becomes a `Tag` with:
 
 `common_ml` then attaches `start_time`/`end_time` (ms), `source_media`, and `frame_info.{frame_idx, box}`. Tags stay per-frame with their boxes intact.
 
+The box is carried **twice**: in `box` and again in `additional_info.box`. `box` becomes
+`frame_info.box`, which is what EVIE draws — but the vectorstore's embedding schema has no box
+column, so a search row comes back with `additional_info` and no geometry. Stamping it there
+means the box travels with the vector it belongs to, rather than having to be joined back from
+a tag track a vector-only run never wrote.
+
 ### `output_tags` — a plain tag beside each vector tag
 
 `output_tags` parameter (default `false`) will emit a **second** `Tag` right after each detection's vector tag if `true`: same label, same box, **no `vector`**, and no embedder provenance 
@@ -113,6 +119,7 @@ than a dotted line of one-frame tags — but it means the tag count grows by mor
 | field | why it is there |
 |---|---|
 | `kind` | `crop`, or `frame` for the optional whole-frame vector |
+| `box` | the same normalized box as `Tag.frame_info.box`, repeated here because this is the only field a vectorstore search row returns |
 | `prompt` | which phrasing actually fired — makes per-phrasing recall measurable |
 | `score` | detector confidence |
 | `detector` | which backend found it (`yoloe-26l-seg`, `grounding-dino-base`, `yolo11l`). **Per tag, not per run** — two detectors are in play |

@@ -129,7 +129,9 @@ class EntityDetector(FrameModel):
 
     def tag_frame(self, img: np.ndarray) -> List[FrameTag]:
         """img: (H, W, 3) uint8 RGB. One FrameTag per detection: `tag` is the parent term,
-        `vector` the crop embedding, `box` the normalized un-padded detection box.
+        `vector` the crop embedding, `box` the normalized un-padded detection box. The box is
+        repeated in `additional_info` because that is the only field a vectorstore search row
+        carries back -- `box` itself lands in `frame_info`, which the index does not store.
 
         With `output_tags` set, each detection emits a SECOND FrameTag right after its vector
         tag -- same label, same box, no vector -- for visual aid.
@@ -157,6 +159,8 @@ class EntityDetector(FrameModel):
                 "kind": "crop",
                 "prompt": detection.prompt,
                 "score": detection.score,
+                # dict(...) so this copy and the tag's own box cannot alias.
+                "box": dict(detection.box),
                 # crop_padding changes the vector, so it is provenance, not trivia:
                 # vectors built at different padding are not comparable.
                 "crop_padding": cfg.crop_padding,
@@ -195,6 +199,7 @@ class EntityDetector(FrameModel):
                     box=dict(_WHOLE_FRAME_BOX),
                     additional_info={
                         "kind": "frame",
+                        "box": dict(_WHOLE_FRAME_BOX),
                         "upscale": upscales[-1],
                         **self._embedder_info(),
                     },

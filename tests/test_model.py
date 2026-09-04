@@ -94,6 +94,16 @@ def test_tag_carries_the_provenance_the_index_needs():
     assert info["upscale"] == 2.5
 
 
+def test_tag_repeats_its_box_in_additional_info():
+    """A vectorstore search row carries `additional_info` and nothing else, so the box has to
+    ride there to survive the round trip."""
+    tag = _model().tag_frame(np.zeros((100, 100, 3), dtype=np.uint8))[0]
+
+    assert tag.additional_info["box"] == tag.box
+    # a copy, so mutating one cannot move the other
+    assert tag.additional_info["box"] is not tag.box
+
+
 def test_no_detections_emits_nothing():
     assert _model(detections=[]).tag_frame(np.zeros((100, 100, 3), dtype=np.uint8)) == []
 
@@ -107,6 +117,7 @@ def test_embed_whole_frame_adds_one_untagged_full_frame_vector():
     assert frame_tag.tag == ""   # the frame itself, not a detected entity
     assert frame_tag.box == {"x1": 0.0, "y1": 0.0, "x2": 1.0, "y2": 1.0}
     assert frame_tag.additional_info["kind"] == "frame"
+    assert frame_tag.additional_info["box"] == frame_tag.box
 
 
 def test_embed_whole_frame_still_emits_when_nothing_is_detected():
@@ -150,6 +161,7 @@ def test_vectorless_twin_keeps_the_detection_provenance_but_not_the_embedder_pro
     assert plain_info["prompt"] == "letter logo"
     assert plain_info["score"] == 0.9
     assert plain_info["detector"] == "fake-yoloe"
+    assert plain_info["box"] == {"x1": 0.1, "y1": 0.2, "x2": 0.3, "y2": 0.4}
     # embedder/dim/max_num_patches describe a vector this tag does not carry
     assert "embedder" not in plain_info
     assert "dim" not in plain_info

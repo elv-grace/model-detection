@@ -1,0 +1,13 @@
+# The demo's own dependencies. torch and transformers are expected to already be present
+# from the tagger's environment; they are listed unpinned so `pip install -r` does not
+# fight an existing CUDA build.
+fastapi>=0.110
+uvicorn[standard]>=0.27
+python-multipart>=0.0.9
+pydantic>=2.0
+requests>=2.31
+loguru>=0.7
+pillow>=10.0
+numpy>=1.24
+torch
+transformers>=4.45

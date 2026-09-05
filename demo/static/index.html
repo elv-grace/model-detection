@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>model-detection · vector search demo</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>model-detection <span class="muted">· vector search</span></h1>
+  <div class="topbar__status" id="index-status">no index connected</div>
+</header>
+
+<main class="layout">
+  <!-- ---------------------------------------------------------------- sidebar -->
+  <aside class="panel">
+    <section class="field-group">
+      <h2>Connection</h2>
+      <label for="index-qid">Index qid</label>
+      <input id="index-qid" type="text" placeholder="iq__..." autocomplete="off">
+
+      <label for="token">Index token</label>
+      <textarea id="token" rows="3" placeholder="aessjc..." autocomplete="off"></textarea>
+
+      <!-- A token is scoped to one content object and an index spans several, so without
+           these most frames come back 403. One per line; a bare token has its qid probed,
+           or write `iq__... = token` to say so outright. -->
+      <label for="content-tokens">Content tokens <span class="muted">(one per line)</span></label>
+      <textarea id="content-tokens" rows="4"
+                placeholder="aessjc...&#10;iq__abc = aessjc..." autocomplete="off"></textarea>
+
+      <button id="connect" class="btn btn--secondary">Connect</button>
+      <div id="index-details" class="details"></div>
+    </section>
+
+    <section class="field-group">
+      <h2>Query</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab tab--active" data-mode="text" role="tab">Text</button>
+        <button class="tab" data-mode="image" role="tab">Image</button>
+      </div>
+
+      <div id="pane-text" class="pane">
+        <label for="query-text">Describe what should be in the crop</label>
+        <input id="query-text" type="text" placeholder="the Nike swoosh">
+        <p class="hint">
+          Text queries cross the modality gap, so their cosines are far lower than an
+          image query's. Judge them by <strong>probability</strong>, not similarity.
+        </p>
+      </div>
+
+      <div id="pane-image" class="pane pane--hidden">
+        <input id="query-file" type="file" accept="image/*">
+        <div id="crop-area" class="crop-area crop-area--empty">
+          <canvas id="crop-canvas"></canvas>
+          <div id="crop-rect" class="crop-rect"></div>
+        </div>
+        <p class="hint" id="crop-hint">Drag on the image to search with just that region.</p>
+        <label class="checkbox">
+          <input id="match-padding" type="checkbox" checked>
+          <span>Expand box to the index's crop padding</span>
+        </label>
+        <button id="clear-crop" class="btn btn--ghost btn--small">Clear crop</button>
+      </div>
+    </section>
+
+    <section class="field-group">
+      <h2>Options</h2>
+      <label for="limit">Results <span class="value" id="limit-value">50</span></label>
+      <input id="limit" type="range" min="10" max="200" step="10" value="50">
+
+      <!-- Floors on two different scales: probability for text, cosine for image. The
+           label follows the active query tab so the number always means something. -->
+      <label for="min-score"><span id="min-score-label">Min probability</span>
+        <span class="value" id="min-score-value">off</span></label>
+      <input id="min-score" type="range" min="0" max="100" step="1" value="0">
+
+      <label for="collapse">Collapse</label>
+      <select id="collapse">
+        <option value="none">None — every crop is a finding</option>
+        <option value="frame">One card per frame</option>
+        <option value="time">Suppress near-duplicate times</option>
+      </select>
+
+      <label for="qids">Restrict to content qids <span class="muted">(comma separated)</span></label>
+      <input id="qids" type="text" placeholder="iq__..., iq__...">
+
+      <label for="evie-base">EVIE base URL <span class="muted">(optional)</span></label>
+      <input id="evie-base" type="text" placeholder="http://localhost:8090">
+    </section>
+
+    <button id="search" class="btn btn--primary">Search</button>
+  </aside>
+
+  <!-- ---------------------------------------------------------------- results -->
+  <section class="results">
+    <div id="query-summary" class="query-summary"></div>
+    <div id="message" class="message"></div>
+    <div id="grid" class="grid"></div>
+  </section>
+</main>
+
+<!-- ---------------------------------------------------------------- lightbox -->
+<div id="lightbox" class="lightbox lightbox--hidden">
+  <button class="lightbox__close" id="lightbox-close" aria-label="Close">&times;</button>
+  <figure class="lightbox__figure">
+    <div class="lightbox__frame">
+      <img id="lightbox-image" alt="">
+    </div>
+    <figcaption id="lightbox-caption"></figcaption>
+  </figure>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
